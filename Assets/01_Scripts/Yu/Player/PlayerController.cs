@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _crouchSpeed = 3f;
 
-    private CapsuleCollider _capsuleCollider;
+    private BoxCollider _capsuleCollider;
     //앉았응 때 얼마나 앉았을지 결정하는 변수
     [SerializeField]
     private float crouchPosY;
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        _capsuleCollider = GetComponentInChildren<CapsuleCollider>();
+        _capsuleCollider = GetComponentInChildren<BoxCollider>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         _applySpeed = _walkSpeed;
