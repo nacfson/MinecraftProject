@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     private float canJump = 0f;
     
     private bool _isGronded = true;
+    
+    private bool _isCrouch = false;
+
+    [SerializeField]
+    private float _crouchSpeed = 3f;
 
     private CapsuleCollider _capsuleCollider;
     //앉았응 때 얼마나 앉았을지 결정하는 변수
@@ -38,6 +43,11 @@ public class PlayerController : MonoBehaviour
     private Camera _camera;
     Animator anim;
     Rigidbody rb;
+
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     
     void Start()
     {
@@ -45,17 +55,53 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         _applySpeed = _walkSpeed;
+        originPosY = _camera.transform.localPosition.y;
+        applyCrouchPosY = originPosY;
         //_camera = FindObjectOfType<Camera>();
     }
 
     void Update()
     {
+        TryCrouch();
         IsGround();
         TryRun();
         TryJump();
         ControlPlayer();
         CameraRotation();
         CharacterRotation();
+    }
+    void TryCrouch()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Crouch();
+        }
+    }
+    void Crouch()
+    {
+        _isCrouch = !_isCrouch;
+        if(_isCrouch)
+        {
+            _applySpeed = _crouchSpeed;
+            applyCrouchPosY =crouchPosY;
+        }
+        else
+        {
+            _applySpeed = _walkSpeed;
+            applyCrouchPosY = originPosY;
+        }
+        StartCoroutine(CrouchCoroutine());
+
+    }
+    IEnumerator CrouchCoroutine()
+    {
+        float _posY = _camera.transform.localPosition.y;
+        while(_posY != applyCrouchPosY)
+        {
+            _posY = Mathf.Lerp(_posY , applyCrouchPosY, 0.3f);
+            _camera.transform.localPosition = new Vector3(0,_posY,0);
+            yield return null;
+        }
     }
     void CharacterRotation()
     {
@@ -74,6 +120,10 @@ public class PlayerController : MonoBehaviour
     }
     void Jump()
     {
+        if (_isCrouch)
+        {
+            Crouch();
+        }
         rb.velocity = transform.up * jumpForce;
     }
     
@@ -106,7 +156,6 @@ public class PlayerController : MonoBehaviour
     {
         _isRun = true;
         _applySpeed = _runSpeed;
-
     }
 
     void RunningCancel()
@@ -124,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * _applySpeed;
 
-        rb.MovePosition(transform.position + _velocity  * Time.deltaTime);
+        rb.MovePosition(transform.position + _velocity);
 
 
         // Vector3 movement = new Vector3(transform.forward.x * moveHorizontal, 0.0f, transform.right.z * moveVertical);

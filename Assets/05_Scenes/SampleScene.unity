@@ -1071,10 +1071,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40079260bda69f14c80332a04d1632a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 50
-  _walkSpeed: 30
+  _runSpeed: 2
+  _walkSpeed: 1
   jumpForce: 5
   timeBeforeNextJump: 1.2
+  _crouchSpeed: 0.5
+  crouchPosY: 0.25
   _lookSensitivity: 3
   _cameraRotationLimit: 45
   _camera: {fileID: 963194227}
