@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 public class PlayerInput : MonoBehaviour
 {
-    public UnityEvent LeftMouseButtonDown;
-    public UnityEvent RightMouseButtonDown;
 
+    public List<AgentInteraction> interactionList = new List<AgentInteraction>();
     private void FixedUpdate()
     {
         ClickMouseButton();
@@ -16,11 +15,11 @@ public class PlayerInput : MonoBehaviour
     {
         if(Input.GetMouseButton(0))
         {
-            LeftMouseButtonDown?.Invoke();
+            interactionList[0].Interact();
         }
         if(Input.GetMouseButtonDown(1))
         {
-            RightMouseButtonDown?.Invoke();
+            //RightMouseButtonDown?.Invoke();
         }
     }
 
