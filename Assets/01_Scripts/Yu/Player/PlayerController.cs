@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Camera Camera
+    {
+        get => _camera;
+
+    }
+    
     public Rigidbody PlayerRigidbody
     {
         get
@@ -86,7 +92,6 @@ public class PlayerController : MonoBehaviour
     {
         CharacterRotation();
         CameraRotation();
-        CheckRay();
 
 
     }
@@ -125,14 +130,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
     }    
-    void CheckRay()
-    {
-        RaycastHit hit;
-        Vector3 pos = new Vector3(transform.position.x,transform.position.y + 5f, transform.position.z); 
-        playerLeftClickInteraction.CanInteract = Physics.Raycast(pos,_camera.transform.forward ,out hit, 20f);
-        playerLeftClickInteraction.CheckGameObject(hit.collider.gameObject);
-        Debug.DrawRay(pos, _camera.transform.forward* 20f, Color.green);
-    }
+
     void CharacterRotation()
     {
         //좌우 캐릭터 회전

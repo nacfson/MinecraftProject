@@ -20,6 +20,7 @@ public abstract class AgentInteraction : MonoBehaviour
     protected Animator _animator;
     public abstract void Interact(GameObject obj);
 
+    public abstract void CheckRay();
     protected abstract void CheckCanInteract();
 
 

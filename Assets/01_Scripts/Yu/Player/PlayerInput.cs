@@ -6,6 +6,8 @@ public class PlayerInput : MonoBehaviour
 {
 
     public List<AgentInteraction> interactionList = new List<AgentInteraction>();
+
+    
     private void FixedUpdate()
     {
         ClickMouseButton();
@@ -15,7 +17,7 @@ public class PlayerInput : MonoBehaviour
     {
         if(Input.GetMouseButton(0))
         {
-            interactionList[0].Interact();
+            interactionList[0].CheckRay();
         }
         if(Input.GetMouseButtonDown(1))
         {
