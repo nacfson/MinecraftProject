@@ -15,9 +15,7 @@ public class Block : MonoBehaviour
     private GameObject _dropItem;
 
     private BoxCollider _collider;
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
+
     private void Awake()
     {
         _collider = GetComponent<BoxCollider>();
