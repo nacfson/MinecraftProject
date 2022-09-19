@@ -22,15 +22,14 @@ public class PlayerLeftClickInteraction : AgentInteraction
     {
         if(CanInteract)
         {
-            // if(obj.tag == _defineName)
-            // {
-            //     //dd
-
-            // }
-            if(true)
+            if(obj.tag == _defineName)
             {
-                Debug.Log("LeftInteraction");
+                if(Input.GetMouseButton(0))
+                {
+                    obj.GetComponent<Block>().Mining();
+                }
             }
+
             
         }
     }
