@@ -76,6 +76,8 @@ public class PlayerController : MonoBehaviour
 
     public PlayerLeftClickInteraction playerLeftClickInteraction;
 
+    public Transform placeBlock;
+
 
     void Awake()
     {
