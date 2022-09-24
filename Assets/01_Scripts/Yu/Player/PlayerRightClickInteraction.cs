@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerLeftClickInteraction : AgentInteraction
+public class PlayerRightClickInteraction : AgentInteraction
 {
     private PlayerController _controller;
     public UnityEvent<GameObject> LeftClickEvent;
+
+    [SerialzieField] private GameObjct _block;
 
     [SerializeField]
     private string _defineName;
@@ -22,12 +24,9 @@ public class PlayerLeftClickInteraction : AgentInteraction
     {
         if(CanInteract)
         {
-            if(obj.tag == _defineName)
+            if(Input.GetMouseButtonDown(1))
             {
-                if(Input.GetMouseButton(0))
-                {
-                    obj.GetComponent<Block>().Mining();
-                }
+
             }
 
             
