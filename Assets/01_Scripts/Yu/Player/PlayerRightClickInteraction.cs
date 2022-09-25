@@ -18,7 +18,7 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     public Camera cam;
     RaycastHit hit;
-    RaycastHit origitHit;
+    RaycastHit originHit;
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
@@ -29,27 +29,28 @@ public class PlayerRightClickInteraction : AgentInteraction
     }
     public override void Interact(GameObject obj)
     {
-        if(CanInteract)
+        if (CanInteract)
         {
-            if(Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
                 //SetBlock();
             }
 
-            
+
         }
     }
     protected override void CheckCanInteract()
     {
-        
+
     }
 
-    void SetBlock(Vector3 vector,Vector3 vector2)
+    void SetBlock(Vector3 vector, Vector3 vector2)
     {
         //Vector3 temp = hit.transform.position;
         //Vector3 pos = new Vector3(temp.x,temp.y + UnityEditor.EditorSnapSettings.move.y,temp.z);
+        Debug.Log($"directionVector3 : {vector}, vector2 : {vector2}");
         Vector3 newPos = vector2 + vector;
-        Instantiate(_block,  newPos,Quaternion.identity);
+        Instantiate(_block, newPos, Quaternion.identity);
     }
 
     public void CheckGameObject(GameObject obj)
@@ -59,45 +60,44 @@ public class PlayerRightClickInteraction : AgentInteraction
     public override void CheckRay()
     {
         int layerMask = (-1) - (1 << LayerMask.NameToLayer("Player"));
-        Vector3 pos = new Vector3(_controller.transform.position.x  ,_controller.transform.position.y + 1f , _controller.transform.position.z);
-        Ray ray = new Ray(pos,_controller.Camera.transform.forward);
-        Physics.Raycast(ray, out origitHit,4f,layerMask);
-        Debug.DrawRay(pos,_controller.Camera.transform.forward * 4f, Color.green);
-        if(Physics.Raycast(ray, out hit,4f,layerMask))
+        Vector3 pos = new Vector3(_controller.transform.position.x, _controller.transform.position.y + 1f, _controller.transform.position.z);
+        Ray ray = new Ray(pos, _controller.Camera.transform.forward);
+        Debug.DrawRay(pos, _controller.Camera.transform.forward * 4f, Color.green);
+        if (Physics.Raycast(ray, out hit, 4f, layerMask))
         {
+            Physics.Raycast(ray, out originHit, 4f, layerMask);
             Vector3 directionVector3 = (hit.transform.position - ray.GetPoint(hit.distance)).normalized;
-            Vector3 dir = origitHit.collider.transform.position.normalized;
-            if(Input.GetMouseButtonDown(1))
+            Vector3 dir = originHit.collider.transform.position;
+            if (Input.GetMouseButtonDown(1))
             {
-                if(directionVector3.x >= 0.49f)
+                Debug.Log($"directionVector3 :{directionVector3}");
+                if (directionVector3.x > directionVector3.y && directionVector3.x > directionVector3.z)
                 {
-                    SetBlock(new Vector3(1,0,0),dir);
+                    SetBlock(new Vector3(1, 0, 0), dir);
                 }
-                else if(directionVector3.y >= 0.49f)
+                else if(directionVector3.x < directionVector3.y && directionVector3.x < directionVector3.z)
                 {
-                    SetBlock(new Vector3(0,1,0),dir);
+                    SetBlock(new Vector3(-1, 0, 0), dir);
                 }
-                else if(directionVector3.z >= 0.49f)
+                if (directionVector3.y > directionVector3.z && directionVector3.y > directionVector3.x)
                 {
+                    SetBlock(new Vector3(0, 1, 0), dir);
+                }
+                else if(directionVector3.y < directionVector3.x && directionVector3.y < directionVector3.z)
+                {
+                    SetBlock(new Vector3(0, -1, 0), dir);
+                }
+                if (directionVector3.z > directionVector3.x && directionVector3.z > directionVector3.y)
+                {
+                    SetBlock(new Vector3(0, 0, 1), dir);
+                }
+                else if(directionVector3.z < directionVector3.y && directionVector3.z < directionVector3.x)
+                {
+                    SetBlock(new Vector3(0, 0, -1), dir);
 
-                    SetBlock(new Vector3(0,0,1),dir);
                 }
-                else if(directionVector3.z >= 0.49f)
-                {
 
-                    SetBlock(new Vector3(0,0,-1),dir);
-                }
-                else if(directionVector3.z <= -0.49f)
-                {
 
-                    SetBlock(new Vector3(0,-1,0),dir);
-                }
-                else if(directionVector3.x <= -0.49f)
-                {
-
-                    SetBlock(new Vector3(-1,0,0),dir);
-                }
-                
             }
         }
         //CanInteract = Physics.Raycast(pos,_controller.Camera.transform.forward ,out hit, 40f,layerMask);

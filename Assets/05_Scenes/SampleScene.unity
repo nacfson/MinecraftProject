@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -819,7 +819,7 @@ Transform:
   m_GameObject: {fileID: 749877820108654622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 28.22, y: 7.98, z: 12.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 749182603463744780}
@@ -1323,7 +1323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _runSpeed: 2
   applySpeed: 0
-  walkSpeed: 1
+  walkSpeed: 0.1
   jumpForce: 5
   timeBeforeNextJump: 1.2
   rb: {fileID: 0}
@@ -1380,6 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _block: {fileID: 686767673675901137, guid: 2d0377caa7b06f146ab637daacc7ff58, type: 3}
+  blockSize: 10
   _defineName: BLOCK
   cam: {fileID: 0}
 --- !u!137 &832370634951622472
@@ -1453,8 +1454,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.06177048, y: 0.104126796, z: 0.05000152}
-  m_Center: {x: 0.00010086536, y: 0.09861088, z: -0.0000000166893}
+  m_Size: {x: 0.06177048, y: 0.06651137, z: 0.05000152}
+  m_Center: {x: 0.00010086596, y: 0.1174186, z: -0.000000017881394}
 --- !u!137 &832370635985665742
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
