@@ -49,7 +49,7 @@ public class MCameraController : MonoBehaviour
             Vector3 blockDirectionVector = new Vector3((int)directionVector.x, (int)directionVector.y, (int)directionVector.z);
             blockDirectionVector *= blockSize;
             Debug.Log(blockDirectionVector);
-
+            //기존 블럭 위치 + 저거 방햑베터 * 블록사이즈
             //0,0,0 ���� ���� �ִµ� �׷� ���� �ٸ� �ڷ� �����ؼ� ���ֺ��� �ٶ�
         }
     }
