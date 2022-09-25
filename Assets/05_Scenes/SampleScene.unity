@@ -1165,6 +1165,7 @@ GameObject:
   - component: {fileID: 808983717512891243}
   - component: {fileID: 808983717512891245}
   - component: {fileID: 808983717512891246}
+  - component: {fileID: 808983717512891247}
   m_Layer: 3
   m_Name: MailMan
   m_TagString: Untagged
@@ -1365,6 +1366,23 @@ MonoBehaviour:
   LeftClickEvent:
     m_PersistentCalls:
       m_Calls: []
+  _defineName: BLOCK
+--- !u!114 &808983717512891247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749877820108654622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc47768710b5d44c82a0db9b5f9df30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _block: {fileID: 8337230868148758114, guid: d0f2eddab0c40d1459903cf50482a3a4, type: 3}
   _defineName: BLOCK
 --- !u!137 &832370634951622472
 SkinnedMeshRenderer:
