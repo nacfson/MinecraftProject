@@ -818,7 +818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749877820108654622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.31, y: 7.98, z: 12.5}
+  m_LocalPosition: {x: 28.22, y: 7.98, z: 12.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1379,11 +1379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc47768710b5d44c82a0db9b5f9df30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftClickEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _block: {fileID: 8337230868148758114, guid: d0f2eddab0c40d1459903cf50482a3a4, type: 3}
+  _block: {fileID: 686767673675901137, guid: 2d0377caa7b06f146ab637daacc7ff58, type: 3}
   _defineName: BLOCK
+  cam: {fileID: 0}
 --- !u!137 &832370634951622472
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
