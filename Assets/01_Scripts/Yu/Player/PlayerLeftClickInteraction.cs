@@ -55,6 +55,6 @@ public class PlayerLeftClickInteraction : AgentInteraction
 
 
         
-        Debug.DrawRay(pos, _controller.Camera.transform.forward* 40f, Color.green);
+        //Debug.DrawRay(pos, _controller.Camera.transform.forward* 40f, Color.green);
     }
 }
