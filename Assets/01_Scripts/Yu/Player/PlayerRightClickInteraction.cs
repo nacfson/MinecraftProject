@@ -66,37 +66,12 @@ public class PlayerRightClickInteraction : AgentInteraction
         if (Physics.Raycast(ray, out hit, 4f, layerMask))
         {
             Physics.Raycast(ray, out originHit, 4f, layerMask);
-            Vector3 directionVector3 = (hit.transform.position - ray.GetPoint(hit.distance)).normalized;
+            Vector3 directionVector3 = (hit.transform.position - ray.GetPoint(hit.distance));
             Vector3 dir = originHit.collider.transform.position;
             if (Input.GetMouseButtonDown(1))
             {
-                Debug.Log($"directionVector3 :{directionVector3}");
-                if (directionVector3.x > directionVector3.y && directionVector3.x > directionVector3.z)
-                {
-                    SetBlock(new Vector3(1, 0, 0), dir);
-                }
-                else if(directionVector3.x < directionVector3.y && directionVector3.x < directionVector3.z)
-                {
-                    SetBlock(new Vector3(-1, 0, 0), dir);
-                }
-                if (directionVector3.y > directionVector3.z && directionVector3.y > directionVector3.x)
-                {
-                    SetBlock(new Vector3(0, 1, 0), dir);
-                }
-                else if(directionVector3.y < directionVector3.x && directionVector3.y < directionVector3.z)
-                {
-                    SetBlock(new Vector3(0, -1, 0), dir);
-                }
-                if (directionVector3.z > directionVector3.x && directionVector3.z > directionVector3.y)
-                {
-                    SetBlock(new Vector3(0, 0, 1), dir);
-                }
-                else if(directionVector3.z < directionVector3.y && directionVector3.z < directionVector3.x)
-                {
-                    SetBlock(new Vector3(0, 0, -1), dir);
-
-                }
-
+                //Debug.Log($"directionVector3 :{directionVector3}");
+                CheckBigger(directionVector3.x, directionVector3.y, directionVector3.z, dir);
 
             }
         }
@@ -125,5 +100,49 @@ public class PlayerRightClickInteraction : AgentInteraction
         //     //기존 블럭 위치 + 저거 방햑베터 * 블록사이즈
         //     //0,0,0 ���� ���� �ִµ� �׷� ���� �ٸ� �ڷ� �����ؼ� ���ֺ��� �ٶ�
         // }
+    }
+    void CheckBigger(float x, float y, float z, Vector3 originVector)
+    {
+        if (Mathf.Abs(x) > Mathf.Abs(y) && Mathf.Abs(x) > Mathf.Abs(z))
+        {
+            if (x < 0f)
+            {
+                SetBlock(new Vector3(1, 0, 0), originVector);
+
+            }
+            else
+            {
+                SetBlock(new Vector3(-1, 0, 0), originVector);
+
+            }
+        }
+        else if (Mathf.Abs(y) > Mathf.Abs(x) && Mathf.Abs(y) > Mathf.Abs(z))
+        {
+            if (y < 0f)
+            {
+
+                SetBlock(new Vector3(0, 1, 0), originVector);
+            }
+            else
+            {
+                SetBlock(new Vector3(0, -1, 0), originVector);
+
+            }
+        }
+        else if (Mathf.Abs(z) > Mathf.Abs(y) && Mathf.Abs(z) > Mathf.Abs(x))
+        {
+            if (z < 0f)
+            {
+
+                SetBlock(new Vector3(0, 0, 1), originVector);
+            }
+            else
+            {
+                SetBlock(new Vector3(0, 0, -1), originVector);
+
+            }
+
+        }
+
     }
 }

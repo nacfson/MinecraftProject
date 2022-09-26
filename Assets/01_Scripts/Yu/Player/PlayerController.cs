@@ -183,6 +183,7 @@ public class PlayerController : MonoBehaviour
         if (IsCrouch)
         {
             Crouch();
+            Debug.Log("Jump");
         }
         rb.velocity = transform.up * jumpForce;
     }
@@ -190,7 +191,8 @@ public class PlayerController : MonoBehaviour
 
     void IsGround()
     {
-        _isGronded = Physics.Raycast(transform.position, Vector3.down, _capsuleCollider.bounds.extents.y + 0.1f);
+        _isGronded = Physics.Raycast(transform.position, Vector3.down, 0.5f);
+        Debug.DrawRay(transform.position, Vector3.down, Color.red,0.5f);
     }
     void TryRun()
     {
