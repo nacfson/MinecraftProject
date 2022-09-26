@@ -49,4 +49,9 @@ public class OptionSceneManager : SceneManagerParent
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public void GoToMainMenu()
+    {
+        LoadScene("MainMenuUIScene");
+    }
+
 }

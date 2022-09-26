@@ -29,7 +29,6 @@ public class Block : MonoBehaviour
 
     private void Update()
     {
-        ShowHPUI();
     }
     public void Mining()
     {
@@ -55,9 +54,4 @@ public class Block : MonoBehaviour
     {
         Debug.Log("DropItem");
     }
-    void ShowHPUI()
-    {
-        _tmp.text = _hp + "";
-    }
-    
 }

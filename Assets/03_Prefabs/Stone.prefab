@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 686767673675901146}
   - component: {fileID: 6289906703660530586}
   m_Layer: 0
-  m_Name: Block2
+  m_Name: Stone
   m_TagString: BLOCK
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: abaf2e72c3e6d2943936cc3a1c4c018b, type: 2}
+  - {fileID: 2100000, guid: e859e4c8545bd4442a335ee668914e26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,8 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 100
+  _maxHP: 100
   _destroyDuration: 3
   _dropItem: {fileID: 0}
+  _tmp: {fileID: 0}
 --- !u!65 &6289906703660530586
 BoxCollider:
   m_ObjectHideFlags: 0
