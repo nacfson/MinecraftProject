@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 
 public class Block : MonoBehaviour
 {
@@ -16,6 +16,8 @@ public class Block : MonoBehaviour
 
     [SerializeField]
     private GameObject _dropItem;
+    [SerializeField]
+    private TextMeshPro _tmp;
 
     private BoxCollider _collider;
 
@@ -23,6 +25,11 @@ public class Block : MonoBehaviour
     {
         _collider = GetComponent<BoxCollider>();
         _hp = _maxHP;
+    }
+
+    private void Update()
+    {
+        ShowHPUI();
     }
     public void Mining()
     {
@@ -47,6 +54,10 @@ public class Block : MonoBehaviour
     private void DropItem()
     {
         Debug.Log("DropItem");
+    }
+    void ShowHPUI()
+    {
+        _tmp.text = _hp + "";
     }
     
 }
