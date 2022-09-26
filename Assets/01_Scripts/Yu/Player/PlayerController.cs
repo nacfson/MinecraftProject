@@ -191,8 +191,9 @@ public class PlayerController : MonoBehaviour
 
     void IsGround()
     {
-        _isGronded = Physics.Raycast(transform.position, Vector3.down, 0.5f);
-        Debug.DrawRay(transform.position, Vector3.down, Color.red,0.5f);
+        _isGronded = !Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        //Debug.Log(_isGronded);
+        Debug.DrawRay(transform.position, Vector3.down, Color.red,0.1f);
     }
     void TryRun()
     {

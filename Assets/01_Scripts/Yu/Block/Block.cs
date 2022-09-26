@@ -9,6 +9,9 @@ public class Block : MonoBehaviour
     [SerializeField]
     private int _hp;
     [SerializeField]
+
+    private int _maxHP = 100;
+    [SerializeField]
     private float _destroyDuration = 3f;
 
     [SerializeField]
@@ -19,6 +22,7 @@ public class Block : MonoBehaviour
     private void Awake()
     {
         _collider = GetComponent<BoxCollider>();
+        _hp = _maxHP;
     }
     public void Mining()
     {
@@ -34,6 +38,10 @@ public class Block : MonoBehaviour
         _collider.enabled = false;
         DropItem();
         gameObject.SetActive(false);
+    }
+    public void HPReset()
+    {
+        _hp = _maxHP;
     }
 
     private void DropItem()

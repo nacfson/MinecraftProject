@@ -62,10 +62,10 @@ public class PlayerRightClickInteraction : AgentInteraction
         int layerMask = (-1) - (1 << LayerMask.NameToLayer("Player"));
         Vector3 pos = new Vector3(_controller.transform.position.x, _controller.transform.position.y + 1f, _controller.transform.position.z);
         Ray ray = new Ray(pos, _controller.Camera.transform.forward);
-        Debug.DrawRay(pos, _controller.Camera.transform.forward * 4f, Color.green);
-        if (Physics.Raycast(ray, out hit, 4f, layerMask))
+        Debug.DrawRay(pos, _controller.Camera.transform.forward * 7f, Color.green);
+        if (Physics.Raycast(ray, out hit, 7f, layerMask))
         {
-            Physics.Raycast(ray, out originHit, 4f, layerMask);
+            Physics.Raycast(ray, out originHit, 7f, layerMask);
             Vector3 directionVector3 = (hit.transform.position - ray.GetPoint(hit.distance));
             Vector3 dir = originHit.collider.transform.position;
             if (Input.GetMouseButtonDown(1))
