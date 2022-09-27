@@ -22,7 +22,7 @@ public class PlayerLeftClickInteraction : AgentInteraction
     {
         if(CanInteract)
         {
-            if(obj.tag == _defineName)
+            if(obj.tag == "BLOCK")
             {
                 if(Input.GetMouseButton(0))
                 {

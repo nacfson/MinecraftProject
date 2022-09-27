@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        
         originPosY = _camera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
         playerController = GetComponentInParent<PlayerController>();
