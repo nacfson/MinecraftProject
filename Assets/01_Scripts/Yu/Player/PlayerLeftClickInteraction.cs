@@ -28,6 +28,14 @@ public class PlayerLeftClickInteraction : AgentInteraction
                 {
                     obj.GetComponent<Block>().Mining();
                 }
+                if(Input.GetMouseButtonUp(0))
+                {
+                    obj.GetComponent<Block>().HPReset();
+                }
+                if(CanInteract == false)
+                {
+                    obj.GetComponent<Block>().HPReset();
+                }
             }
 
             
@@ -45,16 +53,13 @@ public class PlayerLeftClickInteraction : AgentInteraction
     public override void CheckRay()
     {
         RaycastHit hit;
-        Vector3 pos = new Vector3(_controller.transform.position.x,_controller.transform.position.y + 5f, _controller.transform.position.z); 
-        CanInteract = Physics.Raycast(pos,_controller.Camera.transform.forward ,out hit, 20f);
+        Vector3 pos = new Vector3(_controller.transform.position.x,_controller.transform.position.y + 1f, _controller.transform.position.z); 
+        Ray ray = new Ray(pos, _controller.Camera.transform.forward);
+        CanInteract = Physics.Raycast(pos,_controller.Camera.transform.forward ,out hit, 7f);
         if(CanInteract)
         {
             CheckGameObject(hit.collider.gameObject);
-
         }
-
-
-        
-        Debug.DrawRay(pos, _controller.Camera.transform.forward* 20f, Color.green);
+        //Debug.DrawRay(pos, _controller.Camera.transform.forward* 40f, Color.green);
     }
 }

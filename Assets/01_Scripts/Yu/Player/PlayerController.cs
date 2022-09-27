@@ -76,10 +76,12 @@ public class PlayerController : MonoBehaviour
 
     public PlayerLeftClickInteraction playerLeftClickInteraction;
 
+    public Transform placeBlock;
+
 
     void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        
         originPosY = _camera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
         playerController = GetComponentInParent<PlayerController>();
@@ -181,6 +183,7 @@ public class PlayerController : MonoBehaviour
         if (IsCrouch)
         {
             Crouch();
+            Debug.Log("Jump");
         }
         rb.velocity = transform.up * jumpForce;
     }
@@ -188,7 +191,9 @@ public class PlayerController : MonoBehaviour
 
     void IsGround()
     {
-        _isGronded = Physics.Raycast(transform.position, Vector3.down, _capsuleCollider.bounds.extents.y + 0.1f);
+        _isGronded = !Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        //Debug.Log(_isGronded);
+        Debug.DrawRay(transform.position, Vector3.down, Color.red,0.1f);
     }
     void TryRun()
     {
