@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class InventoryUIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject _mainPanel;
+    [SerializeField]
+    private GameObject _toolBar;
+    [SerializeField]
+    private GameObject _inventoryPanel;
 
-    // Update is called once per frame
-    void Update()
+    public List<GameObject> toolBarList = new List<GameObject>();
+
+    private void Awake()
     {
-        
+        _inventoryPanel.SetActive(false);
     }
 }
