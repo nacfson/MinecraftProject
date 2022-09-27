@@ -15,12 +15,4 @@ public class InventoryManager : MonoBehaviour
         inventoryUIManager = GameObject.Find("InventoryUIManager").GetComponent<InventoryUIManager>();
     }
 
-    public void SetToolBar()
-    {
-        for(int i= 0; i< inventoryUIManager.toolBarList.Count; i++)
-        {
-            //inventoryUIManager.toolBarList[i].gameObject
-
-        }
-    }
 }

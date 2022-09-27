@@ -24,5 +24,9 @@ public class ItemData
 		};
 		return itemData;
 	}
+	public void GetItem(int count)
+	{
+		_count += count;
+	}
 
 }
