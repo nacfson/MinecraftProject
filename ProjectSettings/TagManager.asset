@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - BLOCK
+  - ITEM
   layers:
   - Default
   - TransparentFX

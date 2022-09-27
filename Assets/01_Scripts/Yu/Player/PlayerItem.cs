@@ -13,28 +13,25 @@ public class PlayerItem : MonoBehaviour
     }
     void GetItems()
     {
-        Collider[] collidersList = Physics.OverlapSphere(transform.position,10f);
+        Collider[] collidersList = Physics.OverlapSphere(transform.position,3f);
         foreach(var item in collidersList)
         {
-            if(item.CompareTag("ITEM"))
+            if(item.gameObject.CompareTag("ITEM"))
             {
-                GetItemCor(item.gameObject);
+                StartCoroutine(GetItemCor(item.gameObject));
             }
         }
     }
     IEnumerator GetItemCor(GameObject obj)
     {
         float temp = 0;
-        while(obj.transform.position != this.transform.position)
-        {
+
             Debug.Log("ERROR");
-            obj.transform.position = Vector3.Lerp(obj.transform.position,  transform.position,temp);
+            Vector3.Lerp(obj.transform.position,  transform.position,0f);
             temp += Time.deltaTime;
-            yield return null;
-
-
-        }
-        Destroy(gameObject);
+        yield return null;
+        
+        Destroy(obj);
     }
 
 }
