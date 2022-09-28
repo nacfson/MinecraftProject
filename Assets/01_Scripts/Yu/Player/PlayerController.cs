@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(!InventoryUIManager.inventoryActivated)
+        if(InventoryUIManager.inventoryActivated == false)
         {
             CharacterRotation();
             CameraRotation();

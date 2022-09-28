@@ -30,14 +30,16 @@ public class InventoryUIManager : MonoBehaviour
             if(inventoryActivated)
             {
                 _inventoryPanel.SetActive(false);
-                Cursor.lockState = CursorLockMode.None;
+                inventoryActivated = false;
 
+                Cursor.lockState = CursorLockMode.Locked;
             }
             else
             {
                 _inventoryPanel.SetActive(true);
+                inventoryActivated = true;
+                Cursor.lockState = CursorLockMode.None;
 
-                Cursor.lockState = CursorLockMode.Locked;
 
             }
         }
