@@ -7,8 +7,8 @@ using UnityEngine.EventSystems;
 public class ButtonSelect : MonoBehaviour
 {
     // ButtonSelect 는 버튼 생성하는 오브젝트의 부모로 있어야 한다.
-    [SerializeField]
-    public List<Button> buttonList = new List<Button>();
+
+    public List<GameObject> buttonList = new List<GameObject>();
     public int buttonCount;
     [SerializeField] private int horizontalCount;
     public bool buttonMove;
@@ -26,7 +26,7 @@ public class ButtonSelect : MonoBehaviour
 
     private void Update()
     {
-        CheckButtonPanelCount();
+        //CheckButtonPanelCount();
         CheckSelectedButton();
         UseButton();
     }
@@ -81,7 +81,7 @@ public class ButtonSelect : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                buttonList[buttonCount].onClick.Invoke();
+                //buttonList[buttonCount].onClick.Invoke();
                 
             }
         }
@@ -102,7 +102,7 @@ public class ButtonSelect : MonoBehaviour
             else
             {
                 
-                buttonList[i].GetComponent<IButton>().NoneSelected();
+                buttonList[i].GetComponent<IButton>().Selected();
             }
         }
     }

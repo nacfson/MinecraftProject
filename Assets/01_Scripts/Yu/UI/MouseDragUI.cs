@@ -15,7 +15,7 @@ public class MouseDragUI : MonoBehaviour
     {
         _buttonSelect ??= GetComponentInParent<ButtonSelect>();
     }
-    [SerializeField] private Button _myButton;
+    [SerializeField] private GameObject _myButton;
 
     public void OnUIButton()
     {

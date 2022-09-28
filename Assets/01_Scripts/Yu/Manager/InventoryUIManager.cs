@@ -9,6 +9,8 @@ public class InventoryUIManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _inventoryPanel;
+    [SerializeField]
+    private GameObject _toolBarPanel;
 
     public static bool inventoryActivated;
 
