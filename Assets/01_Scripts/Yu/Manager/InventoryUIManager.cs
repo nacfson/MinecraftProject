@@ -31,25 +31,41 @@ public class InventoryUIManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             _inventoryPanel.SetActive(!_inventoryPanel.activeSelf);
-            Cursor.lockState = CursorLockMode.None;
+            if(_inventoryPanel.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.None;
+
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+
+            }
         }
         if(Input.GetKeyDown(KeyCode.P))
         {
-            GetItem(_inventorySO.inventoryList[0],1);
+            GetItem(_inventorySO.inventoryList[0]);
         }
     }
     
-    void GetItem(ItemData itemData,int count)
+    void GetItem(ItemData itemData)
     {
-        _inventorySO.AddItem(itemData,count);
         for(int i= 0; i< inventoryList.Count; i++)
         {
-            if(inventoryList[i] != null)
+            if(_inventorySO.inventoryList[i] != null)
             {
-                inventoryList[i].GetComponent<InventoryBlock>().ItemData = itemData;
-                inventoryList[i].GetComponent<InventoryBlock>().SetInventoryBlock();
-                break;
-            }            
+                if(_inventorySO.inventoryList[i]._eItem  != itemData._eItem)
+                {
+                    inventoryList[i].GetComponent<InventoryBlock>().ItemData = itemData;
+                    inventoryList[i].GetComponent<InventoryBlock>().SetInventoryBlock();
+                    break;
+                }else
+                {
+                    inventoryList[i].GetComponent<InventoryBlock>().SetInventoryBlock();
+                }
+            }
+           
         }
+
     }
 }

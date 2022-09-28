@@ -7,7 +7,7 @@ public class InventorySO : ScriptableObject
 {
     public List<ItemData> inventoryList = new List<ItemData>();
 
-    public void AddItem(ItemData itemData,int count)
+    public void AddItem(ItemData itemData)
     {
         ItemData item = inventoryList.Find(x => x._eItem == itemData._eItem);
 		if(item == null)

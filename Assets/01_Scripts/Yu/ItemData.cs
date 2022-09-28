@@ -8,7 +8,7 @@ public class ItemData
     public string _name;
     public int _count;
     public Sprite _itemSprite;
-
+	
     public EItem _eItem;
 
     public IItem _iItem;
