@@ -26,8 +26,13 @@ public class ButtonSelect : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< Updated upstream
         CheckButtonPanelCount();
         CheckSelectedButton();
+=======
+        //CheckButtonPanelCount();
+        //CheckSelectedButton();
+>>>>>>> Stashed changes
         UseButton();
     }
 

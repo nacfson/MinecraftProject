@@ -16,12 +16,26 @@ public class InventoryUIManager : MonoBehaviour
 
     private void Awake()
     {
-        _inventoryPanel.SetActive(false);
+        _inventoryPanel.SetActive(true);
+        UseToolBar();
     }
-
     private void Update()
     {
         GetInputs();
+    }
+    void UseToolBar()
+    {
+        for(int i = 9 ; i< inventoryList.Count; i ++ )
+        {
+            inventoryList[i].gameObject.SetActive(false);
+        }
+    }
+    void UnUseToolBar()
+    {
+        for(int i = 0 ; i< inventoryList.Count; i ++ )
+        {
+            inventoryList[i].gameObject.SetActive(true);
+        }
     }
     void GetInputs()
     {
@@ -29,24 +43,21 @@ public class InventoryUIManager : MonoBehaviour
         {
             if(inventoryActivated)
             {
-                _inventoryPanel.SetActive(false);
+                //_inventoryPanel.SetActive(false);
                 inventoryActivated = false;
-
+                UseToolBar();
                 Cursor.lockState = CursorLockMode.Locked;
             }
             else
             {
-                _inventoryPanel.SetActive(true);
+                UnUseToolBar();
                 inventoryActivated = true;
                 Cursor.lockState = CursorLockMode.None;
-
-
             }
         }
     }
     public void AcquireItem(Item _item,  int _count)
     {
-        Debug.Log("AcquireItem");
         for(int i= 0; i< inventoryList.Count; i++)
         {
             if(inventoryList[i].item != null)
@@ -68,6 +79,7 @@ public class InventoryUIManager : MonoBehaviour
                 }
         }
     }
+
 
     
 }

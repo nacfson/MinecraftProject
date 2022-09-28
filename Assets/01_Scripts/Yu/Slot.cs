@@ -55,6 +55,16 @@ public class Slot : MonoBehaviour , IBeginDragHandler, IDragHandler, IEndDragHan
         }
 
     }
+    public void ShowSlot()
+    {
+        _countText.enabled = true;
+        if(item != null)
+        {
+            itemImage.sprite = item.itemImage;
+
+        }
+        _countText.text = $"{itemCount}";
+    }
     private void ClearSlot()
     {
         item = null;
