@@ -10,6 +10,8 @@ public class InventoryUIManager : MonoBehaviour
     [SerializeField]
     private GameObject _inventoryPanel;
 
+    public static bool inventoryActivated;
+
     public List<Slot> inventoryList = new List<Slot>();
 
     private void Awake()
@@ -25,14 +27,16 @@ public class InventoryUIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E))
         {
-            _inventoryPanel.SetActive(!_inventoryPanel.activeSelf);
-            if(_inventoryPanel.activeSelf)
+            if(inventoryActivated)
             {
+                _inventoryPanel.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
 
             }
             else
             {
+                _inventoryPanel.SetActive(true);
+
                 Cursor.lockState = CursorLockMode.Locked;
 
             }

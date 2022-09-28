@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 3765322784029824142}
   - component: {fileID: 3765322784029824143}
   - component: {fileID: 3298049417934894491}
+  - component: {fileID: 914055294749339321}
   m_Layer: 5
   m_Name: InventoryBlockPanel
   m_TagString: Untagged
@@ -306,3 +307,17 @@ MonoBehaviour:
   itemCount: 0
   itemImage: {fileID: 3765322782737092896}
   _countText: {fileID: 3765322782756709457}
+--- !u!114 &914055294749339321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3765322784029824130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc48cd182096074ab7d223094b27ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragSlot: {fileID: 3298049417934894491}
+  _imageItem: {fileID: 3765322782737092896}

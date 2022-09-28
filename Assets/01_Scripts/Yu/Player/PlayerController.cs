@@ -92,8 +92,12 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        CharacterRotation();
-        CameraRotation();
+        if(!InventoryUIManager.inventoryActivated)
+        {
+            CharacterRotation();
+            CameraRotation();
+        }
+
 
 
     }

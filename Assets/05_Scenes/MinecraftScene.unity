@@ -1628,7 +1628,7 @@ GameObject:
   - component: {fileID: 641220007}
   - component: {fileID: 641220010}
   - component: {fileID: 641220009}
-  - component: {fileID: 641220008}
+  - component: {fileID: 641220011}
   m_Layer: 5
   m_Name: ToolBarPanel
   m_TagString: Untagged
@@ -1692,30 +1692,6 @@ RectTransform:
   m_AnchoredPosition: {x: -47, y: -198.63525}
   m_SizeDelta: {x: -976.626, y: -597.2354}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &641220008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641220006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 20
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 40
-  m_ChildAlignment: 6
-  m_StartCorner: 2
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!114 &641220009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1754,6 +1730,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641220006}
   m_CullTransparentMesh: 1
+--- !u!114 &641220011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641220006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 20
+    m_Right: 0
+    m_Top: 35
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!224 &652261053 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3765322784029824129, guid: 164c253d38731cc45935368f23a410b5, type: 3}
@@ -5871,6 +5871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _block: {fileID: 1377162579803422974, guid: 18c0e288456f8f44ea7912c805bfb446, type: 3}
   blockSize: 10
+  inventoryUIManager: {fileID: 0}
   _defineName: BLOCK
   cam: {fileID: 0}
 --- !u!114 &808983717512891248
