@@ -36,8 +36,6 @@ public class PlayerRightClickInteraction : AgentInteraction
             {
                 //SetBlock();
             }
-
-
         }
     }
     protected override void CheckCanInteract()
@@ -51,7 +49,21 @@ public class PlayerRightClickInteraction : AgentInteraction
         //Vector3 pos = new Vector3(temp.x,temp.y + UnityEditor.EditorSnapSettings.move.y,temp.z);
         Debug.Log($"directionVector3 : {vector}, vector2 : {vector2}");
         Vector3 newPos = vector2 + vector;
-        Instantiate(_block, newPos, Quaternion.identity);
+        UseItem(newPos);
+    }
+    void UseItem(Vector3 newPos)
+    {
+        Slot itemData = inventoryUIManager.inventoryList[inventoryUIManager.buttonCount];
+            Debug.Log(itemData.item);
+
+        if(itemData.item != null)
+        {
+            if(itemData.item.itemType == ItemType.Block && itemData.itemCount >= 0)
+            {
+                itemData.SetSlotCount(-1);
+                Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity);
+            }
+        }
     }
 
     public void CheckGameObject(GameObject obj)
