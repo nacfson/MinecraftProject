@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77c428a56eb4dbd41bf062e0d594259c, type: 3}
-  m_Name: InventorySO
+  m_Script: {fileID: 11500000, guid: 844ad10842615f4459a318a7566f3971, type: 3}
+  m_Name: Dirt
   m_EditorClassIdentifier: 
-  inventoryList:
-  - _name: Stone
-    _count: 1
-    _itemSprite: {fileID: 0}
-    _eItem: 1
+  itemName: Dirt
+  itemImage: {fileID: 21300000, guid: c0a46f6056b960742abefdaf71fbf404, type: 3}
+  itemType: 2
+  itemPrefab: {fileID: 0}

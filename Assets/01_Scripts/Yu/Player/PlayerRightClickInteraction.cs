@@ -10,7 +10,7 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     [SerializeField] private GameObject _block;
     public float blockSize = 1f;
-
+    public InventoryUIManager inventoryUIManager;
 
 
     [SerializeField]
@@ -22,6 +22,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
+        inventoryUIManager = FindObjectOfType<InventoryUIManager>();
     }
     protected void Update()
     {

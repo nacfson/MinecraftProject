@@ -24,12 +24,9 @@ public class Block : MonoBehaviour
     private void Awake()
     {
         _collider = GetComponent<BoxCollider>();
-        _hp = _maxHP;
+        HPReset();
     }
 
-    private void Update()
-    {
-    }
     public void Mining()
     {
         _hp--;
@@ -52,6 +49,7 @@ public class Block : MonoBehaviour
 
     private void DropItem()
     {
+        Instantiate(_dropItem,transform.position,Quaternion.identity);
         Debug.Log("DropItem");
     }
 }

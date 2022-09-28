@@ -9,19 +9,14 @@ public class InventoryUIManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _inventoryPanel;
-    [SerializeField]
-    private InventorySO _inventorySO;
-    public InventoryManager inventoryManager;
 
-    public List<GameObject> inventoryList = new List<GameObject>();
+    public List<Slot> inventoryList = new List<Slot>();
 
     private void Awake()
     {
         _inventoryPanel.SetActive(false);
     }
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
+
     private void Update()
     {
         GetInputs();
@@ -42,30 +37,33 @@ public class InventoryUIManager : MonoBehaviour
 
             }
         }
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            GetItem(_inventorySO.inventoryList[0]);
-        }
     }
-    
-    void GetItem(ItemData itemData)
+    public void AcquireItem(Item _item,  int _count)
     {
+        Debug.Log("AcquireItem");
         for(int i= 0; i< inventoryList.Count; i++)
         {
-            if(_inventorySO.inventoryList[i] != null)
+            if(inventoryList[i].item != null)
             {
-                if(_inventorySO.inventoryList[i]._eItem  != itemData._eItem)
+                if(inventoryList[i].item.itemName == _item.itemName)
                 {
-                    inventoryList[i].GetComponent<InventoryBlock>().ItemData = itemData;
-                    inventoryList[i].GetComponent<InventoryBlock>().SetInventoryBlock();
-                    break;
-                }else
-                {
-                    inventoryList[i].GetComponent<InventoryBlock>().SetInventoryBlock();
+                    inventoryList[i].SetSlotCount(_count);
+                    return;
                 }
             }
-           
         }
-
+        for(int i= 0; i< inventoryList.Count; i++)
+        {
+            // if(inventoryList[i].item.itemName == "")
+            // {
+                if(inventoryList[i].item == null)
+                {
+                    inventoryList[i].AddItem(_item,_count);
+                    return;
+                }
+            //}
+        }
     }
+
+    
 }

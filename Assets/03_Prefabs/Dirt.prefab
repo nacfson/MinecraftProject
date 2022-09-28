@@ -113,5 +113,5 @@ MonoBehaviour:
   _hp: 0
   _maxHP: 100
   _destroyDuration: 3
-  _dropItem: {fileID: 0}
+  _dropItem: {fileID: 2774671180861367142, guid: 79f2b00fa10aec64c90394bd1a2846e6, type: 3}
   _tmp: {fileID: 0}

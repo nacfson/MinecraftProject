@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 3765322784029824129}
   - component: {fileID: 3765322784029824142}
   - component: {fileID: 3765322784029824143}
-  - component: {fileID: 3765322784029824128}
+  - component: {fileID: 3298049417934894491}
   m_Layer: 5
   m_Name: InventoryBlockPanel
   m_TagString: Untagged
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3765322784029824128
+--- !u!114 &3298049417934894491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,14 +299,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3765322784029824130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a46f983c7a26d14ebf9e2da959729f2, type: 3}
+  m_Script: {fileID: 11500000, guid: be17383303ce2fc498ec731fc2eb4971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  itemCount: 0
+  itemImage: {fileID: 3765322782737092896}
   _countText: {fileID: 3765322782756709457}
-  _itemData:
-    _name: 
-    _count: 0
-    _itemSprite: {fileID: 0}
-    _eItem: 0
-  count: 1
-  _mySprite: {fileID: 0}

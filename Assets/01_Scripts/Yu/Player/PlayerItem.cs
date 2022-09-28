@@ -4,34 +4,31 @@ using UnityEngine;
 
 public class PlayerItem : MonoBehaviour
 {
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
+    [SerializeField]
+    private float _pickUpRange;
+    [SerializeField]
+    private LayerMask _layerMask;
+    [SerializeField]
+    private InventoryUIManager _inventoryUIManager;
     private void Update()
     {
         GetItems();
     }
     void GetItems()
     {
-        Collider[] collidersList = Physics.OverlapSphere(transform.position,3f);
+        Collider[] collidersList = Physics.OverlapSphere(transform.position,_pickUpRange);
         foreach(var item in collidersList)
         {
+
             if(item.gameObject.CompareTag("ITEM"))
             {
-                StartCoroutine(GetItemCor(item.gameObject));
+                ItemPickUp itemPickUp = item.gameObject.GetComponent<ItemPickUp>();
+                //Vector3.Lerp(itemPickUp.gameObject.transform.position,  transform.position,0f);
+                _inventoryUIManager.AcquireItem(itemPickUp.item,1);
+                Destroy(itemPickUp.gameObject);
             }
         }
     }
-    IEnumerator GetItemCor(GameObject obj)
-    {
-        float temp = 0;
 
-            Debug.Log("ERROR");
-            Vector3.Lerp(obj.transform.position,  transform.position,0f);
-            temp += Time.deltaTime;
-        yield return null;
-        
-        Destroy(obj);
-    }
 
 }

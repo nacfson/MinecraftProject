@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField]
-    private InventorySO _inventorySO;
+
     public InventoryUIManager inventoryUIManager;
     /// <summary>
     /// Awake is called when the script instance is being loaded.
