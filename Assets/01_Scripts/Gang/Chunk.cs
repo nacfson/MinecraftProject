@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Chunk : MonoBehaviour
 {
-    public static readonly Vector3Int chunkSize = new Vector3Int(16, 256, 16);
+    public Vector3Int chunkSize = new Vector3Int(16, 256, 16);
     public Vector2 noiseScale = Vector2.one;
     public Vector2 noiseOffset = Vector2.zero;
     [Space]
     public int heightOffset = 60;
     public float heightIntencity = 5f;
-    int[,,] TempData;
+    [Space]
+    public int[,,] TempData;
+
+
+    ChunkSpawn ChunkSpawn;
+    public bool endMakingChunk;
     void Start()
     {
+        ChunkSpawn = GetComponent<ChunkSpawn>();
+
         TempData = new int[chunkSize.x, chunkSize.y, chunkSize.z];
 
         for (int x = 0; x < chunkSize.x; x++)
@@ -78,5 +85,7 @@ public class Chunk : MonoBehaviour
                 }
             }
         }
+        endMakingChunk = true;
+     
     }
 }
