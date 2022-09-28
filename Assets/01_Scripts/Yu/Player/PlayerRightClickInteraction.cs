@@ -53,8 +53,8 @@ public class PlayerRightClickInteraction : AgentInteraction
     }
     void UseItem(Vector3 newPos)
     {
-        Slot itemData = inventoryUIManager.inventoryList[inventoryUIManager.buttonCount];
-            Debug.Log(itemData.item);
+        Slot itemData = inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1];
+        Debug.Log(itemData.item);
 
         if(itemData.item != null)
         {
@@ -88,31 +88,7 @@ public class PlayerRightClickInteraction : AgentInteraction
 
             }
         }
-        //CanInteract = Physics.Raycast(pos,_controller.Camera.transform.forward ,out hit, 40f,layerMask);
 
-        // Debug.DrawRay(pos, _controller.Camera.transform.forward * 40f, Color.green);
-        // if(CanInteract)
-        // {
-        //     CheckGameObject(hit.collider.gameObject);
-        // }
-        // Ray ray = new Ray(pos, _controller.Camera.transform.forward);
-        // RaycastHit raycastHit;
-        // if (Physics.Raycast(ray, out raycastHit))
-        // {
-        //     Vector3 directionVector = raycastHit.transform.position - ray.GetPoint(raycastHit.distance);
-        //     directionVector *= -2; //���⺤�Ϳ��� Ư�� �� ���� �ٶ󺸰� �ִ� ���� ���� 0.5�� �����Ƿ� �������� int������ ���ֹ����� ����
-        //     Vector3 blockDirectionVector = new Vector3((int)directionVector.x, (int)directionVector.y, (int)directionVector.z);
-        //     //blockDirectionVector = blockDirectionVector.normalized;
-        //     blockDirectionVector *= blockSize;
-        //     Debug.Log(blockDirectionVector);
-        //     if(Input.GetMouseButtonDown(1))
-        //     {
-        //         SetBlock(blockDirectionVector);
-
-        //     }
-        //     //기존 블럭 위치 + 저거 방햑베터 * 블록사이즈
-        //     //0,0,0 ���� ���� �ִµ� �׷� ���� �ٸ� �ڷ� �����ؼ� ���ֺ��� �ٶ�
-        // }
     }
     void CheckBigger(float x, float y, float z, Vector3 originVector)
     {

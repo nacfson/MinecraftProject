@@ -46,6 +46,8 @@ public class InventoryUIManager : MonoBehaviour
     }
     void GetInputs()
     {
+        CheckCount();
+
         if(Input.GetKeyDown(KeyCode.E))
         {
             if(inventoryActivated)
@@ -62,55 +64,55 @@ public class InventoryUIManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
         }
-        CheckCount();
 
     }
     void CheckCount()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            Debug.Log("0");
-            buttonCount = 1;
-        }
+
                 if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log("1");
+            buttonCount = 1;
+        }
+                if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Debug.Log("2");
             buttonCount = 2;
         }
                 if(Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Debug.Log("2");
+            Debug.Log("3");
             buttonCount = 3;
         }
                 if(Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Debug.Log("3");
+            Debug.Log("4");
             buttonCount = 4;
         }
                 if(Input.GetKeyDown(KeyCode.Alpha5))
         {
-            Debug.Log("4");
+            Debug.Log("5");
             buttonCount = 5;
         }
                 if(Input.GetKeyDown(KeyCode.Alpha6))
         {
-            Debug.Log("5");
+            Debug.Log("6");
             buttonCount = 6;
         }
                 if(Input.GetKeyDown(KeyCode.Alpha7))
         {
-            Debug.Log("6");
-            buttonCount = 7;
+            Debug.Log("7");
+            buttonCount =7;
         }
                 if(Input.GetKeyDown(KeyCode.Alpha8))
         {
-            Debug.Log("7");
+            Debug.Log("8");
             buttonCount = 8;
         }
-                if(Input.GetKeyDown(KeyCode.Alpha9))
+                        if(Input.GetKeyDown(KeyCode.Alpha9))
         {
             Debug.Log("8");
-            buttonCount = 9;
+            buttonCount = 8;
         }
     }
     public void AcquireItem(Item _item,  int _count)
