@@ -85,6 +85,7 @@ public class Slot : MonoBehaviour , IBeginDragHandler, IDragHandler, IEndDragHan
     public void OnEndDrag(PointerEventData eventData)
     {
         DragSlot.instance.SetColor(0);
+        DragSlot.instance.dragSlot = null;
     }
     public void OnDrop(PointerEventData eventData)
     {

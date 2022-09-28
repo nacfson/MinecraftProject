@@ -16,7 +16,7 @@ public class BlockSpawner : MonoBehaviour
 
             for(int j = 0; j<30; j++)
             {
-                Vector3 pos = new Vector3(0+i * UnityEditor.EditorSnapSettings.move.x,0,0 + j* UnityEditor.EditorSnapSettings.move.z);
+                Vector3 pos = new Vector3(0+i* 1,0,0 + j * 1);
 
                 Instantiate(_block,pos,Quaternion.identity);
 

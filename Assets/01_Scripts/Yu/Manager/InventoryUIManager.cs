@@ -60,14 +60,12 @@ public class InventoryUIManager : MonoBehaviour
         }
         for(int i= 0; i< inventoryList.Count; i++)
         {
-            // if(inventoryList[i].item.itemName == "")
-            // {
+
                 if(inventoryList[i].item == null)
                 {
                     inventoryList[i].AddItem(_item,_count);
                     return;
                 }
-            //}
         }
     }
 
