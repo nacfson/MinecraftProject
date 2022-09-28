@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour , IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Slot : MonoBehaviour  ,IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     public Item item;
     public int itemCount;
@@ -21,22 +21,26 @@ public class Slot : MonoBehaviour , IBeginDragHandler, IDragHandler, IEndDragHan
         _countText.enabled =false;
        
     }
+
+
+
+
+
     public void AddItem(Item _item, int _count = 1)
     {
         item = _item;
         itemCount = _count;
-        itemImage.sprite = _item.itemImage;
-        Debug.Log("AddItem");
-
+        if(_item.itemImage != null)
+        {
+            itemImage.sprite = _item.itemImage;
+        }
         if(item.itemType != ItemType.Equipment)
         {
-            Debug.Log("EnalbedTrue");
             _countText.enabled = true;
             _countText.text = $"{itemCount}";
         }
         else
         {
-            Debug.Log("EnabledFalse");
             _countText.enabled = false;     
             _countText.text = "x0";
         }
@@ -78,8 +82,8 @@ public class Slot : MonoBehaviour , IBeginDragHandler, IDragHandler, IEndDragHan
         if(item != null)
         {
             DragSlot.instance.dragSlot = this;
-            DragSlot.instance.DragSetImage(itemImage);
-            DragSlot.instance.transform.position = eventData.position;
+            DragSlot.instance.DragSetImage(itemImage.sprite);
+            DragSlot.instance.imageItem.transform.position = eventData.position;
             
 
         }
@@ -88,23 +92,29 @@ public class Slot : MonoBehaviour , IBeginDragHandler, IDragHandler, IEndDragHan
     {
         if(item != null)
         {
-            DragSlot.instance.transform.position = eventData.position;
+            DragSlot.instance.imageItem.transform.position = eventData.position;
 
         }
     }
+
+
     public void OnEndDrag(PointerEventData eventData)
     {
         DragSlot.instance.SetColor(0);
         DragSlot.instance.dragSlot = null;
     }
+
+
     public void OnDrop(PointerEventData eventData)
     {
-        if(DragSlot.instance.dragSlot != null)
+        if(DragSlot.instance.dragSlot != null)                
         {
             ChangeSlot();
-
         }
     }
+
+
+
     void ChangeSlot()
     {
         Item _tempItem = item;
@@ -115,7 +125,6 @@ public class Slot : MonoBehaviour , IBeginDragHandler, IDragHandler, IEndDragHan
         if(_tempItem != null)
         {
             DragSlot.instance.dragSlot.AddItem(_tempItem,_tempItemCount);
-            
         }
         else
         {
