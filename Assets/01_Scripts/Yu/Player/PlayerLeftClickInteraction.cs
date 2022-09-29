@@ -53,7 +53,7 @@ public class PlayerLeftClickInteraction : AgentInteraction
     public override void CheckRay()
     {
         RaycastHit hit;
-        Vector3 pos = new Vector3(_controller.transform.position.x,_controller.transform.position.y + 1f, _controller.transform.position.z); 
+        Vector3 pos = new Vector3(_controller.transform.position.x,_controller.transform.position.y + 1.5f, _controller.transform.position.z); 
         Ray ray = new Ray(pos, _controller.Camera.transform.forward);
         CanInteract = Physics.Raycast(pos,_controller.Camera.transform.forward ,out hit, 7f);
         if(CanInteract)

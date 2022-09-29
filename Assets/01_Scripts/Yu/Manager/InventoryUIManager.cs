@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,23 +6,14 @@ public class InventoryUIManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject _mainPanel;
-
     [SerializeField]
     private GameObject _inventoryPanel;
     [SerializeField]
     private GameObject _toolBarPanel;
-
     public int buttonCount;
-
     public InventorySO inventorySO;
     public List<Slot> inventoryList = new List<Slot>();
-
-
-    
-
     public static bool inventoryActivated;
-
-
     private void Awake()
     {
         _inventoryPanel.SetActive(true);
@@ -39,7 +30,6 @@ public class InventoryUIManager : MonoBehaviour
         for(int i= 0 ; i< inventoryList.Count; i ++)
         {
             inventorySO.inventoryList[i] = inventoryList[i];
-
         }
     }
     void UseToolBar()
@@ -64,7 +54,6 @@ public class InventoryUIManager : MonoBehaviour
         {
             if(inventoryActivated)
             {
-                //_inventoryPanel.SetActive(false);
                 inventoryActivated = false;
                 UseToolBar();
                 Cursor.lockState = CursorLockMode.Locked;
@@ -76,56 +65,27 @@ public class InventoryUIManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
         }
-
     }
     void CheckCount()
     {
-
-                if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Debug.Log("1");
+        if(Input.GetKeyDown(KeyCode.Alpha1))
             buttonCount = 1;
-        }
-                if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Debug.Log("2");
+        if(Input.GetKeyDown(KeyCode.Alpha2))
             buttonCount = 2;
-        }
-                if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Debug.Log("3");
+        if(Input.GetKeyDown(KeyCode.Alpha3))
             buttonCount = 3;
-        }
-                if(Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Debug.Log("4");
+        if(Input.GetKeyDown(KeyCode.Alpha4))
             buttonCount = 4;
-        }
-                if(Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            Debug.Log("5");
+        if(Input.GetKeyDown(KeyCode.Alpha5))
             buttonCount = 5;
-        }
-                if(Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            Debug.Log("6");
+        if(Input.GetKeyDown(KeyCode.Alpha6))
             buttonCount = 6;
-        }
-                if(Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            Debug.Log("7");
-            buttonCount =7;
-        }
-                if(Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            Debug.Log("8");
+        if(Input.GetKeyDown(KeyCode.Alpha7))
+            buttonCount = 7;
+        if(Input.GetKeyDown(KeyCode.Alpha8))
             buttonCount = 8;
-        }
-                        if(Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            Debug.Log("8");
-            buttonCount = 8;
-        }
+        if(Input.GetKeyDown(KeyCode.Alpha9))
+            buttonCount = 9;
     }
     public void AcquireItem(Item _item,  int _count)
     {
@@ -143,14 +103,11 @@ public class InventoryUIManager : MonoBehaviour
         for(int i= 0; i< inventorySO.inventoryList.Count; i++)
         {
 
-                if(inventorySO.inventoryList[i].item == null)
-                {
-                    inventorySO.inventoryList[i].AddItem(_item,_count);
-                    return;
-                }
+            if(inventorySO.inventoryList[i].item == null)
+            {
+                inventorySO.inventoryList[i].AddItem(_item,_count);
+                return;
+            }
         }
     }
-
-
-    
 }

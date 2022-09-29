@@ -58,8 +58,8 @@ public class PlayerRightClickInteraction : AgentInteraction
         {
             if(itemData.item.itemType == ItemType.Block && itemData.itemCount > 0)
             {
-                itemData.SetSlotCount(-1);
                 Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity);
+                itemData.SetSlotCount(-1);
             }
         }
     }
@@ -72,7 +72,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     public override void CheckRay()
     {
         int layerMask = (-1) - (1 << LayerMask.NameToLayer("Player"));
-        Vector3 pos = new Vector3(_controller.transform.position.x, _controller.transform.position.y + 1f, _controller.transform.position.z);
+        Vector3 pos = new Vector3(_controller.transform.position.x, _controller.transform.position.y + 1.5f, _controller.transform.position.z);
         Ray ray = new Ray(pos, _controller.Camera.transform.forward);
         Debug.DrawRay(pos, _controller.Camera.transform.forward * 7f, Color.green);
         if (Physics.Raycast(ray, out hit, 7f, layerMask))

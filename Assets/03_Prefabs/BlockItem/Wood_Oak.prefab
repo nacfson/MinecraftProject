@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1399685352097352956}
   - component: {fileID: 5050369262666656758}
   m_Layer: 0
-  m_Name: Stone
+  m_Name: Wood_Oak
   m_TagString: BLOCK
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 11a3c54a15d389941b8c95f9b4981465, type: 2}
+  - {fileID: 2100000, guid: 08cde8ff18c9ffc4d86b53804ced7605, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 0
-  _maxHP: 200
+  _maxHP: 150
   _destroyDuration: 3
-  _dropItem: {fileID: 2774671180861367142, guid: 116c932ed8ae160408ec6ca23cf8df8f, type: 3}
+  _dropItem: {fileID: 2774671180861367142, guid: eb2adc483e805284895ea05cc0d17092, type: 3}
   _tmp: {fileID: 0}
