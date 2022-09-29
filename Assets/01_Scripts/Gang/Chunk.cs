@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Chunk : MonoBehaviour
 {
+    public Dictionary<Vector3Int, int[,,]> worldData;
+    public static Dictionary<Vector2Int, GameObject> ActiveChunks;
     public Vector3Int chunkSize = new Vector3Int(16, 256, 16);
+
+    [SerializeField] Material chunkMaterial;
+
     public Vector2 noiseScale = Vector2.one;
     public Vector2 noiseOffset = Vector2.zero;
     [Space]
@@ -18,16 +23,44 @@ public class Chunk : MonoBehaviour
     public bool endMakingChunk;
     void Start()
     {
-        ChunkSpawn = GetComponent<ChunkSpawn>();
+        worldData = new Dictionary<Vector3Int, int[,,]>();
+        ActiveChunks = new Dictionary<Vector2Int, GameObject>();
+    }
 
-        TempData = new int[chunkSize.x, chunkSize.y, chunkSize.z];
+    public void CreateChunk(Vector2Int chunkCoord)
+    {
+        Vector3Int pos = new Vector3Int(chunkCoord.x, 0, chunkCoord.y);
+        int[,,] dataToApply = worldData.ContainsKey(pos) ? worldData[pos] : GenerateData(pos);
+
+        string chunkName = $"Chunk {chunkCoord.x} {chunkCoord.y}";
+        GameObject newChunk = new GameObject(chunkName, new System.Type[]
+        {
+            typeof(MeshRenderer),//
+            typeof(MeshFilter),//
+            typeof(MeshCollider)//
+        });
+
+        MeshRenderer newChunkRenderer = newChunk.GetComponent<MeshRenderer>();//
+        MeshFilter newChunkFilter = newChunk.GetComponent<MeshFilter>();//
+        MeshCollider collider = newChunk.GetComponent<MeshCollider>();//
+        //
+        newChunk.transform.position = new Vector3(chunkCoord.x * 16, 0, chunkCoord.y * 16);//
+        newChunkRenderer.material = chunkMaterial;//
+    }
+
+    public int[,,] GenerateData(Vector3Int offset)
+    {
+        ChunkSpawn = GetComponent<ChunkSpawn>();
+        int[,,] TempData = new int[chunkSize.x, chunkSize.y, chunkSize.z];
+
+
 
         for (int x = 0; x < chunkSize.x; x++)
         {
             for (int z = 0; z < chunkSize.z; z++)
             {
-                float perlinCoordX = noiseOffset.x + x / (float)chunkSize.x * noiseScale.x;
-                float perlinCoordY = noiseOffset.y + z / (float)chunkSize.z * noiseScale.y;
+                float perlinCoordX = noiseOffset.x + (offset.x * 16f) / (float)chunkSize.x * noiseScale.x;
+                float perlinCoordY = noiseOffset.y + (offset.y * 16f) / (float)chunkSize.z * noiseScale.y;
                 int heightGen = Mathf.RoundToInt(Mathf.PerlinNoise(perlinCoordX, perlinCoordY) * heightIntencity + heightOffset);
 
                 for (int y = heightGen; y >= 0; y--)
@@ -46,6 +79,7 @@ public class Chunk : MonoBehaviour
                 }
             }
         }
+        return TempData;
     }
 
     private void OnDrawGizmos()

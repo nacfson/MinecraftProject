@@ -60,5 +60,7 @@ public class ChunkSpawn : MonoBehaviour
         }
         chunk.endMakingChunk = false;
         isSpawned = true;
+
+
     }
 }
