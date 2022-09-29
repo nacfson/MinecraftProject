@@ -7,11 +7,12 @@ using UnityEngine.Events;
 public class PlayerRightClickInteraction : AgentInteraction
 {
     private PlayerController _controller;
-
+ 
     [SerializeField] private GameObject _block;
+
     public float blockSize = 1f;
     public InventoryUIManager inventoryUIManager;
-
+    
 
     [SerializeField]
     private string _defineName;
@@ -45,20 +46,17 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     void SetBlock(Vector3 vector, Vector3 vector2)
     {
-        //Vector3 temp = hit.transform.position;
-        //Vector3 pos = new Vector3(temp.x,temp.y + UnityEditor.EditorSnapSettings.move.y,temp.z);
         Debug.Log($"directionVector3 : {vector}, vector2 : {vector2}");
         Vector3 newPos = vector2 + vector;
         UseItem(newPos);
     }
     void UseItem(Vector3 newPos)
     {
-        Slot itemData = inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1];
+        Slot itemData = inventoryUIManager.inventorySO.inventoryList[inventoryUIManager.buttonCount - 1];
         Debug.Log(itemData.item);
-
         if(itemData.item != null)
         {
-            if(itemData.item.itemType == ItemType.Block && itemData.itemCount >= 0)
+            if(itemData.item.itemType == ItemType.Block && itemData.itemCount > 0)
             {
                 itemData.SetSlotCount(-1);
                 Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity);
@@ -69,6 +67,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     public void CheckGameObject(GameObject obj)
     {
         Interact(obj);
+        
     }
     public override void CheckRay()
     {

@@ -131,5 +131,4 @@ public class Slot : MonoBehaviour  ,IBeginDragHandler, IDragHandler, IEndDragHan
             DragSlot.instance.dragSlot.ClearSlot();
         }
     }
-
 }

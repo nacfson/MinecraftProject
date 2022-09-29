@@ -3696,6 +3696,7 @@ MonoBehaviour:
   _inventoryPanel: {fileID: 641220006}
   _toolBarPanel: {fileID: 0}
   buttonCount: 0
+  inventorySO: {fileID: 11400000, guid: 8b816fc837c055f49a77508af004cdef, type: 2}
   inventoryList:
   - {fileID: 284241274}
   - {fileID: 456454377}

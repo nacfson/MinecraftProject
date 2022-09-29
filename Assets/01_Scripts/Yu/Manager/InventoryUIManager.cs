@@ -14,21 +14,33 @@ public class InventoryUIManager : MonoBehaviour
 
     public int buttonCount;
 
+    public InventorySO inventorySO;
+    public List<Slot> inventoryList = new List<Slot>();
+
+
     
 
     public static bool inventoryActivated;
 
-    public List<Slot> inventoryList = new List<Slot>();
 
     private void Awake()
     {
         _inventoryPanel.SetActive(true);
         UseToolBar();
-        buttonCount = 0;
+        buttonCount = 1;
     }
     private void Update()
     {
         GetInputs();
+        SetSOList();
+    }
+    void SetSOList()
+    {
+        for(int i= 0 ; i< inventoryList.Count; i ++)
+        {
+            inventorySO.inventoryList[i] = inventoryList[i];
+
+        }
     }
     void UseToolBar()
     {
@@ -117,23 +129,23 @@ public class InventoryUIManager : MonoBehaviour
     }
     public void AcquireItem(Item _item,  int _count)
     {
-        for(int i= 0; i< inventoryList.Count; i++)
+        for(int i= 0; i< inventorySO.inventoryList.Count; i++)
         {
-            if(inventoryList[i].item != null)
+            if(inventorySO.inventoryList[i].item != null)
             {
-                if(inventoryList[i].item.itemName == _item.itemName)
+                if(inventorySO.inventoryList[i].item.itemName == _item.itemName)
                 {
-                    inventoryList[i].SetSlotCount(_count);
+                    inventorySO.inventoryList[i].SetSlotCount(_count);
                     return;
                 }
             }
         }
-        for(int i= 0; i< inventoryList.Count; i++)
+        for(int i= 0; i< inventorySO.inventoryList.Count; i++)
         {
 
-                if(inventoryList[i].item == null)
+                if(inventorySO.inventoryList[i].item == null)
                 {
-                    inventoryList[i].AddItem(_item,_count);
+                    inventorySO.inventoryList[i].AddItem(_item,_count);
                     return;
                 }
         }
