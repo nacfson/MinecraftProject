@@ -1,6 +1,7 @@
     using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUIManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class InventoryUIManager : MonoBehaviour
     private GameObject _inventoryPanel;
     [SerializeField]
     private GameObject _toolBarPanel;
+    [SerializeField]
+    private Sprite _originImage;
+    [SerializeField]
+    private Sprite _usedImage;
     public int buttonCount;
     public InventorySO inventorySO;
     public List<Slot> inventoryList = new List<Slot>();
@@ -24,7 +29,45 @@ public class InventoryUIManager : MonoBehaviour
     {
         GetInputs();
         SetSOList();
+        SetNullImage();
     }
+
+    void SetNullImage()
+    {
+        foreach(var item in inventoryList)
+        {
+            if(item.item == null)
+            {
+                GameObject obj= item.gameObject.transform.GetChild(0).gameObject;
+                Color color = item.GetComponent<Image>().color;
+                color.a =0f;
+                obj.GetComponentInChildren<Image>().color = color;
+            }
+            else
+            {
+                Debug.Log("NOTNULL");
+                GameObject obj= item.gameObject.transform.GetChild(0).gameObject;
+                Color color = item.gameObject.GetComponentInChildren<Image>().color;
+                color.a =255f;
+                obj.GetComponentInChildren<Image>().color = color;
+            }
+        }
+    }
+    void SetHighLightInventory()
+    {
+        for(int i= 1;  i< inventoryList.Count  + 1; i++)
+        {
+            if(i == buttonCount)
+            {
+                inventoryList[i - 1].GetComponent<Image>().sprite = _usedImage;
+            }
+            else
+            {
+                inventoryList[i - 1].GetComponent<Image>().sprite = _originImage;
+            }
+        }
+    }
+
     void SetSOList()
     {
         for(int i= 0 ; i< inventoryList.Count; i ++)
@@ -86,6 +129,8 @@ public class InventoryUIManager : MonoBehaviour
             buttonCount = 8;
         if(Input.GetKeyDown(KeyCode.Alpha9))
             buttonCount = 9;
+        SetHighLightInventory();
+
     }
     public void AcquireItem(Item _item,  int _count)
     {
