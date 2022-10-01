@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryUIManager : MonoBehaviour
 {
+    
     [SerializeField]
     private GameObject _mainPanel;
     [SerializeField]
@@ -45,7 +46,7 @@ public class InventoryUIManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("NOTNULL");
+                //Debug.Log("NOTNULL");
                 GameObject obj= item.gameObject.transform.GetChild(0).gameObject;
                 Color color = item.gameObject.GetComponentInChildren<Image>().color;
                 color.a =255f;
@@ -79,17 +80,11 @@ public class InventoryUIManager : MonoBehaviour
     
     void UseToolBar()
     {
-        for(int i = 9 ; i< inventoryList.Count; i ++ )
-        {
-            inventoryList[i].gameObject.SetActive(false);
-        }
+        _inventoryPanel.SetActive(false);
     }
     void UnUseToolBar()
     {
-        for(int i = 0 ; i< inventoryList.Count; i ++ )
-        {
-            inventoryList[i].gameObject.SetActive(true);
-        }
+        _inventoryPanel.SetActive(true);
     }
     void GetInputs()
     {
@@ -131,7 +126,7 @@ public class InventoryUIManager : MonoBehaviour
             buttonCount = 8;
         if(Input.GetKeyDown(KeyCode.Alpha9))
             buttonCount = 9;
-        SetHighLightInventory();
+        //SetHighLightInventory();
 
     }
     public void AcquireItem(Item _item,  int _count)

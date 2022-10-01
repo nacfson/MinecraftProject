@@ -10,11 +10,25 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
     private Transform _previousParent;
     private RectTransform _rect;
     private CanvasGroup _canvasGroup;
+    private InventoryUIManager _inventoryUIManager;
+
+    private Slot _slot;
+
+    	public InventoryUIManager InventoryUIManager
+	{
+		get
+		{
+			_inventoryUIManager = FindObjectOfType<InventoryUIManager>();
+			return _inventoryUIManager;
+		}
+	}
     void Awake()
     {
         _canvas = FindObjectOfType<Canvas>().transform;
         _rect = GetComponent<RectTransform>();
         _canvasGroup = GetComponent<CanvasGroup>();
+        _slot = GetComponent<Slot>();
+
     }
     //현재 오브젝트를 드래그하기 시작할 때 1회 호출
 

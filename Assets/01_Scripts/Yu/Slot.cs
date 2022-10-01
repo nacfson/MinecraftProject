@@ -14,12 +14,14 @@ public class Slot : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _countText;
 
+    public RectTransform rect;
+
     private Vector3 _originPos;
     private void Awake()
     {
         _originPos = transform.position;
         _countText.enabled =false;
-       
+        rect = GetComponent<RectTransform>();
     }
 
 

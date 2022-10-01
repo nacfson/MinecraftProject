@@ -2,8 +2,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
 public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointerExitHandler
 {
+
 	public InventoryUIManager InventoryUIManager
 	{
 		get
@@ -17,10 +19,13 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 
 	private InventoryUIManager _inventoryUIManager;
 
+	private Slot _slot;
+
 	private void Awake()
 	{
 		image	= GetComponent<Image>();
 		rect	= GetComponent<RectTransform>();
+		_slot = GetComponent<Slot>();
 	}
 
 	/// <summary>
@@ -51,8 +56,22 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 		{
 			// �巡���ϰ� �ִ� ����� �θ� ���� ������Ʈ�� �����ϰ�, ��ġ�� ���� ������Ʈ ��ġ�� �����ϰ� ����
 			eventData.pointerDrag.transform.SetParent(transform);
+
 			eventData.pointerDrag.GetComponent<RectTransform>().position = rect.position;
-			
+			Debug.Log("Success2");
+
+			for(int i= 0; i < InventoryUIManager.inventorySO.inventoryList.Count; i++)
+			{
+				Debug.Log("Success");
+				if(rect.position == InventoryUIManager.inventorySO.inventoryList[i].rect.position)
+				{
+					Slot tempItem = InventoryUIManager.inventorySO.inventoryList[i];
+					InventoryUIManager.inventorySO.inventoryList[i] = _slot;
+					_slot = tempItem;
+				}
+			}
+
+
 		}
 	}
 }
