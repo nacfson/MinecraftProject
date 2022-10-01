@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour  ,IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Slot : MonoBehaviour
 {
     public Item item;
     public int itemCount;
@@ -77,41 +77,41 @@ public class Slot : MonoBehaviour  ,IBeginDragHandler, IDragHandler, IEndDragHan
         _countText.enabled = false;
         _countText.text = "x0";
     }
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        if(item != null)
-        {
-            DragSlot.instance.dragSlot = this;
-            DragSlot.instance.DragSetImage(itemImage.sprite);
-            DragSlot.instance.imageItem.transform.position = eventData.position;
+    // public void OnBeginDrag(PointerEventData eventData)
+    // {
+    //     if(item != null)
+    //     {
+    //         DragSlot.instance.dragSlot = this;
+    //         DragSlot.instance.DragSetImage(itemImage.sprite);
+    //         DragSlot.instance.imageItem.transform.position = eventData.position;
             
 
-        }
-    }
-    public void OnDrag(PointerEventData eventData)
-    {
-        if(item != null)
-        {
-            DragSlot.instance.imageItem.transform.position = eventData.position;
+    //     }
+    // }
+    // public void OnDrag(PointerEventData eventData)
+    // {
+    //     if(item != null)
+    //     {
+    //         DragSlot.instance.imageItem.transform.position = eventData.position;
 
-        }
-    }
-
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        DragSlot.instance.SetColor(0);
-        DragSlot.instance.dragSlot = null;
-    }
+    //     }
+    // }
 
 
-    public void OnDrop(PointerEventData eventData)
-    {
-        if(DragSlot.instance.dragSlot != null)                
-        {
-            ChangeSlot();
-        }
-    }
+    // public void OnEndDrag(PointerEventData eventData)
+    // {
+    //     DragSlot.instance.SetColor(0);
+    //     DragSlot.instance.dragSlot = null;
+    // }
+
+
+    // public void OnDrop(PointerEventData eventData)
+    // {
+    //     if(DragSlot.instance.dragSlot != null)                
+    //     {
+    //         ChangeSlot();
+    //     }
+    // }
 
 
 

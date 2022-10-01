@@ -1404,7 +1404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539024127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.017, y: 0.2397, z: 0.0022}
+  m_LocalPosition: {x: -0.0054, y: 0.236, z: 0.0022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3697,6 +3697,8 @@ MonoBehaviour:
   _mainPanel: {fileID: 11302584}
   _inventoryPanel: {fileID: 641220006}
   _toolBarPanel: {fileID: 0}
+  _originImage: {fileID: 21300000, guid: 0e970c7e1d0e4e64797571790d7a0f1c, type: 3}
+  _usedImage: {fileID: 21300000, guid: 00ee537c79d6a0d459796cea3730d37f, type: 3}
   buttonCount: 0
   inventorySO: {fileID: 11400000, guid: 8b816fc837c055f49a77508af004cdef, type: 2}
   inventoryList:

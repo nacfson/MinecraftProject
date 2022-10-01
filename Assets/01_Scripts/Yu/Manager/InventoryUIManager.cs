@@ -59,11 +59,11 @@ public class InventoryUIManager : MonoBehaviour
         {
             if(i == buttonCount)
             {
-                inventoryList[i - 1].GetComponent<Image>().sprite = _usedImage;
+                inventoryList[i - 1].gameObject.transform.Find("HighlightImage").GetComponent<Image>().sprite = _usedImage;
             }
             else
             {
-                inventoryList[i - 1].GetComponent<Image>().sprite = _originImage;
+                inventoryList[i - 1].gameObject.transform.Find("HighlightImage").GetComponent<Image>().sprite = _originImage;
             }
         }
     }
@@ -75,6 +75,8 @@ public class InventoryUIManager : MonoBehaviour
             inventorySO.inventoryList[i] = inventoryList[i];
         }
     }
+
+    
     void UseToolBar()
     {
         for(int i = 9 ; i< inventoryList.Count; i ++ )
