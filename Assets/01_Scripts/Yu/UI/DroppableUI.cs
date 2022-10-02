@@ -17,15 +17,16 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 	private	Image			image;
 	private	RectTransform	rect;
 
+	public Slot slot;
+
 	private InventoryUIManager _inventoryUIManager;
 
-	private Slot _slot;
+
 
 	private void Awake()
 	{
 		image	= GetComponent<Image>();
 		rect	= GetComponent<RectTransform>();
-		_slot = GetComponent<Slot>();
 	}
 
 	/// <summary>
@@ -58,20 +59,20 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 			eventData.pointerDrag.transform.SetParent(transform);
 
 			eventData.pointerDrag.GetComponent<RectTransform>().position = rect.position;
-			Debug.Log("Success2");
-
+			Item itemData = eventData.pointerDrag.GetComponent<Slot>().item;
 			for(int i= 0; i < InventoryUIManager.inventorySO.inventoryList.Count; i++)
 			{
-				Debug.Log("Success");
+				Debug.Log("Ohnojo");
 				if(rect.position == InventoryUIManager.inventorySO.inventoryList[i].rect.position)
 				{
+					Debug.Log($"Success : {i}번째 리스트와 같은 포지션");
 					Slot tempItem = InventoryUIManager.inventorySO.inventoryList[i];
-					InventoryUIManager.inventorySO.inventoryList[i] = _slot;
-					_slot = tempItem;
+					InventoryUIManager.inventorySO.inventoryList[i].item = itemData;
+					Debug.Log(itemData + "dddd");
+					itemData = tempItem.item;
+					break;
 				}
 			}
-
-
 		}
 	}
 }
