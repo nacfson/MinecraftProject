@@ -55,7 +55,7 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 		if ( eventData.pointerDrag != null )
 		{
 			// �巡���ϰ� �ִ� ����� �θ� ���� ������Ʈ�� �����ϰ�, ��ġ�� ���� ������Ʈ ��ġ�� �����ϰ� ����
-			Transform tr = gameObject.transform;
+			Transform tr = gameObject.transform.parent.transform;
 			transform.parent.GetChild(0).transform.SetParent(tr);
 			eventData.pointerDrag.transform.SetParent(transform);
 			
