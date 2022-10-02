@@ -56,6 +56,5 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
         }
         _canvasGroup.alpha = 1.0f;
         _canvasGroup.blocksRaycasts = true;
-        
     }
 }
