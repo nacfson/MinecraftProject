@@ -55,14 +55,15 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 		if ( eventData.pointerDrag != null )
 		{
 			// �巡���ϰ� �ִ� ����� �θ� ���� ������Ʈ�� �����ϰ�, ��ġ�� ���� ������Ʈ ��ġ�� �����ϰ� ����
+			Transform tr = gameObject.transform;
+			transform.parent.GetChild(0).transform.SetParent(tr);
 			eventData.pointerDrag.transform.SetParent(transform);
+			
 
 			eventData.pointerDrag.GetComponent<RectTransform>().position = rect.position;
-			Debug.Log("Success2");
 
 			for(int i= 0; i < InventoryUIManager.inventorySO.inventoryList.Count; i++)
 			{
-				Debug.Log("Success");
 				if(rect.position == InventoryUIManager.inventorySO.inventoryList[i].rect.position)
 				{
 					Slot tempItem = InventoryUIManager.inventorySO.inventoryList[i];
