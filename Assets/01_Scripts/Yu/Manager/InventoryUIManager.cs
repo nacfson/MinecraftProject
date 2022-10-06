@@ -65,7 +65,7 @@ public class InventoryUIManager : MonoBehaviour
             }
             else
             {
-                inventoryList[i - 1].gameObject.transform.Find("HighlightImage").GetComponent<Image>().sprite = _originImage;
+                slotList[i - 1].gameObject.transform.Find("HighlightImage").GetComponent<Image>().sprite = _originImage;
             }
         }
     }
