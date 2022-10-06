@@ -5,16 +5,13 @@ using UnityEngine.EventSystems;
 
 public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDragHandler
 {
-
     private Transform _canvas;
     private Transform _previousParent;
     private RectTransform _rect;
     private CanvasGroup _canvasGroup;
     private InventoryUIManager _inventoryUIManager;
-
     private Slot _slot;
-
-    	public InventoryUIManager InventoryUIManager
+    public InventoryUIManager InventoryUIManager
 	{
 		get
 		{
@@ -31,7 +28,6 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
 
     }
     //현재 오브젝트를 드래그하기 시작할 때 1회 호출
-
     public void OnBeginDrag(PointerEventData ped)
     {
         _previousParent = transform.parent;
@@ -52,7 +48,6 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
         {
             transform.SetParent(_previousParent);
             _rect.position = _previousParent.GetComponent<RectTransform>().position;
-
         }
         _canvasGroup.alpha = 1.0f;
         _canvasGroup.blocksRaycasts = true;

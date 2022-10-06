@@ -19,6 +19,7 @@ public class InventoryUIManager : MonoBehaviour
     public int buttonCount;
     public InventorySO inventorySO;
     public List<Slot> inventoryList = new List<Slot>();
+    public List<DroppableUI> slotList = new List<DroppableUI>();
     public static bool inventoryActivated;
     private void Awake()
     {
@@ -60,7 +61,7 @@ public class InventoryUIManager : MonoBehaviour
         {
             if(i == buttonCount)
             {
-                inventoryList[i - 1].gameObject.transform.Find("HighlightImage").GetComponent<Image>().sprite = _usedImage;
+                slotList[i - 1].gameObject.transform.Find("HighlightImage").GetComponent<Image>().sprite = _usedImage;
             }
             else
             {
@@ -126,8 +127,6 @@ public class InventoryUIManager : MonoBehaviour
             buttonCount = 8;
         if(Input.GetKeyDown(KeyCode.Alpha9))
             buttonCount = 9;
-        //SetHighLightInventory();
-
     }
     public void AcquireItem(Item _item,  int _count)
     {

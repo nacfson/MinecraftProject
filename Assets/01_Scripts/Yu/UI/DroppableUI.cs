@@ -54,25 +54,15 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 		// pointerDrag�� ���� �巡���ϰ� �ִ� ���(=������)
 		if ( eventData.pointerDrag != null )
 		{
-			// �巡���ϰ� �ִ� ����� �θ� ���� ������Ʈ�� �����ϰ�, ��ġ�� ���� ������Ʈ ��ġ�� �����ϰ� ����
-			Transform tr = gameObject.transform.parent.transform;
-			transform.parent.GetChild(0).transform.SetParent(tr);
 			eventData.pointerDrag.transform.SetParent(transform);
-			
-
 			eventData.pointerDrag.GetComponent<RectTransform>().position = rect.position;
-
-			for(int i= 0; i < InventoryUIManager.inventorySO.inventoryList.Count; i++)
+			for(int i= 0 ; i<InventoryUIManager.slotList.Count ;i++ )
 			{
-				if(rect.position == InventoryUIManager.inventorySO.inventoryList[i].rect.position)
+				if(InventoryUIManager.slotList[i].transform.childCount == 0)
 				{
-					Slot tempItem = InventoryUIManager.inventorySO.inventoryList[i];
-					InventoryUIManager.inventorySO.inventoryList[i] = _slot;
-					_slot = tempItem;
+					eventData.pointerDrag.transform.parent.GetChild(0).transform.SetParent(InventoryUIManager.slotList[i].gameObject.transform);
 				}
 			}
-
-
 		}
 	}
 }

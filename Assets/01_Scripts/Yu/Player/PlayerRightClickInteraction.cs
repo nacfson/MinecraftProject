@@ -52,7 +52,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     }
     void UseItem(Vector3 newPos)
     {
-        Slot itemData = inventoryUIManager.inventorySO.inventoryList[inventoryUIManager.buttonCount - 1];
+        Slot itemData = inventoryUIManager.slotList[inventoryUIManager.buttonCount -1].gameObject.transform.GetChild(0).GetComponent<Slot>();
         Debug.Log(itemData.item);
         if(itemData.item != null)
         {
