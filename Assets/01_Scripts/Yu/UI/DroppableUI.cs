@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
 public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointerExitHandler
 {
 
@@ -14,6 +13,7 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 			return _inventoryUIManager;
 		}
 	}
+
 	private	Image			image;
 	private	RectTransform	rect;
 
@@ -32,7 +32,7 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		// 아이템 슬롯 색상 변경
-		image.color = Color.white;
+		image.color = Color.red;
 	}
 
 
@@ -53,9 +53,10 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 			{
 				if(InventoryUIManager.slotList[i].transform.childCount == 0)
 				{
-					eventData.pointerDrag.transform.parent.GetChild(0).transform.SetParent(InventoryUIManager.slotList[i].gameObject.transform);
-					Debug.Log(eventData.pointerDrag.transform.parent.GetChild(0).transform + "바뀔 오브젝트");
-					Debug.Log(InventoryUIManager.slotList[i].gameObject.transform + "바뀔 오브젝트의 Transform");
+					Transform tr = eventData.pointerDrag.transform.parent.GetChild(0).transform;
+					tr.SetParent(InventoryUIManager.slotList[i].gameObject.transform);
+					//tr.GetComponent<RectTransform>().position = transform.GetComponentInParent<DroppableUI>().rect.position;
+					return;
 				}
 			}
 		}
