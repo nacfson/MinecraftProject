@@ -55,11 +55,12 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 				{
 					Transform tr = eventData.pointerDrag.transform.parent.GetChild(0).transform;
 					tr.SetParent(InventoryUIManager.slotList[i].gameObject.transform);
-					//tr.GetComponent<RectTransform>().position = transform.GetComponentInParent<DroppableUI>().rect.position;
+					tr.GetComponent<RectTransform>().anchoredPosition = Vector3.zero; //transform.GetComponentInParent<DroppableUI>().rect.position;
 					return;
 				}
 			}
 		}
 	}
+
 }
 
