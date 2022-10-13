@@ -32,6 +32,7 @@ public class InventoryUIManager : MonoBehaviour
         GetInputs();
         SetSOList();
         SetNullImage();
+        SetHighLightInventory();
     }
 
     void SetNullImage()
@@ -61,11 +62,11 @@ public class InventoryUIManager : MonoBehaviour
         {
             if(i == buttonCount)
             {
-                slotList[i - 1].gameObject.transform.Find("HighlightImage").GetComponent<Image>().sprite = _usedImage;
+                slotList[i - 1].gameObject.GetComponent<Image>().sprite = _usedImage;
             }
             else
             {
-                slotList[i - 1].gameObject.transform.Find("HighlightImage").GetComponent<Image>().sprite = _originImage;
+                slotList[i - 1].gameObject.GetComponent<Image>().sprite = _originImage;
             }
         }
     }

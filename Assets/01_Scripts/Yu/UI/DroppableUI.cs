@@ -32,7 +32,7 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		// 아이템 슬롯 색상 변경
-		image.color = Color.red;
+		image.color = Color.white;
 	}
 
 
@@ -53,7 +53,7 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 			{
 				if(InventoryUIManager.slotList[i].transform.childCount == 0)
 				{
-					Transform tr = eventData.pointerDrag.transform.parent.GetChild(0).transform;
+					Transform tr = eventData.pointerDrag.transform.parent.GetChild(0).transform; 
 					tr.SetParent(InventoryUIManager.slotList[i].gameObject.transform);
 					tr.GetComponent<RectTransform>().anchoredPosition = Vector3.zero; //transform.GetComponentInParent<DroppableUI>().rect.position;
 					return;

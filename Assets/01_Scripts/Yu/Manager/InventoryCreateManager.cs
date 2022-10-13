@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryCreateManager : MonoBehaviour
 {
-    public List<Item> createTableList = new List<Item>();
+    public List<DroppableUI> createTableList = new List<DroppableUI>();
     public List<RecipeSO> recipeSOList = new List<RecipeSO>();
     public int createTableCount = 4;
     public GameObject madePanel;
@@ -15,12 +15,11 @@ public class InventoryCreateManager : MonoBehaviour
         int count = 0;
         for (int j = 0; j < recipeSOList.Count; j++)
         {
-            if(count >8)
+            if(count>8)
             {
-                Item t = madePanel.GetComponent<Item>();
-                t = recipeSOList[j].madeItem;
+                Slot t = madePanel.GetComponent<Slot>();
+                t.item = recipeSOList[j].madeItem;
                 ClearCreateTableList();
-                
             }
             for (int i = 0; i < createTableList.Count; i++)
             {
@@ -38,8 +37,7 @@ public class InventoryCreateManager : MonoBehaviour
     {
         for(int i = 0; i <createTableCount; i++)
         {
-            Destroy(createTableList[i]);
+            createTableList[i].GetComponentInChildren<Slot>().SetSlotCount(-1);
         }   
-        createTableList.Clear();
     }
 }
