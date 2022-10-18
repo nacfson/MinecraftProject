@@ -29,6 +29,17 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
         _slot = GetComponent<Slot>();
         isClicked = false;
     }
+
+
+    IEnumerator EndClickCor(PointerEventData ped)
+    {
+        while(true)
+        {
+            EndClick(ped);
+            yield return null;
+
+        }
+    }
     //현재 오브젝트를 드래그하기 시작할 때 1회 호출
     public void OnBeginDrag(PointerEventData ped)
     {
@@ -36,8 +47,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
     }
     public void OnPointerClick(PointerEventData ped)
     {
-        Debug.Log("ssss");
-        EndClick(ped);
+        StartCoroutine(EndClickCor(ped));
         _previousParent = transform.parent;
 
         transform.SetParent(_canvas);
@@ -45,15 +55,16 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
 
         _canvasGroup.alpha = 0.6f;
         _canvasGroup.blocksRaycasts = false;
+        
         StartCoroutine(ChaseMousePointer(ped));
     }
     public void EndClick(PointerEventData ped)
     {
         if(Input.GetMouseButton(0) && isClicked ==true)
         {
-            OnEndDrag(ped);
             StopCoroutine(ChaseMousePointer(ped));
             isClicked = false;
+            OnEndDrag(ped);
         }
     }
     public void OnDrag(PointerEventData ped)
