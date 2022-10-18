@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointerExitHandler ,IPointerClickHandler
+public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPointerExitHandler
 {
 
 	public InventoryUIManager InventoryUIManager
@@ -32,7 +32,7 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		// 아이템 슬롯 색상 변경
-		image.color = Color.red;
+		image.color = Color.white;
 	}
 
 
@@ -45,10 +45,6 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 
 	public void OnDrop(PointerEventData eventData)
 	{
-
-	}
-	public void OnPointerClick(PointerEventData eventData)
-    {
 		if( eventData.pointerDrag != null)
 		{
 			eventData.pointerDrag.transform.SetParent(transform);
@@ -64,7 +60,7 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 				}
 			}
 		}
-    }
+	}
 
 }
 

@@ -9,7 +9,7 @@ public class InventoryCreateManager : MonoBehaviour
     public int createTableCount = 4;
     public int tempCount;
     public GameObject madePanel;
-
+    [ContextMenu("dd")]
     void CheckRecipe()
     {
         tempCount = 0;
@@ -22,6 +22,8 @@ public class InventoryCreateManager : MonoBehaviour
     {
         for(int i= 0 ; i<createTableList.Count; i ++)
         {
+            if(recipeSOList[recipeCount].recipeList[i] == null)
+                return;
             if(recipeSOList[recipeCount].recipeList[i] == createTableList[i].GetComponentInChildren<Slot>().item)
             {
                 tempCount ++;
@@ -43,6 +45,8 @@ public class InventoryCreateManager : MonoBehaviour
     {
         for(int i = 0; i <createTableCount; i++)
         {
+            if(createTableList[i].transform.childCount == 0)
+                return;
             if(createTableList[i].GetComponentInChildren<Slot>().item != null)
             {
                 createTableList[i].GetComponentInChildren<Slot>().SetSlotCount(-1);
@@ -51,6 +55,6 @@ public class InventoryCreateManager : MonoBehaviour
     }
     void Update()
     {
-        CheckRecipe();
+        //CheckRecipe();
     }
 }
