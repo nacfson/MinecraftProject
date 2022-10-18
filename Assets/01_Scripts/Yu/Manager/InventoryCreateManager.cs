@@ -12,6 +12,7 @@ public class InventoryCreateManager : MonoBehaviour
     [ContextMenu("dd")]
     void CheckRecipe()
     {
+        Debug.Log("CheckRecipe");
         tempCount = 0;
         for(int i= 0 ;i<recipeSOList.Count;i++)
         {
@@ -23,6 +24,7 @@ public class InventoryCreateManager : MonoBehaviour
         for(int i= 0 ; i<createTableList.Count; i ++)
         {
             if(recipeSOList[recipeCount].recipeList[i] == null)
+                tempCount++;
                 return;
             if(recipeSOList[recipeCount].recipeList[i] == createTableList[i].GetComponentInChildren<Slot>().item)
             {

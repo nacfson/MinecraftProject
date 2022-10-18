@@ -40,8 +40,13 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
     public void OnDrag(PointerEventData ped)
     {
         _rect.position = ped.position;
+        if(Input.GetMouseButtonDown(1))
+        {
+            OnEndDrag(ped);
+        }
 
     }
+
     public void OnEndDrag(PointerEventData ped)
     {
         if(transform.parent == _canvas)

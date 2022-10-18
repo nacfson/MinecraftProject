@@ -80,7 +80,7 @@ public class PlayerRightClickInteraction : AgentInteraction
             Physics.Raycast(ray, out originHit, 7f, layerMask);
             Vector3 directionVector3 = (hit.transform.position - ray.GetPoint(hit.distance));
             Vector3 dir = originHit.collider.transform.position;
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && InventoryUIManager.inventoryActivated == false)
             {
                 //Debug.Log($"directionVector3 :{directionVector3}");
                 CheckBigger(directionVector3.x, directionVector3.y, directionVector3.z, dir);

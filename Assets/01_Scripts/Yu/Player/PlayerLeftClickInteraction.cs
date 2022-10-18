@@ -22,7 +22,7 @@ public class PlayerLeftClickInteraction : AgentInteraction
     {
         if(CanInteract)
         {
-            if(obj.tag == "BLOCK")
+            if(obj.tag == "BLOCK" && InventoryUIManager.inventoryActivated == false)
             {
                 if(Input.GetMouseButton(0))
                 {
