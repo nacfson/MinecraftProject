@@ -7,29 +7,35 @@ public class InventoryCreateManager : MonoBehaviour
     public List<DroppableUI> createTableList = new List<DroppableUI>();
     public List<RecipeSO> recipeSOList = new List<RecipeSO>();
     public int createTableCount = 4;
+    public int tempCount;
     public GameObject madePanel;
-
 
     void CheckRecipe()
     {
-        int count = 0;
-        for (int j = 0; j < recipeSOList.Count; j++)
+        tempCount = 0;
+        for(int i= 0 ;i<recipeSOList.Count;i++)
         {
-            if(count>8)
+            CheckCreatePanel(i);
+        }
+    }
+    void CheckCreatePanel(int recipeCount)
+    {
+        for(int i= 0 ; i<createTableList.Count; i ++)
+        {
+            if(recipeSOList[recipeCount].recipeList[i] == createTableList[i].GetComponentInChildren<Slot>().item)
             {
-                Slot t = madePanel.GetComponent<Slot>();
-                t.item = recipeSOList[j].madeItem;
-                ClearCreateTableList();
-            }
-            for (int i = 0; i < createTableList.Count; i++)
-            {
-                for (int k = 0; k < createTableCount; k++)
+                tempCount ++;
+                if(tempCount >= createTableCount)
                 {
-                    if (createTableList[k] == recipeSOList[i])
-                    {
-                        count ++;
-                    }
+                    Debug.Log("Success");
+                    Slot t = madePanel.GetComponentInChildren<Slot>();
+                    t.item = recipeSOList[recipeCount].madeItem;
+                    ClearCreateTableList();
                 }
+            }
+            else
+            {
+                break;
             }
         }
     }
@@ -37,7 +43,14 @@ public class InventoryCreateManager : MonoBehaviour
     {
         for(int i = 0; i <createTableCount; i++)
         {
-            createTableList[i].GetComponentInChildren<Slot>().SetSlotCount(-1);
+            if(createTableList[i].GetComponentInChildren<Slot>().item != null)
+            {
+                createTableList[i].GetComponentInChildren<Slot>().SetSlotCount(-1);
+            }
         }   
+    }
+    void Update()
+    {
+        CheckRecipe();
     }
 }

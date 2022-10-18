@@ -1,4 +1,4 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +17,7 @@ public class InventoryUIManager : MonoBehaviour
     [SerializeField]
     private Sprite _usedImage;
     public int buttonCount;
+    public GameObject crossHair;
     public InventorySO inventorySO;
     public List<Slot> inventoryList = new List<Slot>();
     public List<DroppableUI> slotList = new List<DroppableUI>();
@@ -83,10 +84,13 @@ public class InventoryUIManager : MonoBehaviour
     void UseToolBar()
     {
         _inventoryPanel.SetActive(false);
+        crossHair.SetActive(true);
+
     }
     void UnUseToolBar()
     {
         _inventoryPanel.SetActive(true);
+        crossHair.SetActive(false);
     }
     void GetInputs()
     {

@@ -800,7 +800,12 @@ MonoBehaviour:
   - {fileID: 1600763000}
   - {fileID: 1059650620}
   - {fileID: 1527225832}
-  recipeSOList: []
+  recipeSOList:
+  - {fileID: 11400000, guid: 44799ae2624470c4184536e03243a3d7, type: 2}
+  - {fileID: 11400000, guid: 44799ae2624470c4184536e03243a3d7, type: 2}
+  - {fileID: 11400000, guid: 44799ae2624470c4184536e03243a3d7, type: 2}
+  - {fileID: 11400000, guid: 44799ae2624470c4184536e03243a3d7, type: 2}
+  - {fileID: 11400000, guid: 44799ae2624470c4184536e03243a3d7, type: 2}
   createTableCount: 4
   madePanel: {fileID: 2695287449166949476}
 --- !u!1 &111409127
@@ -6880,6 +6885,7 @@ MonoBehaviour:
   _originImage: {fileID: 21300000, guid: 0e970c7e1d0e4e64797571790d7a0f1c, type: 3}
   _usedImage: {fileID: 21300000, guid: 00ee537c79d6a0d459796cea3730d37f, type: 3}
   buttonCount: 0
+  crossHair: {fileID: 2048103716}
   inventorySO: {fileID: 11400000, guid: 8b816fc837c055f49a77508af004cdef, type: 2}
   inventoryList:
   - {fileID: 284241274}
@@ -9700,7 +9706,7 @@ GameObject:
   - component: {fileID: 2048103719}
   - component: {fileID: 2048103718}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CrossHair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9724,7 +9730,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 312, y: 312}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2048103718
 MonoBehaviour:
@@ -9739,14 +9745,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 36fe8b6a4dff68c459cce43768bb91f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d858d42e64ef7f4cbe68c683d71a9c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
