@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeList:
   - {fileID: 11400000, guid: 3752abcc165e423478498f2be22cdd10, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
+  - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
+  - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
   madeItem: {fileID: 11400000, guid: ed6681ede92c6db4b99bc6b5aa180065, type: 2}
   _inventoryUIManager: {fileID: 0}

@@ -17,11 +17,17 @@ public class Slot : MonoBehaviour
     public RectTransform rect;
 
     private Vector3 _originPos;
+    [SerializeField]
+    private Image _spriteRenderer;
     private void Awake()
     {
         _originPos = transform.position;
         _countText.enabled =false;
         rect = GetComponent<RectTransform>();
+
+
+        ChangeAlpha(0f);
+        //_spriteRenderer = GetComponent<Image>();
     }
 
 
@@ -35,6 +41,8 @@ public class Slot : MonoBehaviour
         if(_item.itemImage != null)
         {
             itemImage.sprite = _item.itemImage;
+            //ChangeAlpha(1f);
+
         }
         if(item.itemType != ItemType.Equipment)
         {
@@ -44,16 +52,30 @@ public class Slot : MonoBehaviour
         else
         {
             _countText.enabled = false;     
-            _countText.text = "x0";
+            _countText.text = "";
+
         }
+        ShowSlot();
+    }
+    public void ChangeAlpha(float value)
+    {
+        Color color = transform.Find("Image").GetComponent<Image>().color;
+        color.a = value;
+        transform.Find("Image").GetComponent<Image>().color = color;
     }
 
     public void SetSlotCount(int _count)
     {
-        Debug.Log("SetSlotCount");
 
         itemCount += _count;
+        Debug.Log(itemCount + "dd");
+        if(itemCount <=0)
+        {
+            _countText.text = "";
+        }
+        else
         _countText.text = $"{itemCount}";
+        ShowSlot();
 
         if(itemCount <=0)
         {
@@ -66,54 +88,32 @@ public class Slot : MonoBehaviour
         _countText.enabled = true;
         if(item != null)
         {
+            Debug.Log(item.itemImage + "dddds");
             itemImage.sprite = item.itemImage;
+            ChangeAlpha(1f);
+            //_spriteRenderer.sprite = itemImage.sprite;
+        }
+        if(itemCount >0)
+        {
+        _countText.text = $"{itemCount}";
+            
+        }
+        else
+        {
+        _countText.text = "";
 
         }
-        _countText.text = $"{itemCount}";
     }
     private void ClearSlot()
     {
         item = null;
         itemCount = 0;
         itemImage.sprite = null;
+        ChangeAlpha(0f);
+        //_spriteRenderer.sprite = null;
         _countText.enabled = false;
-        _countText.text = "x0";
+        _countText.text = "";
     }
-    // public void OnBeginDrag(PointerEventData eventData)
-    // {
-    //     if(item != null)
-    //     {
-    //         DragSlot.instance.dragSlot = this;
-    //         DragSlot.instance.DragSetImage(itemImage.sprite);
-    //         DragSlot.instance.imageItem.transform.position = eventData.position;
-            
-
-    //     }
-    // }
-    // public void OnDrag(PointerEventData eventData)
-    // {
-    //     if(item != null)
-    //     {
-    //         DragSlot.instance.imageItem.transform.position = eventData.position;
-
-    //     }
-    // }
-
-
-    // public void OnEndDrag(PointerEventData eventData)
-    // {
-    //     DragSlot.instance.SetColor(0);
-    //     DragSlot.instance.dragSlot = null;
-    // }
-
-
-    // public void OnDrop(PointerEventData eventData)
-    // {
-    //     if(DragSlot.instance.dragSlot != null)                
-    //     {
-    //         ChangeSlot();
-    //     }
-    // }
 
 
 

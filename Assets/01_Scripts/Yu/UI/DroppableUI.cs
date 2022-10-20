@@ -49,6 +49,22 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 		{
 			eventData.pointerDrag.transform.SetParent(transform);
 			eventData.pointerDrag.GetComponent<RectTransform>().position = rect.position;
+			// for(int j= 0 ; j< InventoryUIManager.slotList.Count ;j++ )
+			// {
+			// 	if(InventoryUIManager.slotList[j].transform.childCount == 2)
+			// 	{
+			// 		if(InventoryUIManager.slotList[j].transform.GetChild(0).GetComponent<Slot>().item!= null &&
+			// 		InventoryUIManager.slotList[j].transform.GetChild(1).GetComponent<Slot>().item!= null)
+			// 		{
+			// 			if(InventoryUIManager.slotList[j].transform.GetChild(0).GetComponent<Slot>().item == InventoryUIManager.slotList[j].transform.GetChild(1).GetComponent<Slot>().item)
+			// 			{
+			// 				InventoryUIManager.slotList[j].transform.GetChild(0).GetComponent<Slot>().AddItem(InventoryUIManager.slotList[j].transform.GetChild(0).GetComponent<Slot>().item,InventoryUIManager.slotList[j].transform.GetChild(1).GetComponent<Slot>().itemCount);
+			// 				InventoryUIManager.slotList[j].transform.GetChild(1).GetComponent<Slot>().SetSlotCount(InventoryUIManager.slotList[j].transform.GetChild(1).GetComponent<Slot>().itemCount);
+			// 			}
+			// 		}
+			// 		return;
+			// 	}
+			// }
 			for(int i= 0 ; i< InventoryUIManager.slotList.Count ;i++ )
 			{
 				if(InventoryUIManager.slotList[i].transform.childCount == 0)
@@ -59,6 +75,8 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 					return;
 				}
 			}
+
+			
 		}
 	}
 
