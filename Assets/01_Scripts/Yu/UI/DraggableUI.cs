@@ -11,7 +11,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
     private CanvasGroup _canvasGroup;
     private InventoryUIManager _inventoryUIManager;
     private Slot _slot;
-    public bool firstClicked;
+    public bool reClicked;
     public InventoryUIManager InventoryUIManager
 	{
 		get
@@ -26,7 +26,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
         _rect = GetComponent<RectTransform>();
         _canvasGroup = GetComponent<CanvasGroup>();
         _slot = GetComponent<Slot>();
-        firstClicked = false;
+        reClicked = false;
     }
     //현재 오브젝트를 드래그하기 시작할 때 1회 호출
     public void OnBeginDrag(PointerEventData ped)
@@ -44,24 +44,10 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
         //_rect.position = ped.position;
         // if(Input.GetMouseButtonDown(1))
         // {
+        //     Debug.Log("CheckedRightClicked");
         //     OnEndDrag(ped);
         // }
 
-    }
-    public void OnPointerClick(PointerEventData ped)
-    {
-        firstClicked = !firstClicked;
-        if(firstClicked)
-        {
-            while(firstClicked)
-            {
-                _rect.position = ped.position;
-            }
-        }
-        else
-        {
-            OnEndDrag(ped);
-        }
     }
 
     public void OnEndDrag(PointerEventData ped)
@@ -73,5 +59,15 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
         }
         _canvasGroup.alpha = 1.0f;
         _canvasGroup.blocksRaycasts = true;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        reClicked = !reClicked;
+        if(reClicked)
+        {
+            _rect.position = eventData.position;
+        }
+        OnEndDrag(eventData);
     }
 }
