@@ -16,17 +16,51 @@ public class InventoryUIManager : MonoBehaviour
     private Sprite _originImage;
     [SerializeField]
     private Sprite _usedImage;
+    [SerializeField]
+    private GameObject _recipeMainPanel;
+    [SerializeField]
+    private GameObject _recipeButton;
+
+
     public int buttonCount;
     public GameObject crossHair;
     public InventorySO inventorySO;
     public List<Slot> inventoryList = new List<Slot>();
     public List<DroppableUI> slotList = new List<DroppableUI>();
+    public bool recipePanelOn;
     public static bool inventoryActivated;
+    public InventoryCreateManager inventoryCreateManager;
+
+
+    public void OnRecipeButton()
+    {
+        if(recipePanelOn)
+        {
+            OffRecipeButton();
+        }
+        else
+        {
+        _recipeButton.SetActive(true);
+
+            recipePanelOn = true;
+            _recipeMainPanel.SetActive(true);
+            inventoryCreateManager.CheckRecipeSO();
+        }
+
+    }
+    public void OffRecipeButton()
+    {
+
+        recipePanelOn = false;
+        //_recipeButton.SetActive(false);
+        _recipeMainPanel.SetActive(false);
+    }
     private void Awake()
     {
         _inventoryPanel.SetActive(true);
-        UseToolBar();
+        UnUseInventory();
         buttonCount = 1;
+        OffRecipeButton();
     }
     private void Update()
     {
@@ -81,16 +115,22 @@ public class InventoryUIManager : MonoBehaviour
     }
 
     
-    void UseToolBar()
-    {
-        _inventoryPanel.SetActive(false);
-        crossHair.SetActive(true);
+    void UseInventory()
+    { 
 
-    }
-    void UnUseToolBar()
-    {
+        OffRecipeButton();
         _inventoryPanel.SetActive(true);
         crossHair.SetActive(false);
+        _recipeButton.SetActive(true);
+
+    }
+    void UnUseInventory()
+    {
+
+
+        _recipeButton.SetActive(false);
+        _inventoryPanel.SetActive(false);
+        crossHair.SetActive(true);
     }
     void GetInputs()
     {
@@ -100,13 +140,13 @@ public class InventoryUIManager : MonoBehaviour
         {
             if(inventoryActivated)
             {
+                UnUseInventory();
                 inventoryActivated = false;
-                UseToolBar();
                 Cursor.lockState = CursorLockMode.Locked;
             }
             else
             {
-                UnUseToolBar();
+                UseInventory();
                 inventoryActivated = true;
                 Cursor.lockState = CursorLockMode.None;
             }

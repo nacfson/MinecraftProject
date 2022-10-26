@@ -9,13 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98366141f190df4087332d9cb981890, type: 3}
-  m_Name: CreatingtableRecipe
+  m_Script: {fileID: 11500000, guid: a8d2f526a2a8b6f45b47635ef3d2ad24, type: 3}
+  m_Name: RecipePanelSO
   m_EditorClassIdentifier: 
-  recipeList:
+  itemList:
   - {fileID: 11400000, guid: 3752abcc165e423478498f2be22cdd10, type: 2}
   - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
   - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
   - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
-  madeItem: {fileID: 11400000, guid: ed6681ede92c6db4b99bc6b5aa180065, type: 2}
-  _inventoryUIManager: {fileID: 0}
+  - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
+  - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
+  - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
+  - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
+  - {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
+  itemCount: 020000000000000000000000000000000000000000000000000000000000000000000000
