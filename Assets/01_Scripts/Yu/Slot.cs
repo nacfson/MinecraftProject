@@ -42,7 +42,6 @@ public class Slot : MonoBehaviour
         {
             itemImage.sprite = _item.itemImage;
             //ChangeAlpha(1f);
-
         }
         if(item.itemType != ItemType.Equipment)
         {
@@ -56,6 +55,7 @@ public class Slot : MonoBehaviour
 
         }
         ShowSlot();
+        
     }
     public void ChangeAlpha(float value)
     {
