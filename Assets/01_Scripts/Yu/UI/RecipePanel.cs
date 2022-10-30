@@ -23,14 +23,32 @@ public class RecipePanel : MonoBehaviour
     private InventoryUIManager _inventoryUIManager;
     [SerializeField]
     private Item _nullItem;
+    public Image image;
+    private GameObject _grid;
+    [SerializeField]
+    private GameObject _showedRecipePanel;
 
     void Start()
     {
+        image= transform.Find("Image").GetComponent<Image>();
         CheckCanMakeItem();
+        image.sprite = _recipePanelSO.makedItem.itemImage;
+        _grid = transform.Find("Grid").gameObject;
+    }
+    void ShowUsedItem()
+    {
+        for(int i = 0; i<_recipePanelSO.itemList.Count; i++)
+        {
+            if(_recipePanelSO.itemList[i] != _nullItem)
+            {
+                Instantiate(_showedRecipePanel,_grid.transform);
+            }
+        }
+
     }
     [ContextMenu("CheckCanMakeItem")]
     public void CheckCanMakeItem()
-    {
+    {   
         Item tempItem;
         int count = 0;
         int usedCount;
@@ -49,6 +67,7 @@ public class RecipePanel : MonoBehaviour
                     tempItem = _recipePanelSO.itemList[8];
                     usedCount = _recipePanelSO.itemCount[8];
                 }
+
                 if(InventoryUIManager.inventoryList[i].item == tempItem && InventoryUIManager.inventoryList[i].itemCount >= usedCount)
                 {
                     Debug.Log("dddddddd");

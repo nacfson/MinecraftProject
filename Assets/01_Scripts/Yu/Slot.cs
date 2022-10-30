@@ -52,11 +52,11 @@ public class Slot : MonoBehaviour
         {
             _countText.enabled = false;     
             _countText.text = "";
-
         }
         ShowSlot();
         
     }
+    
     public void ChangeAlpha(float value)
     {
         Color color = transform.Find("Image").GetComponent<Image>().color;
