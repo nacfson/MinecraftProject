@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using TMPro;
 public class RecipePanel : MonoBehaviour
 {
     public Button myButton;
@@ -23,10 +24,33 @@ public class RecipePanel : MonoBehaviour
     private InventoryUIManager _inventoryUIManager;
     [SerializeField]
     private Item _nullItem;
+    public Image image;
+    private GameObject _grid;
+    [SerializeField]
+    private GameObject _showedRecipePanel;
 
     void Start()
     {
+        canMake = false;
+        image= transform.Find("Image").GetComponent<Image>();
         CheckCanMakeItem();
+        image.sprite = _recipePanelSO.makedItem.itemImage;
+        _grid = transform.Find("Grid").gameObject;
+        ShowUsedItem();
+        gameObject.SetActive(false);
+    }
+    void ShowUsedItem()
+    {
+        for(int i = 0; i<_recipePanelSO.itemList.Count; i++)
+        {
+            if(_recipePanelSO.itemList[i] != _nullItem)
+            {
+                GameObject obj = Instantiate(_showedRecipePanel,_grid.transform);
+                obj.transform.Find("Image").GetComponent<Image>().sprite = _recipePanelSO.itemList[i].itemImage;
+                obj.transform.Find("CountText").GetComponent<TextMeshProUGUI>().text = _recipePanelSO.itemCount[i].ToString();
+            }
+        }
+
     }
     [ContextMenu("CheckCanMakeItem")]
     public void CheckCanMakeItem()
@@ -35,9 +59,9 @@ public class RecipePanel : MonoBehaviour
         int count = 0;
         int usedCount;
         canMake = false;
-        for(int i = 0; i< InventoryUIManager.inventoryList.Count; i++)
+        for (int i = 0; i < InventoryUIManager.inventoryList.Count; i++)
         {
-            for(int j= 0 ; j<9;  j++)
+            for (int j = 0; j < 9; j++)
             {
                 try
                 {
@@ -49,18 +73,28 @@ public class RecipePanel : MonoBehaviour
                     tempItem = _recipePanelSO.itemList[8];
                     usedCount = _recipePanelSO.itemCount[8];
                 }
-                if(InventoryUIManager.inventoryList[i].item == tempItem && InventoryUIManager.inventoryList[i].itemCount >= usedCount)
+                if (InventoryUIManager.inventoryList[i].item == tempItem && InventoryUIManager.inventoryList[i].itemCount >= usedCount)
                 {
                     Debug.Log("dddddddd");
                     count++;
                 }
             }
         }
-        if(count > _recipePanelSO.definedInt - 1)
+        if (count > _recipePanelSO.definedInt - 1)
         {
             canMake = true;
+            gameObject.SetActive(true);
+            Debug.Log(gameObject.activeSelf + " SetActiveTrue " + gameObject.name);
         }
-        Debug.Log(canMake + "dddd");
+        else
+        {
+            canMake = false;
+            gameObject.SetActive(false);
+            Debug.Log(gameObject.activeSelf + "SetActiveFalse");
+
+
+        }
+        //Debug.Log(canMake + "dddd");
     }
     [ContextMenu("UseItem")]
     public void UseItem()

@@ -40,11 +40,11 @@ public class InventoryUIManager : MonoBehaviour
         }
         else
         {
-        _recipeButton.SetActive(true);
-
+            _recipeButton.SetActive(true);
             recipePanelOn = true;
             _recipeMainPanel.SetActive(true);
-            inventoryCreateManager.CheckRecipeSO();
+            //inventoryCreateManager.CheckRecipeSO();
+            RecipeManager.CheckPanelList();
         }
 
     }
