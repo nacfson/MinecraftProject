@@ -7,6 +7,8 @@ public class InventorySceneManager : MonoBehaviour
     [SerializeField]
     private GameObject _mainPanel;
     private bool _mainPanelOn;
+    [SerializeField]
+    private RecipeManager _recipeManager;
 
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class InventorySceneManager : MonoBehaviour
     {
         _mainPanel.SetActive(true);
         _mainPanelOn = true;
+        //RecipeManager.CheckPanelList();
         
     }
     public void OffMainPanel()

@@ -20,17 +20,9 @@ public class InventoryCreateManager : MonoBehaviour
 
     public void CheckRecipeSO()
     {
-        for(int i= 0; i<recipeSOList.Count; i++)
-        {
-            CheckInventoryWithRecipe(i);
-        } 
+        //RecipeManager.CheckPanelList();
     }
-    public void CheckInventoryWithRecipe(int count)
-    {
-        for(int i = 0;i< recipePanelSOList.Count; i++)
-        {
-        }
-    }
+
 
     // [ContextMenu("dd")]
     // void CheckRecipe()
