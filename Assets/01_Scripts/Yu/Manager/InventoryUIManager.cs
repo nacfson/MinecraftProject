@@ -30,9 +30,10 @@ public class InventoryUIManager : MonoBehaviour
     public bool recipePanelOn;
     public static bool inventoryActivated;
     public InventoryCreateManager inventoryCreateManager;
+    public GameObject handedItem;
 
 
-    public void OnRecipeButton()
+    public void RecipeButton()
     {
         if(recipePanelOn)
         {
@@ -40,20 +41,36 @@ public class InventoryUIManager : MonoBehaviour
         }
         else
         {
-            _recipeButton.SetActive(true);
-            recipePanelOn = true;
-            _recipeMainPanel.SetActive(true);
-            //inventoryCreateManager.CheckRecipeSO();
-            RecipeManager.CheckPanelList();
+            OnRecipeButton();
         }
-
     }
     public void OffRecipeButton()
     {
-
         recipePanelOn = false;
-        //_recipeButton.SetActive(false);
         _recipeMainPanel.SetActive(false);
+    }
+    public void OnRecipeButton()
+    {
+        _recipeButton.SetActive(true);
+        recipePanelOn = true;
+        _recipeMainPanel.SetActive(true);
+        RecipeManager.CheckPanelList();
+    }
+    public void ShowHandedItem()
+    {
+        handedItem.SetActive(true); 
+        if (inventoryList[buttonCount-1].item != null)
+        {
+            handedItem.GetComponent<MeshRenderer>().material = inventoryList[buttonCount - 1].item.mat;
+            handedItem.GetComponent<MeshFilter>().mesh = inventoryList[buttonCount - 1].item.mesh;
+            handedItem.SetActive(true);
+            Debug.Log("HandedItem");
+        }
+        else
+        {
+            handedItem.SetActive(false);
+            Debug.Log("NotHandedItem");
+        }
     }
     private void Awake()
     {
@@ -68,6 +85,7 @@ public class InventoryUIManager : MonoBehaviour
         SetSOList();
         SetNullImage();
         SetHighLightInventory();
+        ShowHandedItem();
     }
 
     void SetNullImage()

@@ -9,7 +9,10 @@ public class Item : ScriptableObject
     public Sprite itemImage;
     public SpriteRenderer spriteRenderer;
     public ItemType itemType;
-
+    public Mesh mesh;
+    public Material mat;
+    public int durability;
+    public int itemLevel;
     public GameObject itemPrefab;
 
 

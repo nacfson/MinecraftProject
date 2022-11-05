@@ -24,6 +24,7 @@ public class RecipeManager : MonoBehaviour
         foreach(var item in panelList)
         {
             item.CheckCanMakeItem();
+            Debug.Log(item.canMake + "DDDDDD");
             //Debug.Log(item.canMake);
 
 

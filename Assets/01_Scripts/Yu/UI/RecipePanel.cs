@@ -33,11 +33,10 @@ public class RecipePanel : MonoBehaviour
     {
         canMake = false;
         image= transform.Find("Image").GetComponent<Image>();
-        CheckCanMakeItem();
         image.sprite = _recipePanelSO.makedItem.itemImage;
         _grid = transform.Find("Grid").gameObject;
         ShowUsedItem();
-        gameObject.SetActive(false);
+        CheckCanMakeItem();
     }
     void ShowUsedItem()
     {
@@ -58,7 +57,7 @@ public class RecipePanel : MonoBehaviour
         Item tempItem;
         int count = 0;
         int usedCount;
-        canMake = false;
+        //canMake = false;
         for (int i = 0; i < InventoryUIManager.inventoryList.Count; i++)
         {
             for (int j = 0; j < 9; j++)
@@ -75,7 +74,6 @@ public class RecipePanel : MonoBehaviour
                 }
                 if (InventoryUIManager.inventoryList[i].item == tempItem && InventoryUIManager.inventoryList[i].itemCount >= usedCount)
                 {
-                    Debug.Log("dddddddd");
                     count++;
                 }
             }
@@ -84,17 +82,14 @@ public class RecipePanel : MonoBehaviour
         {
             canMake = true;
             gameObject.SetActive(true);
-            Debug.Log(gameObject.activeSelf + " SetActiveTrue " + gameObject.name);
+            Debug.Log(gameObject.activeSelf + "SetActiveTrue");
         }
         else
         {
             canMake = false;
             gameObject.SetActive(false);
             Debug.Log(gameObject.activeSelf + "SetActiveFalse");
-
-
         }
-        //Debug.Log(canMake + "dddd");
     }
     [ContextMenu("UseItem")]
     public void UseItem()

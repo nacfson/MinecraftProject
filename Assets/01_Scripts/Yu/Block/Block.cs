@@ -19,6 +19,8 @@ public class Block : MonoBehaviour
     [SerializeField]
     private TextMeshPro _tmp;
 
+    public Item item;
+
     private BoxCollider _collider;
 
     private void Awake()
@@ -27,9 +29,9 @@ public class Block : MonoBehaviour
         HPReset();
     }
 
-    public void Mining()
+    public void Mining(int speed)
     {
-        _hp--;
+        _hp-= speed;
         Debug.Log(_hp);
         if(_hp <= 0 )
         {
