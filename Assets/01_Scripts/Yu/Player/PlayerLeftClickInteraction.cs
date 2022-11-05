@@ -42,16 +42,22 @@ public class PlayerLeftClickInteraction : AgentInteraction
     }
     public int CheckUsingTool(GameObject obj)
     {
-        if(inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item != null)
+        if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item == null)
         {
+            Debug.Log("ItISUSEDONE");
+
+            //Debug.Log("ITISSTARTED");
             return 1;
         }
         else if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemType == obj.GetComponent<Block>().item.itemType)
         {
+            Debug.Log("ItISUSEDTOO");
+            if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel == 0) return 1;
             return inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel;
         }
         else
         {
+            Debug.Log("ItISUSED");
             return 1;
         }
 

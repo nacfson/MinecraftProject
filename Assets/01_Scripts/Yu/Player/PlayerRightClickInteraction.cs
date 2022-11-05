@@ -55,8 +55,9 @@ public class PlayerRightClickInteraction : AgentInteraction
         Slot itemData = inventoryUIManager.slotList[inventoryUIManager.buttonCount -1].gameObject.transform.GetChild(0).GetComponent<Slot>();
         Debug.Log(itemData.item);
         if(itemData.item != null)
-        {
-            if(itemData.item.itemType == ItemType.Block && itemData.itemCount > 0)
+        { 
+            //itemData.item.itemType == ItemType.Block && 
+            if (itemData.itemCount > 0)
             {
                 Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity);
                 itemData.SetSlotCount(-1);

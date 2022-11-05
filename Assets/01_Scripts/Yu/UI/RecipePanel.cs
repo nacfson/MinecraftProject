@@ -123,6 +123,7 @@ public class RecipePanel : MonoBehaviour
             }
             for(int j= 0 ; j<arrayCount.Count;j++)
             {
+                Debug.Log(arrayCount.Count + "ddddddddddddddddddddddddddddddd");
                 usedCount = _recipePanelSO.itemCount[arrayCount[j]];
                 InventoryUIManager.inventoryList[arrayCount[j]].SetSlotCount(-usedCount);
             }

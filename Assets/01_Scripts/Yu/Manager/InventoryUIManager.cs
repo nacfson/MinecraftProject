@@ -64,12 +64,10 @@ public class InventoryUIManager : MonoBehaviour
             handedItem.GetComponent<MeshRenderer>().material = inventoryList[buttonCount - 1].item.mat;
             handedItem.GetComponent<MeshFilter>().mesh = inventoryList[buttonCount - 1].item.mesh;
             handedItem.SetActive(true);
-            Debug.Log("HandedItem");
         }
         else
         {
             handedItem.SetActive(false);
-            Debug.Log("NotHandedItem");
         }
     }
     private void Awake()
