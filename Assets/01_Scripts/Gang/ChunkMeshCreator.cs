@@ -150,11 +150,11 @@ public class ChunkMeshCreator : MonoBehaviour
         List<int> Indices = new List<int>();
         Mesh m = new Mesh();
 
-        for (int x = 0; x < WorldGenerator.chunkSize.x; x++)
+        for (int x = 0; x < WorldGenerator.ChunkSize.x; x++)
         {
-            for (int y = 0; y < WorldGenerator.chunkSize.y; y++)
+            for (int y = 0; y < WorldGenerator.ChunkSize.y; y++)
             {
-                for (int z = 0; z < WorldGenerator.chunkSize.z; z++)
+                for (int z = 0; z < WorldGenerator.ChunkSize.z; z++)
                 {
                     Vector3Int BlockPos = new Vector3Int(x, y, z);
                     for (int i = 0; i < CheckDirections.Length; i++)
