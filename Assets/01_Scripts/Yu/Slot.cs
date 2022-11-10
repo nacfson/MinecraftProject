@@ -10,6 +10,7 @@ public class Slot : MonoBehaviour
     public Item item;
     public int itemCount;
     public Image itemImage;
+    public int durability;
 
     [SerializeField]
     private TextMeshProUGUI _countText;
@@ -24,8 +25,6 @@ public class Slot : MonoBehaviour
         _originPos = transform.position;
         _countText.enabled =false;
         rect = GetComponent<RectTransform>();
-
-
         ChangeAlpha(0f);
         //_spriteRenderer = GetComponent<Image>();
     }
@@ -37,8 +36,9 @@ public class Slot : MonoBehaviour
     public void AddItem(Item _item, int _count = 1)
     {
         item = _item;
-        itemCount = _count;
-        if(_item.itemImage != null)
+        itemCount += _count;
+        durability = item.durability;
+        if (_item.itemImage != null)
         {
             itemImage.sprite = _item.itemImage;
             //ChangeAlpha(1f);
@@ -66,9 +66,8 @@ public class Slot : MonoBehaviour
 
     public void SetSlotCount(int _count)
     {
-
         itemCount += _count;
-        Debug.Log(itemCount + "dd");
+        Debug.Log(itemCount + " SetSlotCount");
         if(itemCount <=0)
         {
             _countText.text = "";
@@ -80,6 +79,7 @@ public class Slot : MonoBehaviour
         if(itemCount <=0)
         {
             ClearSlot();
+            Debug.Log("ClearSlot");
         }
 
     }
@@ -88,7 +88,6 @@ public class Slot : MonoBehaviour
         _countText.enabled = true;
         if(item != null)
         {
-            Debug.Log(item.itemImage + "dddds");
             itemImage.sprite = item.itemImage;
             ChangeAlpha(1f);
             //_spriteRenderer.sprite = itemImage.sprite;

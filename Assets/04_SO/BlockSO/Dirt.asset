@@ -18,6 +18,8 @@ MonoBehaviour:
   itemType: 1
   mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
   mat: {fileID: 0}
-  durability: 0
+  durability: 2147483647
   itemLevel: 0
   itemPrefab: {fileID: 1377162579803422974, guid: 18c0e288456f8f44ea7912c805bfb446, type: 3}
+  tool: 3
+  maxHP: 100

@@ -82,20 +82,21 @@ public class RecipePanel : MonoBehaviour
         {
             canMake = true;
             gameObject.SetActive(true);
-            Debug.Log(gameObject.activeSelf + "SetActiveTrue");
+            //Debug.Log(gameObject.activeSelf + "SetActiveTrue");
         }
         else
         {
             canMake = false;
             gameObject.SetActive(false);
-            Debug.Log(gameObject.activeSelf + "SetActiveFalse");
+            //Debug.Log(gameObject.activeSelf + "SetActiveFalse");
         }
     }
     [ContextMenu("UseItem")]
     public void UseItem()
     {
         CheckCanMakeItem();
-        Item tempItem;
+        Item tempItem = null;
+        bool findedItem = false;
         int usedCount;
         List<int> arrayCount = new List<int>();
         arrayCount.Clear();
@@ -120,23 +121,29 @@ public class RecipePanel : MonoBehaviour
                         arrayCount.Add(i);
                     }
                 }
+
             }
-            for(int j= 0 ; j<arrayCount.Count;j++)
+            for (int j = 0; j < arrayCount.Count; j++)
             {
-                Debug.Log(arrayCount.Count + "ddddddddddddddddddddddddddddddd");
+                Debug.Log(arrayCount.Count + "Array Count.Count");
+                Debug.Log(arrayCount[j] + "Array Count");
                 usedCount = _recipePanelSO.itemCount[arrayCount[j]];
+                Debug.Log(usedCount + "UsedCount");
                 InventoryUIManager.inventoryList[arrayCount[j]].SetSlotCount(-usedCount);
             }
-            InventoryUIManager.inventoryList[0].AddItem(_recipePanelSO.makedItem,1);
-            // for(int i = 0;i  < InventoryUIManager.inventoryList.Count; i++)
-            // {
-            //     if(InventoryUIManager.inventoryList[i].item != null)
-            //     {
-            //         InventoryUIManager.inventoryList[i].AddItem(_recipePanelSO.makedItem,1);
-            //     }
-            // }
-            
+            for (int i = 0; i < InventoryUIManager.inventoryList.Count; i++)
+            {
+                if(InventoryUIManager.inventoryList[i].item == null)
+                {
+                    InventoryUIManager.inventoryList[i].AddItem(_recipePanelSO.makedItem, 1);
+                    break;
+                }
+                else if (InventoryUIManager.inventoryList[i].item == _recipePanelSO.makedItem)
+                {
+                    InventoryUIManager.inventoryList[i].AddItem(_recipePanelSO.makedItem, 1);
+                    break;
+                }
+            }
         }
-
     }
 }

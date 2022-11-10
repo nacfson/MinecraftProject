@@ -7,8 +7,4 @@ using UnityEngine;
         Equipment = 0,
         
         Block = 1,
-        WoodenBlock= 2,
-        AxeTool =100,
-
-
     }

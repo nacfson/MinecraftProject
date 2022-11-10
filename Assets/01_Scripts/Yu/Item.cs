@@ -12,8 +12,10 @@ public class Item : ScriptableObject
     public Mesh mesh;
     public Material mat;
     public int durability;
-    public int itemLevel;
+    public float itemLevel;
     public GameObject itemPrefab;
+    public ETool tool;
+    public float maxHP;
 
 
 

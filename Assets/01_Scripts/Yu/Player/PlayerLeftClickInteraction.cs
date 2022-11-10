@@ -27,7 +27,7 @@ public class PlayerLeftClickInteraction : AgentInteraction
             {
                 if(Input.GetMouseButton(0))
                 {
-                    obj.GetComponent<Block>().Mining(CheckUsingTool(obj));
+                    obj.GetComponent<Block>().Mining(CheckUsingTool(obj),inventoryUIManager);
                 }
                 if(Input.GetMouseButtonUp(0))
                 {
@@ -40,28 +40,30 @@ public class PlayerLeftClickInteraction : AgentInteraction
             }
         }
     }
-    public int CheckUsingTool(GameObject obj)
+    public float CheckUsingTool(GameObject obj)
     {
         if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item == null)
         {
-            Debug.Log("ItISUSEDONE");
+            //Debug.Log("ItISUSEDONE");
 
             //Debug.Log("ITISSTARTED");
-            return 1;
+            return 1f;
         }
-        else if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemType == obj.GetComponent<Block>().item.itemType)
+        else if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.tool == obj.GetComponent<Block>().item.tool)
         {
-            Debug.Log("ItISUSEDTOO");
-            if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel == 0) return 1;
+            //Debug.Log("ItISUSEDTOO");
+            if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel == 0) return 1f;
+
             return inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel;
         }
         else
         {
-            Debug.Log("ItISUSED");
-            return 1;
+            //Debug.Log("ItISUSED");
+            return 1f;
         }
 
     }
+
     protected override void CheckCanInteract()
     {
         
