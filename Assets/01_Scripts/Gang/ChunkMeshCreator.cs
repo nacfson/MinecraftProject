@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChunkMeshCreator : MonoBehaviour
+public class ChunkMeshCreator
 {
     public class FaceData
     {
-        public FaceData(Vector3[] verts, int[] tris)
+        public FaceData(Vector3[] verts, int[] tris, int[] uvindexorder)
         {
+            UVIndexOrder = uvindexorder;
             Vertices = verts;
             Indices = tris;
         }
 
         public Vector3[] Vertices;
         public int[] Indices;
+        public int[] UVIndexOrder;
     }
 
     #region FaceData
@@ -108,38 +110,60 @@ public class ChunkMeshCreator : MonoBehaviour
 
     #endregion
 
+    #region FaceUVData
+
+    static readonly int[] XUVOrder = new int[]
+    {
+     2, 3, 1, 0
+    };
+
+    static readonly int[] YUVOrder = new int[]
+    {
+      0, 1, 3, 2
+    };
+
+
+    static readonly int[] ZUVOrder = new int[]
+    {
+      3, 1, 0, 2
+    };
+
+
+    #endregion
 
     private Dictionary<Vector3Int, FaceData> CubeFaces = new Dictionary<Vector3Int, FaceData>();
+    private TextureLoader TextureLoaderInstance;
 
-    public ChunkMeshCreator()
+    public ChunkMeshCreator(TextureLoader textureLoaderInstance)
     {
         CubeFaces = new Dictionary<Vector3Int, FaceData>();
+        TextureLoaderInstance = textureLoaderInstance;
 
         for (int i = 0; i < CheckDirections.Length; i++)
         {
             if (CheckDirections[i] == Vector3Int.up)
             {
-                CubeFaces.Add(CheckDirections[i], new FaceData(UpFace, UpTris));
+                CubeFaces.Add(CheckDirections[i], new FaceData(UpFace, UpTris, YUVOrder));
             }
             else if (CheckDirections[i] == Vector3Int.down)
             {
-                CubeFaces.Add(CheckDirections[i], new FaceData(DownFace, DownTris));
+                CubeFaces.Add(CheckDirections[i], new FaceData(DownFace, DownTris, YUVOrder));
             }
             else if (CheckDirections[i] == Vector3Int.forward)
             {
-                CubeFaces.Add(CheckDirections[i], new FaceData(ForwardFace, ForwardTris));
+                CubeFaces.Add(CheckDirections[i], new FaceData(ForwardFace, ForwardTris, ZUVOrder));
             }
             else if (CheckDirections[i] == Vector3Int.back)
             {
-                CubeFaces.Add(CheckDirections[i], new FaceData(BackFace, BackTris));
+                CubeFaces.Add(CheckDirections[i], new FaceData(BackFace, BackTris, ZUVOrder));
             }
             else if (CheckDirections[i] == Vector3Int.left)
             {
-                CubeFaces.Add(CheckDirections[i], new FaceData(LeftFace, LeftTris));
+                CubeFaces.Add(CheckDirections[i], new FaceData(LeftFace, LeftTris, XUVOrder));
             }
             else if (CheckDirections[i] == Vector3Int.right)
             {
-                CubeFaces.Add(CheckDirections[i], new FaceData(RightFace, RightTris));
+                CubeFaces.Add(CheckDirections[i], new FaceData(RightFace, RightTris, XUVOrder));
             }
         }
     }
@@ -148,6 +172,7 @@ public class ChunkMeshCreator : MonoBehaviour
     {
         List<Vector3> Vertices = new List<Vector3>();
         List<int> Indices = new List<int>();
+        List<Vector2> UVs = new List<Vector2>();
         Mesh m = new Mesh();
 
         for (int x = 0; x < WorldGenerator.ChunkSize.x; x++)
@@ -163,12 +188,14 @@ public class ChunkMeshCreator : MonoBehaviour
 
                         try
                         {
-                            if (Data[BlockToCheck.x,BlockToCheck.y,BlockToCheck.z] == 0)
+                            if (Data[BlockToCheck.x, BlockToCheck.y, BlockToCheck.z] == 0)
                             {
-                                if (Data[BlockPos.x, BlockPos.y, BlockPos.z] == 0)
+                                if (Data[BlockPos.x, BlockPos.y, BlockPos.z] != 0)
                                 {
+                                    int CurrentBlockID = Data[BlockToCheck.x, BlockToCheck.y, BlockToCheck.z];
+                                    TextureLoader.CubeTexture TextureToApply = TextureLoaderInstance.Textures[CurrentBlockID];
                                     FaceData FaceToApply = CubeFaces[CheckDirections[i]];
-
+                                    
                                     foreach (Vector3 vert in FaceToApply.Vertices)
                                     {
                                         Vertices.Add(new Vector3(x, y, z) + vert);
@@ -178,13 +205,21 @@ public class ChunkMeshCreator : MonoBehaviour
                                     {
                                         Indices.Add(Vertices.Count - 4 + tri);
                                     }
+
+                                    Vector2[] UVsToAdd = TextureToApply.GetUVsAtDirection(CheckDirections[i]);
+                                    foreach (int UVIndex in FaceToApply.UVIndexOrder)
+                                    {
+                                        UVs.Add(UVsToAdd[UVIndex]);
+                                    }
                                 }
                             }
                         }
                         catch (System.Exception)
                         {
-                            if (Data[BlockPos.x, BlockPos.y, BlockPos.z] == 0)
+                            if (Data[BlockPos.x, BlockPos.y, BlockPos.z] != 0)
                             {
+                                int CurrentBlockID = Data[BlockToCheck.x, BlockToCheck.y, BlockToCheck.z];
+                                TextureLoader.CubeTexture TextureToApply = TextureLoaderInstance.Textures[CurrentBlockID];
                                 FaceData FaceToApply = CubeFaces[CheckDirections[i]];
 
                                 foreach (Vector3 vert in FaceToApply.Vertices)
@@ -196,6 +231,12 @@ public class ChunkMeshCreator : MonoBehaviour
                                 {
                                     Indices.Add(Vertices.Count - 4 + tri);
                                 }
+
+                                Vector2[] UVsToAdd = TextureToApply.GetUVsAtDirection(CheckDirections[i]);
+                                foreach (int UVIndex in FaceToApply.UVIndexOrder)
+                                {
+                                    UVs.Add(UVsToAdd[UVIndex]);
+                                }
                             }
                         }
                     }
@@ -205,6 +246,7 @@ public class ChunkMeshCreator : MonoBehaviour
 
         m.SetVertices(Vertices);
         m.SetIndices(Indices, MeshTopology.Triangles, 0);
+        m.SetUVs(0, UVs);
 
         m.RecalculateBounds();
         m.RecalculateTangents();
