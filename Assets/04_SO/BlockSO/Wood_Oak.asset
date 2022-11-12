@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: Wood_Oak
   m_EditorClassIdentifier: 
   itemName: Wood_Oak
-  itemImage: {fileID: 21300000, guid: cd9db5e02e42bdb48b50a2e21647a152, type: 3}
-  itemType: 1
+  itemImage: {fileID: 21300000, guid: a72f12258805bc24894e79f90a40c6b8, type: 3}
+  spriteRenderer: {fileID: 0}
+  itemType: 100
+  mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
+  mat: {fileID: 2100000, guid: 08cde8ff18c9ffc4d86b53804ced7605, type: 2}
+  durability: 2147483646
+  itemLevel: 0
   itemPrefab: {fileID: 1377162579803422974, guid: 48d9018608b603a4c892e9e48bd0f312, type: 3}
+  tool: 1
+  maxHP: 150

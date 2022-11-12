@@ -7,6 +7,4 @@ using UnityEngine;
         Equipment = 0,
         
         Block = 1,
-
-
     }

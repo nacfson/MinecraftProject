@@ -16,4 +16,8 @@ MonoBehaviour:
   itemImage: {fileID: 0}
   spriteRenderer: {fileID: 0}
   itemType: 1
+  mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
+  mat: {fileID: 0}
+  durability: 0
+  itemLevel: 0
   itemPrefab: {fileID: 0}

@@ -115,3 +115,4 @@ MonoBehaviour:
   _destroyDuration: 3
   _dropItem: {fileID: 2774671180861367142, guid: 116c932ed8ae160408ec6ca23cf8df8f, type: 3}
   _tmp: {fileID: 0}
+  item: {fileID: 11400000, guid: de9183bf5984c3f48b350f2f54fd1611, type: 2}

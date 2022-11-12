@@ -46,17 +46,18 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     void SetBlock(Vector3 vector, Vector3 vector2)
     {
-        Debug.Log($"directionVector3 : {vector}, vector2 : {vector2}");
+        //Debug.Log($"directionVector3 : {vector}, vector2 : {vector2}");
         Vector3 newPos = vector2 + vector;
         UseItem(newPos);
     }
     void UseItem(Vector3 newPos)
     {
         Slot itemData = inventoryUIManager.slotList[inventoryUIManager.buttonCount -1].gameObject.transform.GetChild(0).GetComponent<Slot>();
-        Debug.Log(itemData.item);
+        //Debug.Log(itemData.item);
         if(itemData.item != null)
-        {
-            if(itemData.item.itemType == ItemType.Block && itemData.itemCount > 0)
+        { 
+            //itemData.item.itemType == ItemType.Block && 
+            if (itemData.itemCount > 0)
             {
                 Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity);
                 itemData.SetSlotCount(-1);

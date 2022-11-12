@@ -24,21 +24,6 @@ public class RecipeManager : MonoBehaviour
         foreach(var item in panelList)
         {
             item.CheckCanMakeItem();
-            //Debug.Log(item.canMake);
-
-
-            //if(item.canMake == true)
-            //{
-            //    item.gameObject.SetActive(true);
-            //    Debug.Log("REEREEREE");
-
-            //}
-            //else
-            //{
-            //    item.gameObject.SetActive(false);
-            //    Debug.Log("LEELEELEE");
-
-            //}
         }
     }
 }
