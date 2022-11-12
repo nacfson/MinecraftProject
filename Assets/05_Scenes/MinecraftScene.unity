@@ -11798,6 +11798,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1516415972}
     - target: {fileID: 83232162599915995, guid: 4364e21a36decff4a81040283787793b, type: 3}
+      propertyPath: _hitDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 83232162599915995, guid: 4364e21a36decff4a81040283787793b, type: 3}
       propertyPath: inventoryUIManager
       value: 
       objectReference: {fileID: 1516415972}
