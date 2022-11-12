@@ -14,10 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/05_Scenes/MinecraftScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/05_Scenes/Ohnozo'sServerTestRoom.unity
-    guid: d101d0bca3c1d074a806419c103de03d
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/05_Scenes/LoadIngScene.unity
     guid: 168466d19b6e65449a28bdf1825dc563
+  - enabled: 1
+    path: Assets/05_Scenes/Ohnozo'sServerTestRoom.unity
+    guid: 31af5140d1023064890361bef7c14a6c
   m_configObjects: {}

@@ -8,12 +8,9 @@ using UnityEngine.UI;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public InputField NickNameInput;
-    
-    
-    
     void Awake()
     {
-        Screen.SetResolution(960, 540, false);
+        Screen.SetResolution(1920, 1080, false);
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
     }
@@ -30,6 +27,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
     public void spawn()
     {
-        //PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6, 10), Random.Range(0, 10), 0), Quaternion.identity);
+        PhotonNetwork.Instantiate("PLAYER", new Vector3(10,3,10), Quaternion.identity);
+        //Debug.Log("spawn");
     }
 }
