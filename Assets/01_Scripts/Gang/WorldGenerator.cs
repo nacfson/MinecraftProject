@@ -43,7 +43,7 @@ public class WorldGenerator : MonoBehaviour
             }
         }
 
-        GameObject TempChunk = new GameObject("Chunk", new System.Type[] {typeof(MeshRenderer), typeof(MeshFilter) });
+        GameObject TempChunk = new GameObject("Chunk", new System.Type[] { typeof(MeshRenderer), typeof(MeshFilter) });
         TempChunk.GetComponent<MeshFilter>().mesh = new ChunkMeshCreator(TextureLoaderInstance).CreateMeshFromData(TempData);
     }
 

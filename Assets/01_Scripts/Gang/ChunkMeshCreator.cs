@@ -128,7 +128,6 @@ public class ChunkMeshCreator
       3, 1, 0, 2
     };
 
-
     #endregion
 
     private Dictionary<Vector3Int, FaceData> CubeFaces = new Dictionary<Vector3Int, FaceData>();
@@ -192,10 +191,10 @@ public class ChunkMeshCreator
                             {
                                 if (Data[BlockPos.x, BlockPos.y, BlockPos.z] != 0)
                                 {
-                                    int CurrentBlockID = Data[BlockToCheck.x, BlockToCheck.y, BlockToCheck.z];
+                                    int CurrentBlockID = Data[BlockPos.x, BlockPos.y, BlockPos.z];
                                     TextureLoader.CubeTexture TextureToApply = TextureLoaderInstance.Textures[CurrentBlockID];
                                     FaceData FaceToApply = CubeFaces[CheckDirections[i]];
-                                    
+
                                     foreach (Vector3 vert in FaceToApply.Vertices)
                                     {
                                         Vertices.Add(new Vector3(x, y, z) + vert);
@@ -218,7 +217,7 @@ public class ChunkMeshCreator
                         {
                             if (Data[BlockPos.x, BlockPos.y, BlockPos.z] != 0)
                             {
-                                int CurrentBlockID = Data[BlockToCheck.x, BlockToCheck.y, BlockToCheck.z];
+                                int CurrentBlockID = Data[BlockPos.x, BlockPos.y, BlockPos.z];
                                 TextureLoader.CubeTexture TextureToApply = TextureLoaderInstance.Textures[CurrentBlockID];
                                 FaceData FaceToApply = CubeFaces[CheckDirections[i]];
 
