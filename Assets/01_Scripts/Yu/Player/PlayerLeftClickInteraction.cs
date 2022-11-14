@@ -49,7 +49,7 @@ public class PlayerLeftClickInteraction : AgentInteraction
                 {
                     if(canHit)
                     {
-                        obj.GetComponent<AgentHP>().Damaged(CheckUsingSword(obj));
+                        obj.GetComponent<AgentHP>().Damaged(CheckUsingSword(obj),obj);
                         StartCoroutine(HitCor());
                     }
                 }

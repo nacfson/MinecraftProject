@@ -12,6 +12,8 @@ public class RecipePanelSO : ScriptableObject
     public int definedInt;
     //만들어질 아이템
     public Item makedItem;
+
+    public int makedCount;
     
 
     

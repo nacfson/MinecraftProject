@@ -7,6 +7,15 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour
 {
+    public InventoryUIManager InventoryUIManager
+    {
+        get
+        {
+            _inventoryUIManager ??= GameObject.Find("InventoryUIManger").GetComponent<InventoryUIManager>();
+            return _inventoryUIManager;
+        }
+    }
+    private InventoryUIManager _inventoryUIManager;
     public Item item;
     public int itemCount;
     public Image itemImage;
@@ -26,7 +35,6 @@ public class Slot : MonoBehaviour
         _countText.enabled =false;
         rect = GetComponent<RectTransform>();
         ChangeAlpha(0f);
-        //_spriteRenderer = GetComponent<Image>();
     }
 
 
@@ -35,13 +43,13 @@ public class Slot : MonoBehaviour
 
     public void AddItem(Item _item, int _count = 1)
     {
-        item = _item;
-        itemCount += _count;
-        durability = item.durability;
+
+            item = _item;
+            itemCount += _count;
+            durability = item.durability;
         if (_item.itemImage != null)
         {
             itemImage.sprite = _item.itemImage;
-            //ChangeAlpha(1f);
         }
         if(item.itemType != ItemType.Equipment)
         {
@@ -54,7 +62,7 @@ public class Slot : MonoBehaviour
             _countText.text = "";
         }
         ShowSlot();
-        
+
     }
     
     public void ChangeAlpha(float value)
@@ -67,7 +75,7 @@ public class Slot : MonoBehaviour
     public void SetSlotCount(int _count)
     {
         itemCount += _count;
-        Debug.Log(itemCount + " SetSlotCount");
+        //Debug.Log(itemCount + " SetSlotCount");
         if(itemCount <=0)
         {
             _countText.text = "";
@@ -79,7 +87,7 @@ public class Slot : MonoBehaviour
         if(itemCount <=0)
         {
             ClearSlot();
-            Debug.Log("ClearSlot");
+            //Debug.Log("ClearSlot");
         }
 
     }

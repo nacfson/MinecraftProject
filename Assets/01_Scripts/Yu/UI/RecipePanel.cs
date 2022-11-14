@@ -51,16 +51,29 @@ public class RecipePanel : MonoBehaviour
         }
 
     }
+    // public void CanMakedItem()
+    // {
+    //     for(int i = 0 ; i < _recipePanelSO.itemList.Count; i++)
+    //     {
+    //         for(int j = 0; j < InventoryUIManager.inventoryList.Count; i++)
+    //         {
+    //             if(_recipePanelSO.itemList[i] == InventoryUIManager.inventoryList[j].item && _recipePanelSO.itemCount[i] == InventoryUIManager.inventoryList[j].itemCount)
+    //             {
+
+    //             }
+    //         }
+    //     }
+    // }
     [ContextMenu("CheckCanMakeItem")]
     public void CheckCanMakeItem()
     {
         Item tempItem;
         int count = 0;
         int usedCount;
-        //canMake = false;
+        canMake = false;
         for (int i = 0; i < InventoryUIManager.inventoryList.Count; i++)
         {
-            for (int j = 0; j < 9; j++)
+            for (int j = 0; j <  _recipePanelSO.itemList.Count; j++)
             {
                 try
                 {
@@ -69,12 +82,12 @@ public class RecipePanel : MonoBehaviour
                 }
                 catch
                 {
-                    tempItem = _recipePanelSO.itemList[8];
-                    usedCount = _recipePanelSO.itemCount[8];
+                    tempItem = _recipePanelSO.itemList[i];
+                    usedCount = _recipePanelSO.itemCount[j];
                 }
-                if (InventoryUIManager.inventoryList[i].item == tempItem && InventoryUIManager.inventoryList[i].itemCount >= usedCount)
+                if(InventoryUIManager.inventoryList[i].item == tempItem && InventoryUIManager.inventoryList[i].itemCount >= usedCount)
                 {
-                    count++;
+                    count ++;
                 }
             }
         }
@@ -82,13 +95,11 @@ public class RecipePanel : MonoBehaviour
         {
             canMake = true;
             gameObject.SetActive(true);
-            //Debug.Log(gameObject.activeSelf + "SetActiveTrue");
         }
         else
         {
             canMake = false;
             gameObject.SetActive(false);
-            //Debug.Log(gameObject.activeSelf + "SetActiveFalse");
         }
     }
     [ContextMenu("UseItem")]
@@ -96,15 +107,15 @@ public class RecipePanel : MonoBehaviour
     {
         CheckCanMakeItem();
         Item tempItem = null;
-        bool findedItem = false;
         int usedCount;
+        bool canCheck = true;
         List<int> arrayCount = new List<int>();
         arrayCount.Clear();
         if(canMake)
         {
             for(int i = 0; i< InventoryUIManager.inventoryList.Count; i++)
             {
-                for(int j = 0; j < 9; j++)
+                for(int j = 0; j < _recipePanelSO.itemList.Count; j++)
                 {
                     try
                     {
@@ -113,35 +124,45 @@ public class RecipePanel : MonoBehaviour
                     }
                     catch
                     {
-                        tempItem = _recipePanelSO.itemList[8];
-                        usedCount = _recipePanelSO.itemCount[8];
+                        tempItem = _recipePanelSO.itemList[i];
+                        usedCount = _recipePanelSO.itemCount[j];
                     }
                     if(InventoryUIManager.inventoryList[i].item == tempItem && InventoryUIManager.inventoryList[i].itemCount >= usedCount)
                     {
                         arrayCount.Add(i);
+                        Debug.Log("Success");
                     }
                 }
 
             }
             for (int j = 0; j < arrayCount.Count; j++)
             {
-                Debug.Log(arrayCount.Count + "Array Count.Count");
-                Debug.Log(arrayCount[j] + "Array Count");
                 usedCount = _recipePanelSO.itemCount[arrayCount[j]];
-                Debug.Log(usedCount + "UsedCount");
                 InventoryUIManager.inventoryList[arrayCount[j]].SetSlotCount(-usedCount);
             }
+            Debug.Log(InventoryUIManager.inventoryList.Count);
             for (int i = 0; i < InventoryUIManager.inventoryList.Count; i++)
             {
-                if(InventoryUIManager.inventoryList[i].item == null)
+                
+                Debug.Log(_recipePanelSO.makedItem);
+                Debug.Log(InventoryUIManager.inventoryList[i].item );
+                if (InventoryUIManager.inventoryList[i].item == _recipePanelSO.makedItem)
                 {
-                    InventoryUIManager.inventoryList[i].AddItem(_recipePanelSO.makedItem, 1);
+                    InventoryUIManager.inventoryList[i].SetSlotCount(_recipePanelSO.makedCount);
+                    Debug.Log("NotNull");
+                    canCheck = false;
                     break;
                 }
-                else if (InventoryUIManager.inventoryList[i].item == _recipePanelSO.makedItem)
+            }
+            if(canCheck)
+            {
+                for (int i = 0; i < InventoryUIManager.inventoryList.Count; i++)
                 {
-                    InventoryUIManager.inventoryList[i].AddItem(_recipePanelSO.makedItem, 1);
-                    break;
+                    if(InventoryUIManager.inventoryList[i].item == null)
+                    {
+                        InventoryUIManager.inventoryList[i].AddItem(_recipePanelSO.makedItem, _recipePanelSO.makedCount);
+                        break;
+                    }
                 }
             }
         }

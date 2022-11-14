@@ -191,24 +191,29 @@ public class InventoryUIManager : MonoBehaviour
     }
     public void AcquireItem(Item _item,  int _count)
     {
+        bool canCheck = true;
         for(int i= 0; i< inventorySO.inventoryList.Count; i++)
         {
             if(inventorySO.inventoryList[i].item != null)
             {
-                if(inventorySO.inventoryList[i].item.itemName == _item.itemName)
+                if(inventorySO.inventoryList[i].item == _item)
                 {
                     inventorySO.inventoryList[i].SetSlotCount(_count);
+                    canCheck = false;
+                    Debug.Log("SetSLotCOunt");
                     return;
                 }
             }
         }
-        for(int i= 0; i< inventorySO.inventoryList.Count; i++)
+        if(canCheck)
         {
-
-            if(inventorySO.inventoryList[i].item == null)
+            for(int i= 0; i< inventorySO.inventoryList.Count; i++)
             {
-                inventorySO.inventoryList[i].AddItem(_item,_count);
-                return;
+                if(inventorySO.inventoryList[i].item == null)
+                {
+                    inventorySO.inventoryList[i].AddItem(_item,_count);
+                    return;
+                }
             }
         }
     }
