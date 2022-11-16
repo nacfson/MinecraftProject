@@ -65,15 +65,15 @@ public class PlayerLeftClickInteraction : AgentInteraction
     }
     public float CheckUsingTool(GameObject obj)
     {
-        if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item == null)
+        if (inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].slot.item == null)
         {
 
             return 1f;
         }
-        else if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.tool == obj.GetComponent<Block>().item.tool)
+        else if (inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].slot.item.tool == obj.GetComponent<Block>().item.tool)
         {
-            if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel == 0) return 1f;
-            return inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel;
+            if (inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel == 0) return 1f;
+            return inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel;
         }
         else
         {
@@ -115,15 +115,15 @@ public class PlayerLeftClickInteraction : AgentInteraction
 
     public float CheckUsingSword(GameObject obj)
     {
-        if(inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item == null)
+        if(inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].slot.item == null)
         {
             return 1f;
         }
-        else if(inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.tool == ETool.Sword)
+        else if(inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].slot.item.tool == ETool.Sword)
         {
-            if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel == 0) return 1f;
+            if (inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel == 0) return 1f;
 
-            return inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel;
+            return inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel;
         }
         else
         {

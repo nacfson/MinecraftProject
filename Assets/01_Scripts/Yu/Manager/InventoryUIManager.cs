@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class InventoryUIManager : MonoBehaviour
 {
-    
+    public InventorySO InventorySO
+    {
+        get
+        {
+            return _inventorySO;
+        }
+    }
     [SerializeField]
     private GameObject _mainPanel;
     [SerializeField]
@@ -22,12 +28,13 @@ public class InventoryUIManager : MonoBehaviour
     private GameObject _recipeButton;
     [SerializeField]
     private GameObject _playerInfoPanel;
+    [SerializeField]
+    private InventorySO _inventorySO;
 
 
     public int buttonCount;
     public GameObject crossHair;
-    public InventorySO inventorySO;
-    public List<Slot> inventoryList = new List<Slot>();
+    public Slot[] inventoryList = new Slot[]{};
     public List<DroppableUI> slotList = new List<DroppableUI>();
     public bool recipePanelOn;
     public static bool inventoryActivated;
@@ -74,19 +81,23 @@ public class InventoryUIManager : MonoBehaviour
     }
     private void Awake()
     {
+
         _inventoryPanel.SetActive(true);
         UnUseInventory();
         buttonCount = 1;
         OffRecipeButton();
+
+        
     }
     private void Update()
     {
         GetInputs();
-        SetSOList();
         SetNullImage();
         SetHighLightInventory();
         ShowHandedItem();
     }
+
+
 
     void SetNullImage()
     {
@@ -111,7 +122,7 @@ public class InventoryUIManager : MonoBehaviour
     }
     void SetHighLightInventory()
     {
-        for(int i= 1;  i< inventoryList.Count  + 1; i++)
+        for(int i= 1;  i< InventorySO.inventoryList.Length  + 1; i++)
         {
             if(i == buttonCount)
             {
@@ -124,13 +135,7 @@ public class InventoryUIManager : MonoBehaviour
         }
     }
 
-    void SetSOList()
-    {
-        for(int i= 0 ; i< inventoryList.Count; i ++)
-        {
-            inventorySO.inventoryList[i] = inventoryList[i];
-        }
-    }
+
 
     
     void UseInventory()
@@ -197,13 +202,13 @@ public class InventoryUIManager : MonoBehaviour
     public void AcquireItem(Item _item,  int _count)
     {
         bool canCheck = true;
-        for(int i= 0; i< inventorySO.inventoryList.Count; i++)
+        for(int i= 0; i< _inventorySO.inventoryList.Length; i++)
         {
-            if(inventorySO.inventoryList[i].item != null)
+            if(_inventorySO.inventoryList[i].slot.item != null)
             {
-                if(inventorySO.inventoryList[i].item == _item)
+                if(_inventorySO.inventoryList[i].slot.item == _item)
                 {
-                    inventorySO.inventoryList[i].SetSlotCount(_count);
+                    _inventorySO.inventoryList[i].slot.SetSlotCount(_count);
                     canCheck = false;
                     Debug.Log("SetSLotCOunt");
                     return;
@@ -212,11 +217,11 @@ public class InventoryUIManager : MonoBehaviour
         }
         if(canCheck)
         {
-            for(int i= 0; i< inventorySO.inventoryList.Count; i++)
+            for(int i= 0; i< _inventorySO.inventoryList.Length; i++)
             {
-                if(inventorySO.inventoryList[i].item == null)
+                if(_inventorySO.inventoryList[i].slot.item == null)
                 {
-                    inventorySO.inventoryList[i].AddItem(_item,_count);
+                    _inventorySO.inventoryList[i].slot.AddItem(_item,_count);
                     return;
                 }
             }

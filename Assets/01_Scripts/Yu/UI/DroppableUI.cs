@@ -19,13 +19,13 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 
 	private InventoryUIManager _inventoryUIManager;
 
-	private Slot _slot;
+	public Slot slot;
 
 	private void Awake()
 	{
 		image	= GetComponent<Image>();
 		rect	= GetComponent<RectTransform>();
-		_slot = GetComponent<Slot>();
+		slot = GetComponent<Slot>();
 	}
 
 

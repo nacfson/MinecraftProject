@@ -71,7 +71,7 @@ public class RecipePanel : MonoBehaviour
         int count = 0;
         int usedCount;
         canMake = false;
-        for (int i = 0; i < InventoryUIManager.inventoryList.Count; i++)
+        for (int i = 0; i < InventoryUIManager.InventorySO.inventoryList.Length; i++)
         {
             for (int j = 0; j <  _recipePanelSO.itemList.Count; j++)
             {
@@ -113,7 +113,7 @@ public class RecipePanel : MonoBehaviour
         arrayCount.Clear();
         if(canMake)
         {
-            for(int i = 0; i< InventoryUIManager.inventoryList.Count; i++)
+            for(int i = 0; i< InventoryUIManager.inventoryList.Length; i++)
             {
                 for(int j = 0; j < _recipePanelSO.itemList.Count; j++)
                 {
@@ -140,8 +140,7 @@ public class RecipePanel : MonoBehaviour
                 usedCount = _recipePanelSO.itemCount[j];
                 InventoryUIManager.inventoryList[arrayCount[j]].SetSlotCount(-usedCount);
             }    
-            Debug.Log(InventoryUIManager.inventoryList.Count);
-            for (int i = 0; i < InventoryUIManager.inventoryList.Count; i++)
+            for (int i = 0; i < InventoryUIManager.InventorySO.inventoryList.Length; i++)
             {
                 if (InventoryUIManager.inventoryList[i].item == _recipePanelSO.makedItem)
                 {
@@ -153,7 +152,7 @@ public class RecipePanel : MonoBehaviour
             }
             if(canCheck)
             {
-                for (int i = 0; i < InventoryUIManager.inventoryList.Count; i++)
+                for (int i = 0; i < InventoryUIManager.InventorySO.inventoryList.Length; i++)
                 {
                     if(InventoryUIManager.inventoryList[i].item == null)
                     {
