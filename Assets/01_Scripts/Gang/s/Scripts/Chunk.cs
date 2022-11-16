@@ -10,7 +10,7 @@ public class Chunk {
 	MeshRenderer meshRenderer;
 	MeshFilter meshFilter;
 
-    MeshCollider meshCollider;
+    //MeshCollider meshCollider;
 
 	int vertexIndex = 0;
 	List<Vector3> vertices = new List<Vector3> ();
@@ -33,8 +33,7 @@ public class Chunk {
         if (generateOnLoad)
             Init();
 
-        meshCollider = chunkObject.AddComponent<MeshCollider>();
-        meshCollider.sharedMesh = meshFilter.mesh;
+        //meshCollider = chunkObject.AddComponent<MeshCollider>();
 
     }
 

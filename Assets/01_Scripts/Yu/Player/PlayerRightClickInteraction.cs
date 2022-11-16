@@ -29,15 +29,28 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     public Transform highlightBlock;
     public Transform placeBlock;
+    public byte selectedBlockIndex = 1;
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
         inventoryUIManager = FindObjectOfType<InventoryUIManager>();
-        world = GameObject.Find("World").GetComponent<World>();
+        //world = GameObject.Find("World").GetComponent<World>();
     }
     protected void Update()
     {
         CheckRay();
+        // if(highlightBlock.gameObject.activeSelf)
+        // {
+        //     if(Input.GetMouseButtonDown(0))
+        //     {
+        //         world.GetChunkFromVector3(highlightBlock.position).EditVoxel(highlightBlock.position,0);
+        //     }
+        //     if(Input.GetMouseButtonDown(1))
+        //     {
+        //         world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position,selectedBlockIndex);
+        //     }
+        // }
+        // placeCursorBlocks();
     }
     private void placeCursorBlocks () {
 

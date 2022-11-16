@@ -24,6 +24,13 @@ public class World : MonoBehaviour {
 
     public GameObject debugScreen;
 
+    public void MakingChunkObject()
+    {
+        for(int i = 0 ; i<chunks.Length;i++)
+        {
+        }
+    }
+
 
     private void Start() {
 

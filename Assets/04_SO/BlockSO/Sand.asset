@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 844ad10842615f4459a318a7566f3971, type: 3}
-  m_Name: Dirt
+  m_Name: Sand
   m_EditorClassIdentifier: 
-  itemName: Dirt
-  itemImage: {fileID: 21300000, guid: c0a46f6056b960742abefdaf71fbf404, type: 3}
+  itemName: Sand
+  itemImage: {fileID: 21300000, guid: cd9db5e02e42bdb48b50a2e21647a152, type: 3}
   spriteRenderer: {fileID: 0}
   itemType: 1
   mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
-  mat: {fileID: 2100000, guid: 83db9bd7ff0cb794fa1a068e294e60c5, type: 2}
+  mat: {fileID: 2100000, guid: fead38fb6e383c54999575a7f62e14e5, type: 2}
   durability: 2147483647
   itemLevel: 0
-  itemPrefab: {fileID: 1377162579803422974, guid: 18c0e288456f8f44ea7912c805bfb446, type: 3}
-  tool: 3
-  maxHP: 100
+  itemPrefab: {fileID: 1664068767715256, guid: 7a989212fa872684f8f4f6e48311b246, type: 3}
+  tool: 0
+  maxHP: 200

@@ -20,6 +20,8 @@ public class InventoryUIManager : MonoBehaviour
     private GameObject _recipeMainPanel;
     [SerializeField]
     private GameObject _recipeButton;
+    [SerializeField]
+    private GameObject _playerInfoPanel;
 
 
     public int buttonCount;
@@ -138,6 +140,8 @@ public class InventoryUIManager : MonoBehaviour
         _inventoryPanel.SetActive(true);
         crossHair.SetActive(false);
         _recipeButton.SetActive(true);
+        _playerInfoPanel.SetActive(false);
+
 
     }
     void UnUseInventory()
@@ -147,6 +151,7 @@ public class InventoryUIManager : MonoBehaviour
         _recipeButton.SetActive(false);
         _inventoryPanel.SetActive(false);
         crossHair.SetActive(true);
+        _playerInfoPanel.SetActive(true);
     }
     void GetInputs()
     {

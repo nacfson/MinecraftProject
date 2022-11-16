@@ -137,15 +137,12 @@ public class RecipePanel : MonoBehaviour
             }
             for (int j = 0; j < arrayCount.Count; j++)
             {
-                usedCount = _recipePanelSO.itemCount[arrayCount[j]];
+                usedCount = _recipePanelSO.itemCount[j];
                 InventoryUIManager.inventoryList[arrayCount[j]].SetSlotCount(-usedCount);
-            }
+            }    
             Debug.Log(InventoryUIManager.inventoryList.Count);
             for (int i = 0; i < InventoryUIManager.inventoryList.Count; i++)
             {
-                
-                Debug.Log(_recipePanelSO.makedItem);
-                Debug.Log(InventoryUIManager.inventoryList[i].item );
                 if (InventoryUIManager.inventoryList[i].item == _recipePanelSO.makedItem)
                 {
                     InventoryUIManager.inventoryList[i].SetSlotCount(_recipePanelSO.makedCount);
