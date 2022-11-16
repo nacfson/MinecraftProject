@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 1436728518200198224}
   - component: {fileID: 1399685352097352956}
   - component: {fileID: 5050369262666656758}
-  - component: {fileID: -9071598914107581824}
   m_Layer: 0
-  m_Name: Sand
+  m_Name: Iron_Ore
   m_TagString: BLOCK
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +55,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fead38fb6e383c54999575a7f62e14e5, type: 2}
+  - {fileID: 2100000, guid: 7d9fb7b470d0c50439925e29998e08e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,24 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 0
-  _maxHP: 100
+  _maxHP: 150
   _destroyDuration: 3
-  _dropItem: {fileID: 2774671180861367142, guid: 160aab00d3e7589438b1226739f03f3a, type: 3}
+  _dropItem: {fileID: 2774671180861367142, guid: 8c52684e5e9be014d80ebe3191b9ee8d, type: 3}
   _tmp: {fileID: 0}
-  item: {fileID: 11400000, guid: 88a2beba69265984bb4a343e5274e1f6, type: 2}
---- !u!54 &-9071598914107581824
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377162579803422974}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  item: {fileID: 11400000, guid: ae186130ab7dd344cb192dc8eab04c17, type: 2}
