@@ -65,11 +65,6 @@ public class PlayerLeftClickInteraction : AgentInteraction
     }
     public float CheckUsingTool(GameObject obj)
     {
-        
-        // if(inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel >= obj.GetComponent<Block>().item.itemLevel)
-        // {
-        //     return 0f;
-        // }
         if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item == null)
         {
 
