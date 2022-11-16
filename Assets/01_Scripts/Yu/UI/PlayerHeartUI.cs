@@ -11,17 +11,29 @@ public class PlayerHeartUI : MonoBehaviour
     private Sprite _emptyHeart;
     [SerializeField]
     private AgentHP _playerHP;
-    public List<Image> imageList = new List<Image>(); 
-
+    public Image[] imageList;
+    void Start()
+    {
+        imageList = GetComponentsInChildren<Image>();
+        ShowHP();
+    }
+    [ContextMenu("PlayerHeartUI")]
     public void ShowHP()
     {
-        for(int i= 0; i< imageList.Count ; i++)
+        for(int i= 0 ; i< imageList.Length; i++)
         {
             imageList[i].sprite = _emptyHeart;
         }
-        for(int i= 0; i< ((int)_playerHP.hp + 1); i++)
+        for(int i = 0; i < (int)(_playerHP.hp / 2); i++)
         {
-            imageList[i].sprite = _fullHeart;
+            try
+            {
+                imageList[i].sprite = _fullHeart;
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }

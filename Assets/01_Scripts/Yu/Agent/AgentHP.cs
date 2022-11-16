@@ -18,7 +18,7 @@ public class AgentHP : MonoBehaviour
     {
         hp = maxHP;
         agentManager = GetComponent<AgentManager>();
-        Damaged(10,gameObject);
+        //Damaged(10,gameObject);
     }
     public void Damaged(float damage,GameObject obj)
     {
