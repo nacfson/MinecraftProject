@@ -42,6 +42,7 @@ public class Slot : MonoBehaviour
     {
         this.slotSO = slotSO;
         item = slotSO.item;
+        itemCount = slotSO.itemCount;
         ShowSlot();
 
     }
@@ -68,6 +69,7 @@ public class Slot : MonoBehaviour
             _countText.text = "";
         }
         slotSO.item = item;
+        slotSO.itemCount = itemCount;
         ShowSlot();
 
     }
@@ -95,6 +97,7 @@ public class Slot : MonoBehaviour
             ClearSlot();
         }
         slotSO.item = item;
+        slotSO.itemCount = itemCount;
 
 
     }

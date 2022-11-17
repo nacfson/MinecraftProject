@@ -9,4 +9,5 @@ using UnityEngine;
 public class SlotSO : ScriptableObject
 {
     public Item item;
+    public int itemCount;
 }

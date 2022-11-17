@@ -107,9 +107,9 @@ public class InventoryUIManager : MonoBehaviour
     private void Update()
     {
         GetInputs();
-        //SetNullImage();
+        SetNullImage();
         SetHighLightInventory();
-        //ShowHandedItem();
+        ShowHandedItem();
     }
 
 
