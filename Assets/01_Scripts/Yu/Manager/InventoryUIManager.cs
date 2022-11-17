@@ -36,8 +36,10 @@ public class InventoryUIManager : MonoBehaviour
 
     public int buttonCount;
     public GameObject crossHair;
-    public Slot[] inventoryList = new Slot[]{};
-    public List<DroppableUI> slotList = new List<DroppableUI>();
+    public List<DroppableUI> droppableList = new List<DroppableUI>();
+    public GameObject slot;
+
+
     public bool recipePanelOn;
     public static bool inventoryActivated;
     public InventoryCreateManager inventoryCreateManager;
@@ -81,10 +83,10 @@ public class InventoryUIManager : MonoBehaviour
     public void ShowHandedItem()
     {
        // handedItem.SetActive(true); 
-        if (InventorySO.inventoryList[buttonCount-1].GetComponent<DroppableUI>().slot.item != null)
+        if (droppableList[buttonCount-1].gameObject.GetComponent<Slot>().item != null)
         {
-            handedItem.GetComponent<MeshRenderer>().material = inventoryList[buttonCount - 1].item.mat;
-            handedItem.GetComponent<MeshFilter>().mesh = inventoryList[buttonCount - 1].item.mesh;
+            handedItem.GetComponent<MeshRenderer>().material = _inventorySO.inventoryList[buttonCount - 1].item.mat;
+            handedItem.GetComponent<MeshFilter>().mesh = _inventorySO.inventoryList[buttonCount - 1].item.mesh;
             handedItem.SetActive(true);
         }
         else
@@ -99,8 +101,18 @@ public class InventoryUIManager : MonoBehaviour
         UnUseInventory();
         buttonCount = 1;
         OffRecipeButton();
+        Tempdd();
 
         
+    }
+    void Tempdd()
+    {
+        for(int i= 0 ; i < droppableList.Count; i++)
+        {
+            Slot slot = droppableList[i].gameObject.transform.GetChild(0).gameObject.AddComponent<Slot>();
+            slot.SetSlotSO(InventorySO.inventoryList[i]);
+            
+        }
     }
     private void Update()
     {

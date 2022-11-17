@@ -36,10 +36,10 @@ public class Block : MonoBehaviour
         if(_hp <= 0 )
         {
             Destruction();
-            inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].durability -= 1;
-            if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].durability <= 0)
+            inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].transform.GetChild(0).GetComponentInChildren<Slot>().item.durability -= 1;
+            if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].gameObject.transform.GetChild(0).GetComponentInChildren<Slot>().durability <= 0)
             {
-                inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].SetSlotCount(-1);
+                inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].gameObject.transform.GetChild(0).GetComponentInChildren<Slot>().SetSlotCount(-1);
             }
         }
     }

@@ -71,7 +71,7 @@ public class RecipePanel : MonoBehaviour
         int count = 0;
         int usedCount;
         canMake = false;
-        for (int i = 0; i < InventoryUIManager.InventorySO.inventoryList.Length; i++)
+        for (int i = 0; i < InventoryUIManager.InventorySO.inventoryList.Count; i++)
         {
             for (int j = 0; j <  _recipePanelSO.itemList.Count; j++)
             {

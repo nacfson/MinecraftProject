@@ -24,7 +24,7 @@ public class SaveNLoad : MonoBehaviour
 {
     public SaveData _saveData;
 
-    private PlayerController _thePlayer;
+    //private PlayerController _thePlayer;
     [ContextMenu("Save")]
     public void OnSave()
     {

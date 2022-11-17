@@ -17,6 +17,7 @@ public class Slot : MonoBehaviour
     }
     private InventoryUIManager _inventoryUIManager;
     public Item item;
+    public SlotSO slotSO;
     public int itemCount;
     public Image itemImage;
     public int durability;
@@ -31,10 +32,21 @@ public class Slot : MonoBehaviour
     private Image _spriteRenderer;
     private void Awake()
     {
+        _countText = GetComponentInChildren<TextMeshProUGUI>();
+        _spriteRenderer = GetComponentInChildren<Image>();
         _originPos = transform.position;
         _countText.enabled =false;
         rect = GetComponent<RectTransform>();
+
         ChangeAlpha(0f);
+    }
+
+    public void SetSlotSO(SlotSO slotSO)
+    {
+        this.slotSO = slotSO;
+        item = slotSO.item;
+        ShowSlot();
+
     }
 
 
@@ -58,6 +70,7 @@ public class Slot : MonoBehaviour
             _countText.enabled = false;     
             _countText.text = "";
         }
+        slotSO.item = item;
         ShowSlot();
 
     }
@@ -84,6 +97,8 @@ public class Slot : MonoBehaviour
         {
             ClearSlot();
         }
+        slotSO.item = item;
+
 
     }
     public void ShowSlot()
@@ -96,15 +111,15 @@ public class Slot : MonoBehaviour
         }
         if(itemCount >0)
         {
-        _countText.text = $"{itemCount}";
+            _countText.text = $"{itemCount}";
             
         }
         else
         {
-        _countText.text = "";
-
+            _countText.text = "";
         }
     }
+
     private void ClearSlot()
     {
         item = null;
