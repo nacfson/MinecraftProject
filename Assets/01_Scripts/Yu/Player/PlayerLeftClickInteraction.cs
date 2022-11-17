@@ -65,14 +65,14 @@ public class PlayerLeftClickInteraction : AgentInteraction
     }
     public float CheckUsingTool(GameObject obj)
     {
-        if (inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].GetComponent<DroppableUI>().slot.item == null)
+        if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item == null)
         {
             return 1f;
         }
-        else if (inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].GetComponent<DroppableUI>().slot.item.tool == obj.GetComponent<Block>().item.tool)
+        else if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.tool == obj.GetComponent<Block>().item.tool)
         {
-            if (inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].GetComponent<DroppableUI>().slot.item.itemLevel == 0) return 1f;
-            return inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].GetComponent<DroppableUI>().slot.item.itemLevel;
+            if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel == 0) return 1f;
+            return inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel;
         }
         else
         {
@@ -114,15 +114,15 @@ public class PlayerLeftClickInteraction : AgentInteraction
 
     public float CheckUsingSword(GameObject obj)
     {
-        if(inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].GetComponent<DroppableUI>().slot.item == null)
+        if(inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item == null)
         {
             return 1f;
         }
-        else if(inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].GetComponent<DroppableUI>().slot.item.tool == ETool.Sword)
+        else if(inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.tool == ETool.Sword)
         {
-            if (inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].GetComponent<DroppableUI>().slot.item.itemLevel == 0) return 1f;
+            if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel == 0) return 1f;
 
-            return inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount - 1].GetComponent<DroppableUI>().slot.item.itemLevel;
+            return inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel;
         }
         else
         {

@@ -107,7 +107,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     }
     void UseItem(Vector3 newPos)
     {
-        Slot itemData = inventoryUIManager.InventorySO.inventoryList[inventoryUIManager.buttonCount -1].gameObject.transform.GetComponent<Slot>();
+        Slot itemData = inventoryUIManager.droppableList[inventoryUIManager.buttonCount -1].slot;
         //Debug.Log(itemData.item);
         if(itemData.item != null)
         { 

@@ -85,7 +85,7 @@ public class RecipePanel : MonoBehaviour
                     tempItem = _recipePanelSO.itemList[i];
                     usedCount = _recipePanelSO.itemCount[j];
                 }
-                if(InventoryUIManager.inventoryList[i].item == tempItem && InventoryUIManager.inventoryList[i].itemCount >= usedCount)
+                if(InventoryUIManager.droppableList[i].slot.item == tempItem && InventoryUIManager.droppableList[i].slot.itemCount >= usedCount)
                 {
                     count ++;
                 }
@@ -113,7 +113,7 @@ public class RecipePanel : MonoBehaviour
         arrayCount.Clear();
         if(canMake)
         {
-            for(int i = 0; i< InventoryUIManager.inventoryList.Length; i++)
+            for(int i = 0; i< InventoryUIManager.droppableList.Count; i++)
             {
                 for(int j = 0; j < _recipePanelSO.itemList.Count; j++)
                 {
@@ -127,7 +127,7 @@ public class RecipePanel : MonoBehaviour
                         tempItem = _recipePanelSO.itemList[i];
                         usedCount = _recipePanelSO.itemCount[j];
                     }
-                    if(InventoryUIManager.inventoryList[i].item == tempItem && InventoryUIManager.inventoryList[i].itemCount >= usedCount)
+                    if(InventoryUIManager.droppableList[i].slot.item == tempItem && InventoryUIManager.droppableList[i].slot.itemCount >= usedCount)
                     {
                         arrayCount.Add(i);
                         Debug.Log("Success");
@@ -138,13 +138,13 @@ public class RecipePanel : MonoBehaviour
             for (int j = 0; j < arrayCount.Count; j++)
             {
                 usedCount = _recipePanelSO.itemCount[j];
-                InventoryUIManager.inventoryList[arrayCount[j]].SetSlotCount(-usedCount);
+                InventoryUIManager.droppableList[arrayCount[j]].slot.SetSlotCount(-usedCount);
             }    
-            for (int i = 0; i < InventoryUIManager.InventorySO.inventoryList.Length; i++)
+            for (int i = 0; i < InventoryUIManager.droppableList.Count; i++)
             {
-                if (InventoryUIManager.inventoryList[i].item == _recipePanelSO.makedItem)
+                if (InventoryUIManager.droppableList[i].slot.item == _recipePanelSO.makedItem)
                 {
-                    InventoryUIManager.inventoryList[i].SetSlotCount(_recipePanelSO.makedCount);
+                    InventoryUIManager.droppableList[i].slot.SetSlotCount(_recipePanelSO.makedCount);
                     Debug.Log("NotNull");
                     canCheck = false;
                     break;
@@ -152,11 +152,11 @@ public class RecipePanel : MonoBehaviour
             }
             if(canCheck)
             {
-                for (int i = 0; i < InventoryUIManager.InventorySO.inventoryList.Length; i++)
+                for (int i = 0; i < InventoryUIManager.droppableList.Count; i++)
                 {
-                    if(InventoryUIManager.inventoryList[i].item == null)
+                    if(InventoryUIManager.droppableList[i].slot.item == null)
                     {
-                        InventoryUIManager.inventoryList[i].AddItem(_recipePanelSO.makedItem, _recipePanelSO.makedCount);
+                        InventoryUIManager.droppableList[i].slot.AddItem(_recipePanelSO.makedItem, _recipePanelSO.makedCount);
                         break;
                     }
                 }

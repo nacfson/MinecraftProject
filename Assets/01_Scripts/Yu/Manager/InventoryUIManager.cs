@@ -69,21 +69,11 @@ public class InventoryUIManager : MonoBehaviour
         _recipeMainPanel.SetActive(true);
         RecipeManager.CheckPanelList();
     }
-    public void InstantiateSlots()
-    {
-        for(int i = 0 ; i< 9; i++)
-        {
-            Instantiate(_inventorySO.inventoryList[i], _toolBarPanel.transform);
-        }
-        for(int i =9; i< 36; i++)
-        {
-            Instantiate(_inventorySO.inventoryList[i], _eInventoryPanel.transform);
-        }
-    }
+
     public void ShowHandedItem()
     {
        // handedItem.SetActive(true); 
-        if (droppableList[buttonCount-1].gameObject.GetComponent<Slot>().item != null)
+        if (droppableList[buttonCount-1].slot.item != null)
         {
             handedItem.GetComponent<MeshRenderer>().material = _inventorySO.inventoryList[buttonCount - 1].item.mat;
             handedItem.GetComponent<MeshFilter>().mesh = _inventorySO.inventoryList[buttonCount - 1].item.mesh;
@@ -96,20 +86,20 @@ public class InventoryUIManager : MonoBehaviour
     }
     private void Awake()
     {
-        InstantiateSlots();
+        SetSlotSOO();
         _inventoryPanel.SetActive(true);
         UnUseInventory();
         buttonCount = 1;
         OffRecipeButton();
-        Tempdd();
 
         
     }
-    void Tempdd()
+    void SetSlotSOO()
     {
         for(int i= 0 ; i < droppableList.Count; i++)
         {
-            Slot slot = droppableList[i].gameObject.transform.GetChild(0).gameObject.AddComponent<Slot>();
+            Slot slot = droppableList[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Slot>();
+            Debug.Log(slot);
             slot.SetSlotSO(InventorySO.inventoryList[i]);
             
         }
@@ -126,11 +116,11 @@ public class InventoryUIManager : MonoBehaviour
 
     void SetNullImage()
     {
-        foreach(var item in InventorySO.inventoryList)
+        foreach(var item in droppableList)
         {
-            if(item.GetComponent<DroppableUI>().slot.item == null)
+            if(item.slot.item == null)
             {
-                GameObject obj= item.gameObject.transform.GetChild(0).gameObject;
+                GameObject obj = item.gameObject.transform.GetChild(0).gameObject;
                 Color color = item.GetComponent<Image>().color;
                 color.a =0f;
                 obj.GetComponentInChildren<Image>().color = color;
@@ -146,15 +136,15 @@ public class InventoryUIManager : MonoBehaviour
     }
     void SetHighLightInventory()
     {
-        for(int i= 1;  i< InventorySO.inventoryList.Length  + 1; i++)
+        for(int i= 1;  i< droppableList.Count  + 1; i++)
         {
             if(i == buttonCount)
             {
-                InventorySO.inventoryList[i - 1].gameObject.GetComponent<Image>().sprite = _usedImage;
+                droppableList[i - 1].gameObject.GetComponent<Image>().sprite = _usedImage;
             }
             else
             {
-                InventorySO.inventoryList[i - 1].gameObject.GetComponent<Image>().sprite = _originImage;
+                droppableList[i - 1].gameObject.GetComponent<Image>().sprite = _originImage;
             }
         }
     }
@@ -227,13 +217,13 @@ public class InventoryUIManager : MonoBehaviour
     public void AcquireItem(Item _item,  int _count)
     {
         bool canCheck = true;
-        for(int i= 0; i< _inventorySO.inventoryList.Length; i++)
+        for(int i= 0; i< droppableList.Count; i++)
         {
-            if(_inventorySO.inventoryList[i].GetComponent<DroppableUI>().slot.item != null)
+            if(droppableList[i].slot.item != null)
             {
-                if(_inventorySO.inventoryList[i].GetComponent<DroppableUI>().slot.item == _item)
+                if(droppableList[i].slot.item == _item)
                 {
-                    _inventorySO.inventoryList[i].GetComponent<DroppableUI>().slot.SetSlotCount(_count);
+                    droppableList[i].slot.SetSlotCount(_count);
                     canCheck = false;
                     Debug.Log("SetSLotCOunt");
                     return;
@@ -242,11 +232,11 @@ public class InventoryUIManager : MonoBehaviour
         }
         if(canCheck)
         {
-            for(int i= 0; i< _inventorySO.inventoryList.Length; i++)
+            for(int i= 0; i< droppableList.Count; i++)
             {
-                if(_inventorySO.inventoryList[i].GetComponent<DroppableUI>().slot.item == null)
+                if(droppableList[i].slot.item == null)
                 {
-                    _inventorySO.inventoryList[i].GetComponent<DroppableUI>().slot.AddItem(_item,_count);
+                    droppableList[i].slot.AddItem(_item,_count);
                     return;
                 }
             }
