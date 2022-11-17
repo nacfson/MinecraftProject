@@ -18,11 +18,8 @@ public class GameManager : MonoBehaviour
 
     public static void OnLoad()
     {
-        _saveNLoad.LoadData();
-        Debug.Log(_saveNLoad.LoadData());
     }
     public static void OnSave()
     {
-        _saveNLoad.SaveData(_saveData);
     }
 }

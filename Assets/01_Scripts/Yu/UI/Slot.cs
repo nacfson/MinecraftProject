@@ -38,9 +38,6 @@ public class Slot : MonoBehaviour
     }
 
 
-
-
-
     public void AddItem(Item _item, int _count = 1)
     {
 
@@ -75,7 +72,6 @@ public class Slot : MonoBehaviour
     public void SetSlotCount(int _count)
     {
         itemCount += _count;
-        //Debug.Log(itemCount + " SetSlotCount");
         if(itemCount <=0)
         {
             _countText.text = "";
@@ -87,7 +83,6 @@ public class Slot : MonoBehaviour
         if(itemCount <=0)
         {
             ClearSlot();
-            //Debug.Log("ClearSlot");
         }
 
     }
@@ -98,7 +93,6 @@ public class Slot : MonoBehaviour
         {
             itemImage.sprite = item.itemImage;
             ChangeAlpha(1f);
-            //_spriteRenderer.sprite = itemImage.sprite;
         }
         if(itemCount >0)
         {

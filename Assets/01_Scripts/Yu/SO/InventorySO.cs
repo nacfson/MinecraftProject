@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="SO/InventorySO")]
 public class InventorySO : ScriptableObject
 {
-    public GameObject[] inventoryList = new GameObject[]{};
+    public Slot[] inventoryList = new Slot[]{};
 
 
 

@@ -9,47 +9,37 @@ using System.IO;
 public class SaveData
 {
     public Vector3 playerPos;
+    public List<BlockData> blockData =new List<BlockData>();
+    
+
+}
+[System.Serializable]
+public class BlockData
+{
+    public Vector3 pos;
+    public GameObject block;
 }
 
 public class SaveNLoad : MonoBehaviour
 {
-    public SaveData _saveData = new SaveData();
+    public SaveData _saveData;
 
     private PlayerController _thePlayer;
-
-    void Start()
+    [ContextMenu("Save")]
+    public void OnSave()
     {
-
+        string jsonData =JsonUtility.ToJson(_saveData,true);
+        string path = Path.Combine(Application.dataPath,"saveData.json" );
+        File.WriteAllText(path,jsonData);
+    }
+    [ContextMenu("Load")]
+    public void OnLoad()
+    {
+        string path = Path.Combine(Application.dataPath,"saveData.json" );
+        string jsonData = File.ReadAllText(path);
+        _saveData = JsonUtility.FromJson<SaveData>(jsonData);
     }
 
-    public void SaveData(SaveData data)
-    {
-        _thePlayer = FindObjectOfType<PlayerController>();
 
-        _saveData.playerPos = _thePlayer.transform.position;
-
-        BinaryFormatter bf = new BinaryFormatter();
-        MemoryStream ms = new MemoryStream();
-        bf.Serialize(ms,data);
-        string result = Convert.ToBase64String(ms.GetBuffer());
-
-        PlayerPrefs.SetString("PLAYSCENE",result);
-
-
-    }
-    public SaveData LoadData()
-    {
-        SaveData data=null;
-        string save = PlayerPrefs.GetString("PLAYSCENE",null);
-        
-        if (!string.IsNullOrEmpty(save))//
-        {
-            var binaryFormatter = new BinaryFormatter();
-            var memoryStream = new MemoryStream(Convert.FromBase64String(save));
-            
-            data = (SaveData)binaryFormatter.Deserialize(memoryStream);//형변환해서 사용
-        }
-        return data;
-    }
 
 }
