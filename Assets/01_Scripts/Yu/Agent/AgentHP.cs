@@ -12,6 +12,7 @@ public class AgentHP : MonoBehaviour
     
 
     public UnityEvent Hit;
+    public PlayerHeartUI playerHeartUI;
 
     [SerializeField]
     private float _knockBackValue;
@@ -19,6 +20,8 @@ public class AgentHP : MonoBehaviour
     private void Awake()
     {
         hp = maxHP;
+        playerHeartUI ??= GameObject.Find("HeartPanel").GetComponent<PlayerHeartUI>();
+        Hit.AddListener(() => playerHeartUI.ShowHP());
         agentManager = GetComponent<AgentManager>();
         playerController = GetComponent<PlayerController>();
         //StartCoroutine(FallCoroutine());
