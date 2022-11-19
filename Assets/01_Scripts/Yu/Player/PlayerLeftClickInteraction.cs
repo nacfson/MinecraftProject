@@ -69,7 +69,7 @@ public class PlayerLeftClickInteraction : AgentInteraction
         {
             return 1f;
         }
-        else if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.tool == obj.GetComponent<Block>().item.tool)
+        else if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.tool == obj.GetComponent<Block>().blockData.item.tool)
         {
             if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel == 0) return 1f;
             return inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel;

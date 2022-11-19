@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public float timeBeforeNextJump = 1.2f;
     private float canJump = 0f;
     
-    private bool _isGronded = true;
+    public bool _isGronded = true;
     
 
     private BoxCollider _capsuleCollider;
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private float originPosY;
     private float applyCrouchPosY;
     private bool _isCrouch = false;
+    private bool _canCheckGround = false;
 
     [SerializeField]
     private float _crouchSpeed = 3f;
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
         
         originPosY = _camera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
+        _canCheckGround = true;
         playerController = GetComponentInParent<PlayerController>();
         rightArmController = FindObjectOfType<RightArmController>();
         playerLeftClickInteraction = GetComponent<PlayerLeftClickInteraction>();
@@ -171,10 +173,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
-
-
     void TryJump()
     {
         if(Input.GetKeyDown(KeyCode.Space) && _isGronded == true)
@@ -182,6 +180,7 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
     }
+    
     void Jump()
     {
         if (IsCrouch)
@@ -191,11 +190,23 @@ public class PlayerController : MonoBehaviour
         }
         rb.velocity = transform.up * jumpForce;
     }
+
     void IsGround()
     {
-        _isGronded = Physics.Raycast(transform.position, Vector3.down, 1f);
-        //Debug.Log(_isGronded);
+        if(_canCheckGround)
+        {
+            _isGronded = Physics.Raycast(transform.position, Vector3.down, 1f);
+            StartCoroutine(GroundCor());
+        }
         Debug.DrawRay(transform.position, Vector3.down, Color.red,0.1f);
+    }
+
+    IEnumerator GroundCor()
+    {
+        _canCheckGround = false;
+        yield return new WaitForSeconds(0.1f);
+        _canCheckGround = true;
+
     }
     void TryRun()
     {

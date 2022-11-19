@@ -99,7 +99,6 @@ public class InventoryUIManager : MonoBehaviour
         for(int i= 0 ; i < droppableList.Count; i++)
         {
             Slot slot = droppableList[i].gameObject.transform.GetChild(0).gameObject.GetComponent<Slot>();
-            Debug.Log(slot);
             slot.SetSlotSO(InventorySO.inventoryList[i]);
             
         }

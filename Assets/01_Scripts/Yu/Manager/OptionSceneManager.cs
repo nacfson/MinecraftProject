@@ -57,10 +57,7 @@ public class OptionSceneManager : SceneManagerParent
         _onPanel = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
-    public void OnSave()
-    {
-        GameManager.OnSave();
-    }
+
 
     public void GoToMainMenu()
     {

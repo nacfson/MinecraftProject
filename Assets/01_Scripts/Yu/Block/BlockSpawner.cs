@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class BlockSpawner : MonoBehaviour
 {
+    public Item item;
+    public Item item1;
+    public Item item2;
     [SerializeField] private GameObject _block;
     [SerializeField] private GameObject _block2;
     [SerializeField] private GameObject _block3;
     void Awake()
     {
-        SpawnBlock();
+        //SpawnBlock();
     }
     void SpawnBlock()
     {
@@ -23,13 +26,34 @@ public class BlockSpawner : MonoBehaviour
                 GameObject obj = Instantiate(_block,pos,Quaternion.identity);
                 GameObject obj1 = Instantiate(_block2,pos1,Quaternion.identity);
                 GameObject obj2 = Instantiate(_block3,pos2,Quaternion.identity);
+
+
                 obj.transform.SetParent(this.transform);
+                obj.GetComponent<Block>().blockData.item = item;
+                obj.GetComponent<Block>().Init();
+                
                 obj1.transform.SetParent(this.transform);
+                obj1.GetComponent<Block>().blockData.item = item1;
+                obj1.GetComponent<Block>().Init();
+                
                 obj2.transform.SetParent(this.transform);
+                obj2.GetComponent<Block>().blockData.item = item2;
+                obj2.GetComponent<Block>().Init();
+
 
 
             }
         }
+    }
+    [ContextMenu("SaveTest")]
+    public void SaveMethod()
+    {
+        GameManager.Instance.saveNLoad.OnSave();
+    }
+    [ContextMenu("LoadTest")]
+    public void LoadMethod()
+    {
+        GameManager.Instance.saveNLoad.OnLoad();
     }
 
 }

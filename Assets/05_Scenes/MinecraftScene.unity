@@ -3115,6 +3115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4da2831e4b22c14e93189773e0f3bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: de9183bf5984c3f48b350f2f54fd1611, type: 2}
+  item1: {fileID: 11400000, guid: 88a2beba69265984bb4a343e5274e1f6, type: 2}
+  item2: {fileID: 11400000, guid: 3752abcc165e423478498f2be22cdd10, type: 2}
   _block: {fileID: 1377162579803422974, guid: 9206897af9ae3d34385a7c56220ea662, type: 3}
   _block2: {fileID: 1377162579803422974, guid: db0772b56a30e01499de2d9fcae80b92, type: 3}
   _block3: {fileID: 1377162579803422974, guid: 48d9018608b603a4c892e9e48bd0f312, type: 3}
@@ -3131,7 +3134,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747088661
 GameObject:
@@ -3424,7 +3427,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &809395120
 GameObject:
@@ -6070,6 +6073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentManager: {fileID: 0}
+  playerController: {fileID: 0}
   hp: 0
   maxHP: 20
   Hit:
@@ -9925,6 +9929,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4794721}
     - target: {fileID: 83232162599915994, guid: 4364e21a36decff4a81040283787793b, type: 3}
+      propertyPath: blockParent
+      value: 
+      objectReference: {fileID: 738314000}
+    - target: {fileID: 83232162599915994, guid: 4364e21a36decff4a81040283787793b, type: 3}
       propertyPath: camTransform
       value: 
       objectReference: {fileID: 48825022}
@@ -9940,6 +9948,18 @@ PrefabInstance:
       propertyPath: inventoryUIManager
       value: 
       objectReference: {fileID: 1516415972}
+    - target: {fileID: 83232162599915998, guid: 4364e21a36decff4a81040283787793b, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 83232162599915998, guid: 4364e21a36decff4a81040283787793b, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 83232162599915998, guid: 4364e21a36decff4a81040283787793b, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2883136448506617328, guid: 4364e21a36decff4a81040283787793b, type: 3}
       propertyPath: sceneViewId
       value: 1
@@ -10661,6 +10681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentManager: {fileID: 0}
+  playerController: {fileID: 0}
   hp: 0
   maxHP: 15
   Hit:

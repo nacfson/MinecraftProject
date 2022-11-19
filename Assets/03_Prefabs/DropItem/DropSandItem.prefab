@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 795282702284327282}
   - component: {fileID: -6219678593206872428}
   m_Layer: 0
-  m_Name: DropWood_SandItem
+  m_Name: DropSandItem
   m_TagString: ITEM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
