@@ -110,9 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a8bc5da423dc3429670d98cc5559d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 0
-  _maxHP: 150
-  _destroyDuration: 3
-  _dropItem: {fileID: 2774671180861367142, guid: eb2adc483e805284895ea05cc0d17092, type: 3}
-  _tmp: {fileID: 0}
-  item: {fileID: 11400000, guid: 3752abcc165e423478498f2be22cdd10, type: 2}
+  blockData:
+    blockPos: {x: 0, y: 0, z: 0}
+    item: {fileID: 11400000, guid: fb3114e142ce9aa48acb237822de8bef, type: 2}

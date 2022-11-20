@@ -117,7 +117,7 @@ public class PlayerRightClickInteraction : AgentInteraction
         if(itemData.item != null)
         { 
             //itemData.item.itemType == ItemType.Block && 
-            if (itemData.itemCount > 0)
+            if (itemData.itemCount > 0 )
             {
                 Block block = Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity).GetComponent<Block>();
                 block.blockData.item = itemData.item;

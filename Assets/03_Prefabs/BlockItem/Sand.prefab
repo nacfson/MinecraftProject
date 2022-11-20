@@ -111,12 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a8bc5da423dc3429670d98cc5559d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 0
-  _maxHP: 100
-  _destroyDuration: 3
-  _dropItem: {fileID: 2774671180861367142, guid: 160aab00d3e7589438b1226739f03f3a, type: 3}
-  _tmp: {fileID: 0}
-  item: {fileID: 11400000, guid: 88a2beba69265984bb4a343e5274e1f6, type: 2}
+  blockData:
+    blockPos: {x: 0, y: 0, z: 0}
+    item: {fileID: 11400000, guid: 88a2beba69265984bb4a343e5274e1f6, type: 2}
 --- !u!54 &-9071598914107581824
 Rigidbody:
   m_ObjectHideFlags: 0
