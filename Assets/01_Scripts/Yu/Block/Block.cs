@@ -31,7 +31,7 @@ public class Block : MonoBehaviour
         HPReset();
         transform.position = blockData.blockPos;
         blockData.blockPos = transform.position;
-        Debug.Log(blockData.blockPos);
+        //Debug.Log(blockData.blockPos);
         _hp = blockData.item.maxHP;
         //this.gameObject.GetComponent<MeshRenderer>().material = item.itemPrefab.GetComponent<MeshRenderer>().material;
     }

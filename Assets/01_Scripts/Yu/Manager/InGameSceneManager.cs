@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class InGameSceneManager : SceneManagerParent
 {
-    public SaveData data;
+
 
     private void Awake()
     {
         LoadAdditiveScene("OptionScene");
+
+        GameManager.Instance.saveNLoad.MapLoad();
     }
 }

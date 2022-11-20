@@ -28,7 +28,7 @@ public class SaveNLoad : MonoBehaviour
     {
         get
         {
-            _blockSpawner ??= GameObject.Find("BlockSpawner").GetComponent<BlockSpawner>();
+            GameObject.Find("BlockSpawner").TryGetComponent<BlockSpawner>(out _blockSpawner );
             return _blockSpawner;
         }
     }
@@ -51,11 +51,11 @@ public class SaveNLoad : MonoBehaviour
     [ContextMenu("Load")]
     public void OnLoad()
     {
-        string path = Path.Combine(Application.dataPath,"saveData.json" );
-        string jsonData = File.ReadAllText(path);
-        _saveData = JsonUtility.FromJson<SaveData>(jsonData);
 
-        MapLoad();
+            string path = Path.Combine(Application.dataPath,"saveData.json" );
+            string jsonData = File.ReadAllText(path);
+            _saveData = JsonUtility.FromJson<SaveData>(jsonData);
+
     }
 
 
@@ -75,8 +75,8 @@ public class SaveNLoad : MonoBehaviour
             //Debug.Log(_saveData.blockData[i].pos);
 
         }
-        Debug.Log(_saveData.blockData.Count);
-        Debug.Log(BlockSpawner.gameObject.transform.childCount);
+        // Debug.Log(_saveData.blockData.Count);
+        // Debug.Log(BlockSpawner.gameObject.transform.childCount);
         if(_saveData.blockData.Count > BlockSpawner.gameObject.transform.childCount)
         {
 
@@ -87,11 +87,15 @@ public class SaveNLoad : MonoBehaviour
 
     public void MapLoad()
     {
-        for( int i = 0; i < _saveData.blockData.Count; i++ )
+        if(_saveData.blockData != null)
         {
-            Block block = Instantiate(_saveData.blockData[i].item.itemPrefab,BlockSpawner.transform).GetComponent<Block>();
-            block.blockData = _saveData.blockData[i];
-            block.Init();
+            for( int i = 0; i < _saveData.blockData.Count; i++ )
+            {
+                Block block = Instantiate(_saveData.blockData[i].item.itemPrefab,BlockSpawner.transform).GetComponent<Block>();
+                block.blockData = _saveData.blockData[i];
+                block.Init();
+            }
         }
+
     }
 }

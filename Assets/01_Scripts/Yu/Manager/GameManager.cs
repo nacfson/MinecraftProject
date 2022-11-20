@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
+    private static GameManager _instance = null;
     public SaveNLoad saveNLoad;
     void Awake()
     {
+        if(_instance == null) _instance = this;
+
         saveNLoad = GetComponent<SaveNLoad>();
         DontDestroyOnLoad(this.gameObject);
     }

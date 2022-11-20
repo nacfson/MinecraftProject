@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/05_Scenes/OptionScene.unity
-    guid: e9ddbab7131b85f40b57283224893d24
-  - enabled: 1
     path: Assets/05_Scenes/MainMenuUIScene.unity
     guid: 97700c5546f26624aa5aefaee6553fa4
+  - enabled: 1
+    path: Assets/05_Scenes/OptionScene.unity
+    guid: e9ddbab7131b85f40b57283224893d24
   - enabled: 1
     path: Assets/05_Scenes/MinecraftScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
