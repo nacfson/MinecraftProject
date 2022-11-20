@@ -31,25 +31,26 @@ public class BlockSpawner : MonoBehaviour
                 obj.transform.SetParent(this.transform);
                 obj.GetComponent<Block>().blockData.item = item;
                 obj.GetComponent<Block>().Init();
+
                 
                 obj1.transform.SetParent(this.transform);
                 obj1.GetComponent<Block>().blockData.item = item1;
                 obj1.GetComponent<Block>().Init();
+
                 
                 obj2.transform.SetParent(this.transform);
                 obj2.GetComponent<Block>().blockData.item = item2;
                 obj2.GetComponent<Block>().Init();
-
-
-
             }
         }
     }
+
     [ContextMenu("SaveTest")]
     public void SaveMethod()
     {
         GameManager.Instance.saveNLoad.OnSave();
     }
+    
     [ContextMenu("LoadTest")]
     public void LoadMethod()
     {

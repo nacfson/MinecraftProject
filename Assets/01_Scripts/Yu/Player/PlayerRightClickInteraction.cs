@@ -113,7 +113,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     {
         Slot itemData = inventoryUIManager.droppableList[inventoryUIManager.buttonCount -1].slot;
         //Debug.Log(itemData.item);
-        if(itemData.item != null)
+        if(itemData.item != null && itemData.item.itemType == ItemType.Block)
         { 
             //itemData.item.itemType == ItemType.Block && 
             if (itemData.itemCount > 0)
