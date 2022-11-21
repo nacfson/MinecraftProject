@@ -122,6 +122,7 @@ public class PlayerRightClickInteraction : AgentInteraction
                 Block block = Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity).GetComponent<Block>();
                 block.blockData.item = itemData.item;
                 block.blockData.blockPos = newPos; 
+                block.Init();
                 block.transform.SetParent(blockParent.transform);
                 itemData.SetSlotCount(-1);
             }

@@ -159,6 +159,8 @@ public class RecipePanel : MonoBehaviour
                     }
                 }
             }
+            RecipeManager.CheckPanelList();
+
         }
     }
 }

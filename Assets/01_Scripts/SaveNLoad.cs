@@ -35,7 +35,6 @@ public class SaveNLoad : MonoBehaviour
         _saveData = new SaveData();
     }
 
-
     [ContextMenu("Save")]
     public void OnSave()
     {
@@ -44,7 +43,6 @@ public class SaveNLoad : MonoBehaviour
         string path = Path.Combine(Application.dataPath, "saveData.json");
         File.WriteAllText(path, jsonData);
     }
-
 
     [ContextMenu("Load")]
     public void OnLoad()
@@ -55,11 +53,8 @@ public class SaveNLoad : MonoBehaviour
         {
             string jsonData = File.ReadAllText(path);
             _saveData = JsonUtility.FromJson<SaveData>(jsonData);
-            //MapLoad();
         }
-
     }
-
 
     public void MapSave()
     {
@@ -68,23 +63,17 @@ public class SaveNLoad : MonoBehaviour
             if (_saveData.blockData.Count > i)
             {
                 _saveData.blockData[i] = BlockSpawner.transform.GetChild(i).GetComponent<Block>().blockData;
-                //_saveData.blockData[i].pos = BlockSpawner.transform.GetChild(i).GetComponent<Block>().item.pos; 
             }
             else
             {
                 _saveData.blockData.Add(BlockSpawner.transform.GetChild(i).GetComponent<Block>().blockData);
             }
-            //Debug.Log(_saveData.blockData[i].pos);
-
         }
-        // Debug.Log(_saveData.blockData.Count);
-        // Debug.Log(BlockSpawner.gameObject.transform.childCount);
         if (_saveData.blockData.Count > BlockSpawner.gameObject.transform.childCount)
         {
 
             _saveData.blockData.RemoveRange(_saveData.blockData.Count - BlockSpawner.gameObject.transform.childCount, _saveData.blockData.Count - BlockSpawner.gameObject.transform.childCount);
         }
-
     }
 
     public void MapLoad()
@@ -92,14 +81,16 @@ public class SaveNLoad : MonoBehaviour
         GameObject blockObj = null;
         Block block = null;
         Item item = null;
-
-        for (int i = 0; i < _saveData.blockData.Count; i++)
+        if(GameManager.Instance.saveNLoad._saveData.blockData[0].item != null)
         {
-            item = _saveData.blockData[i].item;
-            blockObj = GameObject.Instantiate(item.itemPrefab, BlockSpawner.transform);
-            block = blockObj.GetComponent<Block>();
-            block.blockData = _saveData.blockData[i];
-            block.Init();
+            for (int i = 0; i < _saveData.blockData.Count; i++)
+            {
+                item = _saveData.blockData[i].item;
+                blockObj = GameObject.Instantiate(item.itemPrefab, BlockSpawner.transform);
+                block = blockObj.GetComponent<Block>();
+                block.blockData = _saveData.blockData[i];
+                block.Init();
+            }
         }
     }
 }

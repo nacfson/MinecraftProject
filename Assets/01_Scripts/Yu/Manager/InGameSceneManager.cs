@@ -9,7 +9,9 @@ public class InGameSceneManager : SceneManagerParent
     private void Awake()
     {
         LoadAdditiveScene("OptionScene");
-
-        GameManager.Instance.saveNLoad.MapLoad();
+        if (GameManager.Instance.saveNLoad._saveData.blockData.Count != 0)
+        {
+            GameManager.Instance.saveNLoad.MapLoad();
+        }
     }
 }

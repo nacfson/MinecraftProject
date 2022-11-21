@@ -31,9 +31,7 @@ public class Block : MonoBehaviour
         HPReset();
         transform.position = blockData.blockPos;
         blockData.blockPos = transform.position;
-        //Debug.Log(blockData.blockPos);
-        _hp = blockData.item.maxHP;
-        //this.gameObject.GetComponent<MeshRenderer>().material = item.itemPrefab.GetComponent<MeshRenderer>().material;
+        _hp = _maxHP;
     }
     public void Mining(float speed,InventoryUIManager inventoryUIManager)
     {
@@ -48,7 +46,6 @@ public class Block : MonoBehaviour
             }
             if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].gameObject.transform.GetChild(0).GetComponentInChildren<Slot>().durability <= 0)
             {
-                
                 inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].gameObject.transform.GetChild(0).GetComponentInChildren<Slot>().SetSlotCount(-1);
             }
         }
@@ -71,6 +68,5 @@ public class Block : MonoBehaviour
     private void DropItem()
     {
         Instantiate(blockData.item.dropItem,transform.position,Quaternion.identity);
-        Debug.Log("DropItem");
     }
 }

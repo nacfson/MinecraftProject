@@ -19,6 +19,11 @@ public class BlockSpawner : MonoBehaviour
             Debug.Log("AA");
             SpawnBlock();
         }
+        else if(GameManager.Instance.saveNLoad._saveData.blockData[0].item == null)
+        {
+            SpawnBlock();
+            LoadMethod();
+        }
     }
     void SpawnBlock()
     {

@@ -241,25 +241,5 @@ public class PlayerController : MonoBehaviour
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
 
         rb.MovePosition(transform.position + _velocity);
-
-
-        // Vector3 movement = new Vector3(transform.forward.x * moveHorizontal, 0.0f, transform.right.z * moveVertical);
-        // if (movement != Vector3.zero)
-        // {
-        //     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
-        //     //anim.SetInteger("Walk", 1);
-        // }
-        // else {
-        //     anim.SetInteger("Walk", 0);
-        // }
-
-        // transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
-
-        // if (Input.GetButtonDown("Jump") && Time.time > canJump)
-        // {
-        //         rb.AddForce(0, jumpForce, 0);
-        //         canJump = Time.time + timeBeforeNextJump;
-        //         anim.SetTrigger("jump");
-        // }
     }
 }
