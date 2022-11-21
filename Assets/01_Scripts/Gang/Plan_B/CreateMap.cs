@@ -47,7 +47,14 @@ public class CreateMap : MonoBehaviour
 
                     if (y < HeightGen && y > HeightGen - 4) BlockTypeToAssign = 2;
 
-                    if (y <= HeightGen - 4 && y > 0) BlockTypeToAssign = 3;
+                    if (y <= HeightGen - 4 && y > 0)
+                    {
+                        BlockTypeToAssign = 3;
+                        if (95f < UnityEngine.Random.Range(0f, 100f))
+                        {
+                            BlockTypeToAssign = 5;
+                        }
+                    }
 
                     if (y == 0) BlockTypeToAssign = 4;
 
@@ -78,10 +85,9 @@ public class CreateMap : MonoBehaviour
                                 CreateWood(x, y, z);
                                 break;
                             case 2: spawnThis = dirt; break;
-                            case 3: CreateOre(x, y, z);spawnThis = stone;
-                                
-                                break;
+                            case 3: spawnThis = stone; break;
                             case 4: spawnThis = badRock; break;
+                            case 5: spawnThis = coal; break;
                         }
                         Instantiate(spawnThis, new Vector3(x, y, z), Quaternion.identity);
                     }
@@ -110,8 +116,8 @@ public class CreateMap : MonoBehaviour
 
     void CreateOre(int x, int y, int z)
     {
-            spawnThis = null;
-        if (9.9f > UnityEngine.Random.Range(0f, 10f));
+        spawnThis = null;
+        if (9.9f > UnityEngine.Random.Range(0f, 10f)) ;
         {
             Instantiate(coal, new Vector3(x, y, z), quaternion.identity);
         }
