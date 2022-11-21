@@ -5,13 +5,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+
 [System.Serializable]
 
 public class SaveData
 {
     public Vector3 playerPos;
     public List<BlockData> blockData = new List<BlockData>();
-
 }
 [System.Serializable]
 public class BlockData
@@ -40,19 +40,20 @@ public class SaveNLoad : MonoBehaviour
     {
         MapSave();
         string jsonData = JsonUtility.ToJson(_saveData, true);
-        string path = Path.Combine(Application.dataPath, "saveData.json");
+        string path = Path.Combine(Application.persistentDataPath, "saveData.json");
         File.WriteAllText(path, jsonData);
     }
 
     [ContextMenu("Load")]
     public void OnLoad()
     {
-        string path = Path.Combine(Application.dataPath, "saveData.json");
+        string path = Path.Combine(Application.persistentDataPath, "saveData.json");
         FileInfo file = new FileInfo(path);
         if (file.Exists)
         {
             string jsonData = File.ReadAllText(path);
             _saveData = JsonUtility.FromJson<SaveData>(jsonData);
+            MapLoad();
         }
     }
 
@@ -93,4 +94,4 @@ public class SaveNLoad : MonoBehaviour
             }
         }
     }
-}
+}   
