@@ -24,6 +24,9 @@ public class CreateMap : MonoBehaviour
     [SerializeField] GameObject leaf;
     [Space]
     [SerializeField] GameObject coal;
+    [SerializeField] GameObject iron;
+    [SerializeField] GameObject gold;
+    [SerializeField] GameObject diamond;
 
     GameObject spawnThis;
 
@@ -50,7 +53,7 @@ public class CreateMap : MonoBehaviour
                     if (y <= HeightGen - 4 && y > 0)
                     {
                         BlockTypeToAssign = 3;
-                        if (95f < UnityEngine.Random.Range(0f, 100f))
+                        if (98f < UnityEngine.Random.Range(0f, 100f))
                         {
                             BlockTypeToAssign = 5;
                         }
