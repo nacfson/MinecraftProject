@@ -425,6 +425,9 @@ GameObject:
   - component: {fileID: 8356570759456201882}
   - component: {fileID: 5833220097525336802}
   - component: {fileID: 548450319462961172}
+  - component: {fileID: 4907054369773077915}
+  - component: {fileID: 2656497706023243474}
+  - component: {fileID: 5507853582521643309}
   m_Layer: 0
   m_Name: Pig
   m_TagString: Untagged
@@ -627,6 +630,52 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &4907054369773077915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8356570759456201886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01b9cd623e2d894caa8eca313191f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItem: {fileID: 0}
+--- !u!114 &2656497706023243474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8356570759456201886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af9a57b2e9ff2847b8f3ed33e8d5537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentManager: {fileID: 0}
+  hp: 0
+  maxHP: 10
+  Hit:
+    m_PersistentCalls:
+      m_Calls: []
+  _knockBackValue: 0
+--- !u!114 &5507853582521643309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8356570759456201886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f099895e4d605ee45981ba9f86dbafe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentDrop: {fileID: 0}
+  agentHP: {fileID: 0}
 --- !u!1 &8679812351685518733
 GameObject:
   m_ObjectHideFlags: 0
