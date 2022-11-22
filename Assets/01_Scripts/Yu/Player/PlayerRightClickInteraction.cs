@@ -13,6 +13,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     public float blockSize = 1f;
     public InventoryUIManager inventoryUIManager;
     public World world;
+    public GameObject blockParent;
     
 
     [SerializeField]
@@ -29,6 +30,7 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     public Transform highlightBlock;
     public Transform placeBlock;
+
     public byte selectedBlockIndex = 1;
     private void Awake()
     {
@@ -69,6 +71,9 @@ public class PlayerRightClickInteraction : AgentInteraction
                 highlightBlock.gameObject.SetActive(true);
                 placeBlock.gameObject.SetActive(true);
 
+
+
+
                 return;
 
             }
@@ -101,7 +106,6 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     void SetBlock(Vector3 vector, Vector3 vector2)
     {
-        //Debug.Log($"directionVector3 : {vector}, vector2 : {vector2}");
         Vector3 newPos = vector2 + vector;
         UseItem(newPos);
     }
@@ -109,12 +113,17 @@ public class PlayerRightClickInteraction : AgentInteraction
     {
         Slot itemData = inventoryUIManager.droppableList[inventoryUIManager.buttonCount -1].slot;
         //Debug.Log(itemData.item);
+        //&& itemData.item.itemType == ItemType.Block
         if(itemData.item != null)
         { 
             //itemData.item.itemType == ItemType.Block && 
-            if (itemData.itemCount > 0)
+            if (itemData.itemCount > 0 )
             {
-                Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity);
+                Block block = Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity).GetComponent<Block>();
+                block.blockData.item = itemData.item;
+                block.blockData.blockPos = newPos; 
+                block.Init();
+                block.transform.SetParent(blockParent.transform);
                 itemData.SetSlotCount(-1);
             }
         }

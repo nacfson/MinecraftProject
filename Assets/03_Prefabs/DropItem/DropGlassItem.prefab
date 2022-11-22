@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5869270281255534489}
   - component: {fileID: 795282702284327282}
   - component: {fileID: -6219678593206872428}
-  m_Layer: 0
-  m_Name: DropWood_SandItem
+  m_Layer: 6
+  m_Name: DropGlassItem
   m_TagString: ITEM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fe54196cd8c3d140bdb1ba16ead521a, type: 2}
+  - {fileID: 2100000, guid: 41dd516c453a78b40a041ec995bbb451, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,7 +97,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 64
@@ -127,4 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359345da2035b654099cc7a9bf406a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 88a2beba69265984bb4a343e5274e1f6, type: 2}
+  item: {fileID: 11400000, guid: 28f0dba1fc2239b4893c66d7889fac12, type: 2}

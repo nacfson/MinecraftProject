@@ -17,9 +17,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   itemType: 1
   mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
-  mat: {fileID: 2100000, guid: 08cde8ff18c9ffc4d86b53804ced7605, type: 2}
-  durability: 2147483646
+  mat: {fileID: 462733086065164088, guid: b217bfeda348cb94889ac314fb80a6f0, type: 3}
+  durability: 2147483630
   itemLevel: 0
   itemPrefab: {fileID: 1377162579803422974, guid: 44bfba4588d44a04c8efd6de68c584a1, type: 3}
   tool: 1
   maxHP: 150
+  dropItem: {fileID: 2774671180861367142, guid: 35b658e78c81ed44682f99fe09ab6423, type: 3}

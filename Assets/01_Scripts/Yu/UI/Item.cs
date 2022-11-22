@@ -18,5 +18,9 @@ public class Item : ScriptableObject
     public float maxHP;
 
 
+    public GameObject dropItem;
+
+
+
 
 }

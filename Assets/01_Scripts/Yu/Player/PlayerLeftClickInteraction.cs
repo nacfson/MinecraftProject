@@ -15,6 +15,8 @@ public class PlayerLeftClickInteraction : AgentInteraction
     private float _hitDelay = 10f;
     [SerializeField]
     private string _defineName;
+    [SerializeField]
+    private LayerMask _layerMask;
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
@@ -69,7 +71,7 @@ public class PlayerLeftClickInteraction : AgentInteraction
         {
             return 1f;
         }
-        else if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.tool == obj.GetComponent<Block>().item.tool)
+        else if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.tool == obj.GetComponent<Block>().blockData.item.tool)
         {
             if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel == 0) return 1f;
             return inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel;
@@ -95,7 +97,7 @@ public class PlayerLeftClickInteraction : AgentInteraction
         RaycastHit hit;
         Vector3 pos = new Vector3(_controller.transform.position.x, _controller.transform.position.y + 1.5f, _controller.transform.position.z);
         Ray ray = new Ray(pos, _controller.Camera.transform.forward);
-        CanInteract = Physics.Raycast(pos, _controller.Camera.transform.forward, out hit, 7f);
+        CanInteract = Physics.Raycast(pos, _controller.Camera.transform.forward, out hit, 7f,_layerMask);
         //if(hit.collider.gameObject != null)
         //{
         //    Debug.Log(hit.collider.gameObject);

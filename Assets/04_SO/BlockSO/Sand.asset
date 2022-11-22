@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sand
   m_EditorClassIdentifier: 
   itemName: Sand
-  itemImage: {fileID: 21300000, guid: cd9db5e02e42bdb48b50a2e21647a152, type: 3}
+  itemImage: {fileID: 1225571311, guid: 5418bd05ef203f24e9b78479d31f2080, type: 3}
   spriteRenderer: {fileID: 0}
   itemType: 1
   mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
@@ -23,3 +23,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 1664068767715256, guid: 7a989212fa872684f8f4f6e48311b246, type: 3}
   tool: 0
   maxHP: 200
+  dropItem: {fileID: 2774671180861367142, guid: 160aab00d3e7589438b1226739f03f3a, type: 3}

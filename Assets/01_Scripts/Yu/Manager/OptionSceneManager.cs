@@ -59,7 +59,7 @@ public class OptionSceneManager : SceneManagerParent
     }
     public void OnSave()
     {
-        GameManager.OnSave();
+        SaveNLoad.OnSave();
     }
 
     public void GoToMainMenu()

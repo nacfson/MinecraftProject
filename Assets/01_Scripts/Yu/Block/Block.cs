@@ -2,36 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using System;
+[System.Serializable]
 public class Block : MonoBehaviour
 {
-
-    [SerializeField]
+    [SerializeField,NonSerialized] 
     private float _hp;
-    [SerializeField]
+    [SerializeField,NonSerialized] 
+
     private float _maxHP = 100;
-    [SerializeField]
+    [SerializeField,NonSerialized] 
     private float _destroyDuration = 3f;
 
-    [SerializeField]
-    private GameObject _dropItem;
-    [SerializeField]
+    [SerializeField,NonSerialized] 
     private TextMeshPro _tmp;
-
-    public Item item;
-
+    [NonSerialized] 
     private BoxCollider _collider;
 
+
+    public BlockData blockData;
     private void Awake()
     {
-        _collider = GetComponent<BoxCollider>();
-        _maxHP = item.maxHP;
-        HPReset();
+        _collider = GetComponent<BoxCollider>();        
     }
-
+    public void Init()
+    {
+        _maxHP = blockData.item.maxHP;
+        HPReset();
+        transform.position = blockData.blockPos;
+        blockData.blockPos = transform.position;
+        _hp = _maxHP;
+    }
     public void Mining(float speed,InventoryUIManager inventoryUIManager)
     {
         _hp -= speed;
+        Debug.Log(_hp);
         //Debug.Log(_hp);
         if(_hp <= 0 )
         {
@@ -42,7 +47,6 @@ public class Block : MonoBehaviour
             }
             if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].gameObject.transform.GetChild(0).GetComponentInChildren<Slot>().durability <= 0)
             {
-                
                 inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].gameObject.transform.GetChild(0).GetComponentInChildren<Slot>().SetSlotCount(-1);
             }
         }
@@ -51,16 +55,19 @@ public class Block : MonoBehaviour
     {
         _collider.enabled = false;
         DropItem();
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
     public void HPReset()
     {
         _hp = _maxHP;
     }
 
+    public void OnEnable()
+    {
+        blockData.blockPos = transform.position;
+    }
     private void DropItem()
     {
-        Instantiate(_dropItem,transform.position,Quaternion.identity);
-        Debug.Log("DropItem");
+        Instantiate(blockData.item.dropItem,transform.position,Quaternion.identity);
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stone
   m_EditorClassIdentifier: 
   itemName: Stone
-  itemImage: {fileID: 21300000, guid: cd9db5e02e42bdb48b50a2e21647a152, type: 3}
+  itemImage: {fileID: -1046903066, guid: 5418bd05ef203f24e9b78479d31f2080, type: 3}
   spriteRenderer: {fileID: 0}
   itemType: 1
   mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
@@ -23,3 +23,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 1377162579803422974, guid: 9206897af9ae3d34385a7c56220ea662, type: 3}
   tool: 0
   maxHP: 200
+  dropItem: {fileID: 0}

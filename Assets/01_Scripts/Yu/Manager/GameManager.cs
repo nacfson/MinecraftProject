@@ -4,22 +4,33 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance = null;
+    public SaveNLoad saveNLoad;
     void Awake()
     {
+        if(_instance == null) _instance = this;
+
+        saveNLoad = GetComponent<SaveNLoad>();
         DontDestroyOnLoad(this.gameObject);
-        _saveNLoad = GetComponent<SaveNLoad>();
-        _saveData = _saveNLoad._saveData;
-        OnLoad();
     }
 
-    private static SaveNLoad _saveNLoad;
-    public static SaveData _saveData;
-    
+    public static GameManager Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                _instance  = new GameManager();
+                return _instance;
+            }
+            else
+            {
+                return _instance;
 
-    public static void OnLoad()
-    {
-    }
-    public static void OnSave()
-    {
+            }
+        }
+
     }
 }
+
+

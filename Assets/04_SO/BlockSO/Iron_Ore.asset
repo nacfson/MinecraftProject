@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Iron_Ore
   m_EditorClassIdentifier: 
   itemName: Iron_Ore
-  itemImage: {fileID: 21300000, guid: cd9db5e02e42bdb48b50a2e21647a152, type: 3}
+  itemImage: {fileID: -463516450, guid: 5418bd05ef203f24e9b78479d31f2080, type: 3}
   spriteRenderer: {fileID: 0}
   itemType: 1
   mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
@@ -23,3 +23,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 1660874185433080, guid: a9b2ead8f74e2e14d88c99eb2ef19bc5, type: 3}
   tool: 0
   maxHP: 500
+  dropItem: {fileID: 2774671180861367142, guid: 8c52684e5e9be014d80ebe3191b9ee8d, type: 3}

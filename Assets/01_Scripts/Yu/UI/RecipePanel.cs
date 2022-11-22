@@ -130,10 +130,8 @@ public class RecipePanel : MonoBehaviour
                     if(InventoryUIManager.droppableList[i].slot.item == tempItem && InventoryUIManager.droppableList[i].slot.itemCount >= usedCount)
                     {
                         arrayCount.Add(i);
-                        Debug.Log("Success");
                     }
                 }
-
             }
             for (int j = 0; j < arrayCount.Count; j++)
             {
@@ -161,6 +159,8 @@ public class RecipePanel : MonoBehaviour
                     }
                 }
             }
+            RecipeManager.CheckPanelList();
+
         }
     }
 }

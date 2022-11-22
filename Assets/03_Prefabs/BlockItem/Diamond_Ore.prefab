@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1436728518200198224}
   - component: {fileID: 1399685352097352956}
   - component: {fileID: 5050369262666656758}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Diamond_Ore
   m_TagString: BLOCK
   m_Icon: {fileID: 0}
@@ -110,9 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a8bc5da423dc3429670d98cc5559d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 0
-  _maxHP: 150
-  _destroyDuration: 3
-  _dropItem: {fileID: 2774671180861367142, guid: 1f6f02676434e7c4eae684b0c51bb749, type: 3}
-  _tmp: {fileID: 0}
-  item: {fileID: 11400000, guid: 58ec3917e06f8ed41ac845a36286e9ff, type: 2}
+  blockData:
+    blockPos: {x: 0, y: 0, z: 0}
+    item: {fileID: 11400000, guid: 58ec3917e06f8ed41ac845a36286e9ff, type: 2}

@@ -23,3 +23,5 @@ MonoBehaviour:
   itemPrefab: {fileID: 1377162579803422974, guid: 18c0e288456f8f44ea7912c805bfb446, type: 3}
   tool: 3
   maxHP: 100
+  dropItem: {fileID: 2774671180861367142, guid: 79f2b00fa10aec64c90394bd1a2846e6, type: 3}
+  pos: {x: 0, y: 0, z: 0}
