@@ -7,11 +7,20 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour
 {
+    public InventoryUIManager InventoryUIManager
+    {
+        get
+        {
+            _inventoryUIManager ??= GameObject.Find("InventoryUIManger").GetComponent<InventoryUIManager>();
+            return _inventoryUIManager;
+        }
+    }
+    private InventoryUIManager _inventoryUIManager;
     public Item item;
+    public SlotSO slotSO;
     public int itemCount;
     public Image itemImage;
     public int durability;
-
     [SerializeField]
     private TextMeshProUGUI _countText;
 
@@ -25,23 +34,29 @@ public class Slot : MonoBehaviour
         _originPos = transform.position;
         _countText.enabled =false;
         rect = GetComponent<RectTransform>();
+
         ChangeAlpha(0f);
-        //_spriteRenderer = GetComponent<Image>();
     }
 
+    public void SetSlotSO(SlotSO slotSO)
+    {
+        this.slotSO = slotSO;
+        item = slotSO.item;
+        itemCount = slotSO.itemCount;
+        ShowSlot();
 
-
+    }
 
 
     public void AddItem(Item _item, int _count = 1)
     {
+
         item = _item;
         itemCount += _count;
         durability = item.durability;
         if (_item.itemImage != null)
         {
             itemImage.sprite = _item.itemImage;
-            //ChangeAlpha(1f);
         }
         if(item.itemType != ItemType.Equipment)
         {
@@ -53,8 +68,10 @@ public class Slot : MonoBehaviour
             _countText.enabled = false;     
             _countText.text = "";
         }
+        slotSO.item = item;
+        slotSO.itemCount = itemCount;
         ShowSlot();
-        
+
     }
     
     public void ChangeAlpha(float value)
@@ -67,7 +84,6 @@ public class Slot : MonoBehaviour
     public void SetSlotCount(int _count)
     {
         itemCount += _count;
-        Debug.Log(itemCount + " SetSlotCount");
         if(itemCount <=0)
         {
             _countText.text = "";
@@ -79,8 +95,10 @@ public class Slot : MonoBehaviour
         if(itemCount <=0)
         {
             ClearSlot();
-            Debug.Log("ClearSlot");
         }
+        slotSO.item = item;
+        slotSO.itemCount = itemCount;
+
 
     }
     public void ShowSlot()
@@ -88,21 +106,23 @@ public class Slot : MonoBehaviour
         _countText.enabled = true;
         if(item != null)
         {
+            Debug.Log(item.itemImage);
+            Debug.Log(itemImage.sprite);
             itemImage.sprite = item.itemImage;
+
             ChangeAlpha(1f);
-            //_spriteRenderer.sprite = itemImage.sprite;
         }
         if(itemCount >0)
         {
-        _countText.text = $"{itemCount}";
+            _countText.text = $"{itemCount}";
             
         }
         else
         {
-        _countText.text = "";
-
+            _countText.text = "";
         }
     }
+
     private void ClearSlot()
     {
         item = null;

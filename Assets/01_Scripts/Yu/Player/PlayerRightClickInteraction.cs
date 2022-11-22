@@ -12,23 +12,78 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     public float blockSize = 1f;
     public InventoryUIManager inventoryUIManager;
+    public World world;
     
 
     [SerializeField]
     private string _defineName;
 
     public Camera cam;
+
+    public Transform camTransform;
     RaycastHit hit;
     RaycastHit originHit;
+
+    public float checkIncrement = 0.1f;
+    public float reach = 7f;
+
+    public Transform highlightBlock;
+    public Transform placeBlock;
+    public byte selectedBlockIndex = 1;
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
         inventoryUIManager = FindObjectOfType<InventoryUIManager>();
+        //world = GameObject.Find("World").GetComponent<World>();
     }
     protected void Update()
     {
         CheckRay();
+        // if(highlightBlock.gameObject.activeSelf)
+        // {
+        //     if(Input.GetMouseButtonDown(0))
+        //     {
+        //         world.GetChunkFromVector3(highlightBlock.position).EditVoxel(highlightBlock.position,0);
+        //     }
+        //     if(Input.GetMouseButtonDown(1))
+        //     {
+        //         world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position,selectedBlockIndex);
+        //     }
+        // }
+        // placeCursorBlocks();
     }
+    private void placeCursorBlocks () {
+
+        float step = checkIncrement;
+        Vector3 lastPos = new Vector3();
+
+        while (step < reach) {
+
+            Vector3 pos = cam.transform.position + (cam.transform.forward * step);
+
+            if (world.CheckForVoxel(pos)) {
+
+                highlightBlock.position = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
+                placeBlock.position = lastPos;
+
+                highlightBlock.gameObject.SetActive(true);
+                placeBlock.gameObject.SetActive(true);
+
+                return;
+
+            }
+
+            lastPos = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
+
+            step += checkIncrement;
+
+        }
+
+        highlightBlock.gameObject.SetActive(false);
+        placeBlock.gameObject.SetActive(false);
+
+    }
+
     public override void Interact(GameObject obj)
     {
         if (CanInteract)
@@ -52,7 +107,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     }
     void UseItem(Vector3 newPos)
     {
-        Slot itemData = inventoryUIManager.slotList[inventoryUIManager.buttonCount -1].gameObject.transform.GetChild(0).GetComponent<Slot>();
+        Slot itemData = inventoryUIManager.droppableList[inventoryUIManager.buttonCount -1].slot;
         //Debug.Log(itemData.item);
         if(itemData.item != null)
         { 

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class InventoryCreateManager : MonoBehaviour
 {
-    public List<DroppableUI> createTableList = new List<DroppableUI>();
-    public List<RecipeSO> recipeSOList = new List<RecipeSO>();
-    public List<RecipePanelSO> recipePanelSOList = new List<RecipePanelSO>();
+    // public List<DroppableUI> createTableList = new List<DroppableUI>();
+    // //public List<RecipeSO> recipeSOList = new List<RecipeSO>();
+    // public List<RecipePanelSO> recipePanelSOList = new List<RecipePanelSO>();
 
     
     // public int createTableCount = 4;
@@ -15,13 +15,13 @@ public class InventoryCreateManager : MonoBehaviour
     // public GameObject madePanel;
     // [SerializeField]
     // private Item nullItem;
-    [SerializeField]
-    private InventorySO _inventorySO;
+    // [SerializeField]
+    // private InventorySO _inventorySO;
 
-    public void CheckRecipeSO()
-    {
-        //RecipeManager.CheckPanelList();
-    }
+    // public void CheckRecipeSO()
+    // {
+    //     RecipeManager.CheckPanelList();
+    // }
 
 
     // [ContextMenu("dd")]

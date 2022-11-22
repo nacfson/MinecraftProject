@@ -19,13 +19,13 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 
 	private InventoryUIManager _inventoryUIManager;
 
-	private Slot _slot;
+	public Slot slot;
 
 	private void Awake()
 	{
 		image	= GetComponent<Image>();
 		rect	= GetComponent<RectTransform>();
-		_slot = GetComponent<Slot>();
+		slot = GetComponentInChildren<Slot>();
 	}
 
 
@@ -65,12 +65,12 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 			// 		return;
 			// 	}
 			// }
-			for(int i= 0 ; i< InventoryUIManager.slotList.Count ;i++ )
+			for(int i= 0 ; i< InventoryUIManager.droppableList.Count ;i++ )
 			{
-				if(InventoryUIManager.slotList[i].transform.childCount == 0)
+				if(InventoryUIManager.droppableList[i].transform.childCount == 0)
 				{
 					Transform tr = eventData.pointerDrag.transform.parent.GetChild(0).transform; 
-					tr.SetParent(InventoryUIManager.slotList[i].gameObject.transform);
+					tr.SetParent(InventoryUIManager.droppableList[i].gameObject.transform);
 					tr.GetComponent<RectTransform>().anchoredPosition = Vector3.zero; //transform.GetComponentInParent<DroppableUI>().rect.position;
 					return;
 				}

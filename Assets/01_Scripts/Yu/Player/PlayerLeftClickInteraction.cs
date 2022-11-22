@@ -10,12 +10,15 @@ public class PlayerLeftClickInteraction : AgentInteraction
     public InventoryUIManager inventoryUIManager;
 
     private GameObject _interactedObject;
-
+    public bool canHit;
+    [SerializeField]
+    private float _hitDelay = 10f;
     [SerializeField]
     private string _defineName;
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
+        canHit = true;
     }
     protected void Update()
     {
@@ -44,30 +47,35 @@ public class PlayerLeftClickInteraction : AgentInteraction
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    obj.GetComponent<AgentHP>().Damaged(CheckUsingSword(obj));
+                    if(canHit)
+                    {
+                        obj.GetComponent<AgentHP>().Damaged(CheckUsingSword(obj),obj);
+                        StartCoroutine(HitCor());
+                    }
                 }
             }
         }
     }
+    IEnumerator HitCor()
+    {
+        canHit = false;
+        yield return new WaitForSeconds(_hitDelay);
+        canHit = true;
+        StopCoroutine(HitCor());
+    }
     public float CheckUsingTool(GameObject obj)
     {
-        if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item == null)
+        if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item == null)
         {
-            //Debug.Log("ItISUSEDONE");
-
-            //Debug.Log("ITISSTARTED");
             return 1f;
         }
-        else if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.tool == obj.GetComponent<Block>().item.tool)
+        else if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.tool == obj.GetComponent<Block>().item.tool)
         {
-            //Debug.Log("ItISUSEDTOO");
-            if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel == 0) return 1f;
-
-            return inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel;
+            if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel == 0) return 1f;
+            return inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel;
         }
         else
         {
-            //Debug.Log("ItISUSED");
             return 1f;
         }
 
@@ -106,15 +114,15 @@ public class PlayerLeftClickInteraction : AgentInteraction
 
     public float CheckUsingSword(GameObject obj)
     {
-        if(inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item == null)
+        if(inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item == null)
         {
             return 1f;
         }
-        else if(inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.tool == ETool.Sword)
+        else if(inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.tool == ETool.Sword)
         {
-            if (inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel == 0) return 1f;
+            if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel == 0) return 1f;
 
-            return inventoryUIManager.inventoryList[inventoryUIManager.buttonCount - 1].item.itemLevel;
+            return inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel;
         }
         else
         {
