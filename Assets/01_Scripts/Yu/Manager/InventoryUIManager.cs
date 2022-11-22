@@ -39,7 +39,6 @@ public class InventoryUIManager : MonoBehaviour
     public int buttonCount;
     public GameObject crossHair;
     public List<DroppableUI> droppableList = new List<DroppableUI>();
-    public GameObject slot;
 
 
     public bool recipePanelOn;
@@ -64,6 +63,7 @@ public class InventoryUIManager : MonoBehaviour
         recipePanelOn = false;
         _recipeMainPanel.SetActive(false);
         _inventoryShowPanel.SetActive(false);
+        
         
 
     }
@@ -94,11 +94,10 @@ public class InventoryUIManager : MonoBehaviour
     private void Awake()
     {
         SetSlotSOO();
-        _inventoryShowPanel.SetActive(false);
-        _inventoryShowPanelMin.SetActive(false);
         UnUseInventory();
         buttonCount = 1;
         OffRecipeButton();
+        ChangeAlpha(0f,_eInventoryPanel);
 
         
     }
@@ -191,9 +190,11 @@ public class InventoryUIManager : MonoBehaviour
         crossHair.SetActive(false);
         _recipeButton.SetActive(true);
         _playerInfoPanel.SetActive(false);
-        _eInventoryPanel.SetActive(true);
         _inventoryShowPanelMin.SetActive(true);
-
+        for(int i= 0; i< _eInventoryPanel.transform.childCount; i++)
+        {
+            ChangeAlpha(1f,_eInventoryPanel.transform.GetChild(i).gameObject);
+        }
 
     }
     void UnUseInventory()
@@ -203,10 +204,21 @@ public class InventoryUIManager : MonoBehaviour
         _recipeButton.SetActive(false);
         crossHair.SetActive(true);
         _playerInfoPanel.SetActive(true);
-        _eInventoryPanel.SetActive(false);
+        _inventoryShowPanelMin.SetActive(false);
+        OffRecipeButton();
 
+        for(int i= 0; i< _eInventoryPanel.transform.childCount; i++)
+        {
+            ChangeAlpha(0f,_eInventoryPanel.transform.GetChild(i).gameObject);
+        }
         _inventoryShowPanelMin.SetActive(false);
 
+    }
+    public void ChangeAlpha(float value,GameObject obj)
+    {
+        Color color = obj.GetComponent<Image>().color;
+        color.a = value;
+        obj.GetComponent<Image>().color = color;
     }
     void GetInputs()
     {

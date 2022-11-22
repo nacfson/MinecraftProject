@@ -124,8 +124,8 @@ public class RecipePanel : MonoBehaviour
                     }
                     catch
                     {
-                        tempItem = _recipePanelSO.itemList[_recipePanelSO.itemList.Count];
-                        usedCount = _recipePanelSO.itemCount[InventoryUIManager.droppableList.Count];
+                        tempItem = _recipePanelSO.itemList[i];
+                        usedCount = _recipePanelSO.itemCount[j];
                     }
                     if(InventoryUIManager.droppableList[i].slot.item == tempItem && InventoryUIManager.droppableList[i].slot.itemCount >= usedCount)
                     {

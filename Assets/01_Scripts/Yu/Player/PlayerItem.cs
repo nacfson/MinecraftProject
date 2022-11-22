@@ -32,8 +32,8 @@ public class PlayerItem : MonoBehaviour
     }
     public void AcquireItem(ItemPickUp itemPickUp)
     {
-                        _inventoryUIManager.AcquireItem(itemPickUp.item,1);
-                Destroy(itemPickUp.gameObject);
+        _inventoryUIManager.AcquireItem(itemPickUp.item,1);
+        Destroy(itemPickUp.gameObject);
     }
 
 
