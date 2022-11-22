@@ -44,36 +44,104 @@ public class CreateMap : MonoBehaviour
 
                 for (int y = HeightGen; y >= 0; y--)
                 {
-                    int BlockTypeToAssign = 0;
-
-                    if (y == HeightGen) BlockTypeToAssign = 1;
-
-                    if (y < HeightGen && y > HeightGen - 4) BlockTypeToAssign = 2;
-
-                    if (y <= HeightGen - 4 && y > 0)
+                    if (TempData[x, y, z] == 0)
                     {
-                        BlockTypeToAssign = 3;
-                        if (98f < UnityEngine.Random.Range(0f, 100f))
+                        int BlockTypeToAssign = 0;
+
+                        if (y == HeightGen) BlockTypeToAssign = 1;
+
+                        if (y < HeightGen && y > HeightGen - 4) BlockTypeToAssign = 2;
+
+                        if (y <= HeightGen - 4 && y > 0)
                         {
-                            BlockTypeToAssign = 5;
+                            BlockTypeToAssign = 3;
+                            if (98f < UnityEngine.Random.Range(0f, 100f))
+                            {
+                                BlockTypeToAssign = 5;
+                                createOre(x, y, z, 99, 5);
+                            }
+                            else if (98f < UnityEngine.Random.Range(0f, 100f))
+                            {
+                                BlockTypeToAssign = 6;
+                                createOre(x, y, z, 99, 6);
+                            }
+                            else if (99f < UnityEngine.Random.Range(0f, 100f))
+                            {
+                                BlockTypeToAssign = 7;
+                                createOre(x, y, z, 99, 7);
+                            }
+                            else if (99.9f < UnityEngine.Random.Range(0f, 100f))
+                            {
+                                BlockTypeToAssign = 8;
+                                createOre(x, y, z, 99, 8);
+                            }
                         }
-                        else if(98f < UnityEngine.Random.Range(0f, 100f))
+
+                        if (y == 0) BlockTypeToAssign = 4;
+
+                        void createOre(int x, int y, int z, float random, int blockIndex)
                         {
-                            BlockTypeToAssign = 6;
+                            int[,,] willSpawnPos;
+
+                            float r = UnityEngine.Random.Range(0f, random + 2);
+                            if (random >= r)
+                            {
+                                r = UnityEngine.Random.Range(0f, 100f);
+
+                                if (0 <= r && 33.3f >= r)
+                                {
+
+                                    r = UnityEngine.Random.Range(0f, 100f);
+                                    if (r <= 50f)
+                                    {
+                                        if (x + 1 < ChunkSize.x) { TempData[x + 1, y, z] = blockIndex; Debug.Log("x+"); createOre(x + 1, y, z, random++, blockIndex); }
+                                        else return;
+                                    }
+                                    else
+                                    {
+                                        if (x - 1 >= 0) { TempData[x - 1, y, z] = blockIndex; Debug.Log("x-"); createOre(x - 1, y, z, random++, blockIndex); }
+                                        else return;
+                                    }
+                                    Debug.Log("fosejf oo");
+                                }
+
+                                if (33.3f <= r && 66.6f <= r)
+                                {
+                                    r = UnityEngine.Random.Range(0f, 100f);
+                                    if (r <= 50f)
+                                    {
+                                        if (y + 1 < ChunkSize.x) { TempData[x, y + 1, z] = blockIndex; Debug.Log("y+"); createOre(x, y + 1, z, random++, blockIndex); }
+                                        else return;
+                                    }
+                                    else
+                                    {
+                                        if (y - 1 >= 0) { TempData[x, y - 1, z] = blockIndex; Debug.Log("y-"); createOre(x, y - 1, z, random++, blockIndex); }
+                                        else return;
+                                    }
+                                    Debug.Log("fosejf oo");
+                                }
+
+                                if (66.6f <= r && 99.9f >= r)
+                                {
+                                    r = UnityEngine.Random.Range(0f, 100f);
+                                    if (r <= 50f)
+                                    {
+                                        if (z + 1 < ChunkSize.x) { TempData[x, y, z + 1] = blockIndex; Debug.Log("z+"); createOre(x, y, z + 1, random++, blockIndex); }
+                                        else return;
+                                    }
+                                    else
+                                    {
+                                        if (z - 1 >= 0) { TempData[x, y, z - 1] = blockIndex; Debug.Log("z-"); createOre(x, y, z - 1, random++, blockIndex); }
+                                        else return;
+                                    }
+                                    Debug.Log("fosejf oo");
+                                }
+                                Debug.Log("fosejf IN");
+                            }
                         }
-                        else if (99f < UnityEngine.Random.Range(0f, 100f))
-                        {
-                            BlockTypeToAssign = 7;
-                        }
-                        else if (99.9f < UnityEngine.Random.Range(0f, 100f))
-                        {
-                            BlockTypeToAssign = 8;
-                        }
+
+                        TempData[x, y, z] = BlockTypeToAssign;
                     }
-
-                    if (y == 0) BlockTypeToAssign = 4;
-
-                    TempData[x, y, z] = BlockTypeToAssign;
                 }
             }
         }
