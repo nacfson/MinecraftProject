@@ -57,6 +57,18 @@ public class CreateMap : MonoBehaviour
                         {
                             BlockTypeToAssign = 5;
                         }
+                        else if(98f < UnityEngine.Random.Range(0f, 100f))
+                        {
+                            BlockTypeToAssign = 6;
+                        }
+                        else if (99f < UnityEngine.Random.Range(0f, 100f))
+                        {
+                            BlockTypeToAssign = 7;
+                        }
+                        else if (99.9f < UnityEngine.Random.Range(0f, 100f))
+                        {
+                            BlockTypeToAssign = 8;
+                        }
                     }
 
                     if (y == 0) BlockTypeToAssign = 4;
@@ -91,6 +103,9 @@ public class CreateMap : MonoBehaviour
                             case 3: spawnThis = stone; break;
                             case 4: spawnThis = badRock; break;
                             case 5: spawnThis = coal; break;
+                            case 6: spawnThis = iron; break;
+                            case 7: spawnThis = gold; break;
+                            case 8: spawnThis = diamond; break;
                         }
                         Instantiate(spawnThis, new Vector3(x, y, z), Quaternion.identity);
                     }
