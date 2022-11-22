@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Grass
   m_EditorClassIdentifier: 
   itemName: Grass
-  itemImage: {fileID: 21300000, guid: c0a46f6056b960742abefdaf71fbf404, type: 3}
+  itemImage: {fileID: -1870633427, guid: 5418bd05ef203f24e9b78479d31f2080, type: 3}
   spriteRenderer: {fileID: 0}
   itemType: 1
   mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}

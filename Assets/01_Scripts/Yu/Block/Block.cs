@@ -36,6 +36,7 @@ public class Block : MonoBehaviour
     public void Mining(float speed,InventoryUIManager inventoryUIManager)
     {
         _hp -= speed;
+        Debug.Log(_hp);
         //Debug.Log(_hp);
         if(_hp <= 0 )
         {

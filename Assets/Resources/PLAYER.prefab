@@ -700,6 +700,7 @@ GameObject:
   - component: {fileID: 83232162599915994}
   - component: {fileID: 83232162599915973}
   - component: {fileID: 2883136448506617328}
+  - component: {fileID: 2800629780467976775}
   m_Layer: 3
   m_Name: PLAYER
   m_TagString: Player
@@ -715,7 +716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33140061579825835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.8, y: 23.2, z: 17}
+  m_LocalPosition: {x: 14.468, y: 23.2, z: 17}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -764,6 +765,7 @@ MonoBehaviour:
   walkSpeed: 0.1
   jumpForce: 5
   timeBeforeNextJump: 1.2
+  _isGronded: 1
   rb: {fileID: 0}
   head: {fileID: 0}
   _lookSensitivity: 3
@@ -820,7 +822,13 @@ MonoBehaviour:
   LeftClickEvent:
     m_PersistentCalls:
       m_Calls: []
+  inventoryUIManager: {fileID: 0}
+  canHit: 0
+  _hitDelay: 10
   _defineName: BLOCK
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 129
 --- !u!114 &83232162599915994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,8 +844,16 @@ MonoBehaviour:
   _block: {fileID: 1377162579803422974, guid: 9206897af9ae3d34385a7c56220ea662, type: 3}
   blockSize: 10
   inventoryUIManager: {fileID: 0}
+  world: {fileID: 0}
+  blockParent: {fileID: 0}
   _defineName: BLOCK
   cam: {fileID: 0}
+  camTransform: {fileID: 0}
+  checkIncrement: 0.1
+  reach: 7
+  highlightBlock: {fileID: 0}
+  placeBlock: {fileID: 0}
+  selectedBlockIndex: 1
 --- !u!114 &83232162599915973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,6 +894,19 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!65 &2800629780467976775
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33140061579825835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 9.983482, y: 17.698784, z: 6.9345093}
+  m_Center: {x: -0.42832375, y: 7.035694, z: 0.98752975}
 --- !u!1 &33140061923201323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,7 +1116,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

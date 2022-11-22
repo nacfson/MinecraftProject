@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1399685352097352956}
   - component: {fileID: 5050369262666656758}
   - component: {fileID: -9071598914107581824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sand
   m_TagString: BLOCK
   m_Icon: {fileID: 0}
