@@ -20,7 +20,7 @@ MonoBehaviour:
   mat: {fileID: 2100000, guid: fead38fb6e383c54999575a7f62e14e5, type: 2}
   durability: 2147483647
   itemLevel: 0
-  itemPrefab: {fileID: 1664068767715256, guid: 7a989212fa872684f8f4f6e48311b246, type: 3}
-  tool: 0
+  itemPrefab: {fileID: 1377162579803422974, guid: db0772b56a30e01499de2d9fcae80b92, type: 3}
+  tool: 3
   maxHP: 200
   dropItem: {fileID: 2774671180861367142, guid: 160aab00d3e7589438b1226739f03f3a, type: 3}
