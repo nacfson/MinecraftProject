@@ -12,7 +12,7 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     public float blockSize = 1f;
     public InventoryUIManager inventoryUIManager;
-    public World world;
+    //public World world;
     public GameObject blockParent;
     
 
