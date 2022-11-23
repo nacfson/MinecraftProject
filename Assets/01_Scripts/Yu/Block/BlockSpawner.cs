@@ -5,12 +5,7 @@ using Unity.Mathematics;
 
 public class BlockSpawner : MonoBehaviour
 {
-    // public Item item;
-    // public Item item1;
-    // public Item item2;
-    // [SerializeField] private GameObject _block;
-    // [SerializeField] private GameObject _block2;
-    // [SerializeField] private GameObject _block3;
+    [SerializeField] private Transform _blockSpawner;
     void Awake()
     {
         GameManager.Instance.saveNLoad.BlockSpawner = this;
@@ -49,10 +44,28 @@ public class BlockSpawner : MonoBehaviour
     [SerializeField] GameObject gold;
     [SerializeField] GameObject diamond;
 
+        [Space]
+    [SerializeField] Item grassItem;
+    [SerializeField] Item dirtItem;
+    [SerializeField] Item stoneItem;
+    [SerializeField] Item badRockItem;
+    [Space]
+    [SerializeField] Item woodItem;
+    [SerializeField] Item leafItem;
+    [Space]
+    [SerializeField] Item coalItem;
+    [SerializeField] Item ironItem;
+    [SerializeField] Item goldItem;
+    [SerializeField] Item diamondItem;
+
     GameObject spawnThis;
 
     private void Start()
     {
+        //_blockSpawner = this.gameObject.transform;
+        // obj.transform.SetParent(this.transform);
+        // obj.GetComponent<Block>().blockData.item = item;
+        // obj.GetComponent<Block>().Init();
     }
     void CreateMApDDD()
     {
@@ -65,6 +78,7 @@ public class BlockSpawner : MonoBehaviour
                 float PerlinCoordX = NoiseOffset.x + x / (float)ChunkSize.x * NoiseScale.x;
                 float PerlinCoordY = NoiseOffset.y + z / (float)ChunkSize.z * NoiseScale.y;
                 int HeightGen = Mathf.RoundToInt(Mathf.PerlinNoise(PerlinCoordX, PerlinCoordY) * HeightIntensity + HeightOffset);
+
 
                 for (int y = HeightGen; y >= 0; y--)
                 {
@@ -126,7 +140,6 @@ public class BlockSpawner : MonoBehaviour
                                         if (x - 1 >= 0) { TempData[x - 1, y, z] = blockIndex; Debug.Log("x-"); createOre(x - 1, y, z, random++, blockIndex); }
                                         else return;
                                     }
-                                    Debug.Log("fosejf oo");
                                 }
 
                                 if (33.3f <= r && 66.6f <= r)
@@ -142,7 +155,6 @@ public class BlockSpawner : MonoBehaviour
                                         if (y - 1 >= 0) { TempData[x, y - 1, z] = blockIndex; Debug.Log("y-"); createOre(x, y - 1, z, random++, blockIndex); }
                                         else return;
                                     }
-                                    Debug.Log("fosejf oo");
                                 }
 
                                 if (66.6f <= r && 99.9f >= r)
@@ -158,9 +170,7 @@ public class BlockSpawner : MonoBehaviour
                                         if (z - 1 >= 0) { TempData[x, y, z - 1] = blockIndex; Debug.Log("z-"); createOre(x, y, z - 1, random++, blockIndex); }
                                         else return;
                                     }
-                                    Debug.Log("fosejf oo");
                                 }
-                                Debug.Log("fosejf IN");
                             }
                         }
 
@@ -198,7 +208,10 @@ public class BlockSpawner : MonoBehaviour
                             case 7: spawnThis = gold; break;
                             case 8: spawnThis = diamond; break;
                         }
-                        Instantiate(spawnThis, new Vector3(x, y, z), Quaternion.identity);
+                        GameObject obj = Instantiate(spawnThis, new Vector3(x, y, z), Quaternion.identity);
+                        obj.transform.SetParent(_blockSpawner);
+                        Debug.Log(obj.transform.parent);
+                        obj.GetComponent<Block>().Init();
                     }
                 }
             }
@@ -216,7 +229,10 @@ public class BlockSpawner : MonoBehaviour
                 {
                     for (int zee = 1; zee <= 5; zee++)
                     {
-                        Instantiate(leaf, new Vector3(x + (exe - 3), y + (way + 2), z + (zee - 3)), Quaternion.identity);
+                        GameObject obj = Instantiate(leaf, new Vector3(x + (exe - 3), y + (way + 2), z + (zee - 3)), Quaternion.identity);
+                        obj.transform.SetParent(_blockSpawner);
+                        obj.GetComponent<Block>().Init();
+
                     }
                 }
             }
@@ -228,7 +244,10 @@ public class BlockSpawner : MonoBehaviour
         spawnThis = null;
         if (9.9f > UnityEngine.Random.Range(0f, 10f))
         {
-            Instantiate(coal, new Vector3(x, y, z), quaternion.identity);
+            GameObject obj = Instantiate(coal, new Vector3(x, y, z), quaternion.identity);
+                        obj.transform.SetParent(_blockSpawner);
+                        obj.GetComponent<Block>().Init();
+
         }
     }
 

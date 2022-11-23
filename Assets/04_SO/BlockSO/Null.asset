@@ -21,3 +21,6 @@ MonoBehaviour:
   durability: 0
   itemLevel: 0
   itemPrefab: {fileID: 0}
+  tool: 0
+  maxHP: 1e+9
+  dropItem: {fileID: 0}

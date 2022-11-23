@@ -43,6 +43,8 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 	}
 
 
+
+
 	public void OnDrop(PointerEventData eventData)
 	{
 		if( eventData.pointerDrag != null)

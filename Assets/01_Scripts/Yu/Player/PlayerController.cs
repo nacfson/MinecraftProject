@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 3f;
     public float jumpForce = 300;
     public float timeBeforeNextJump = 1.2f;
-    private float canJump = 0f;
+    private float   canJump = 0f;
     
     public bool _isGronded = true;
     
@@ -98,6 +98,11 @@ public class PlayerController : MonoBehaviour
         {
             CharacterRotation();
             CameraRotation();
+            TryCrouch();
+            IsGround();
+            TryRun();
+            TryJump();
+            ControlPlayer();
         }
 
 
@@ -159,11 +164,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        TryCrouch();
-        IsGround();
-        TryRun();
-        TryJump();
-        ControlPlayer();
+
     }
     void TryCrouch()
     {
@@ -240,6 +241,6 @@ public class PlayerController : MonoBehaviour
 
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
 
-        rb.MovePosition(transform.position + _velocity);
+        rb.MovePosition(transform.position + _velocity * Time.fixedDeltaTime * 45f);
     }
 }

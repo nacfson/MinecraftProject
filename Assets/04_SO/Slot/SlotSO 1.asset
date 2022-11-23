@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SlotSO 1
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  itemCount: 0

@@ -84,7 +84,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377162579803422974}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: eb83b7ab2356cb348aaa9b86e28db7fc, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -112,4 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockData:
     blockPos: {x: 0, y: 0, z: 0}
-    item: {fileID: 11400000, guid: 975f823a32b007244b57a794dc148f60, type: 2}
+    item: {fileID: 11400000, guid: ed6681ede92c6db4b99bc6b5aa180065, type: 2}

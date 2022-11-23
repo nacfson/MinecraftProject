@@ -3428,12 +3428,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4da2831e4b22c14e93189773e0f3bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: de9183bf5984c3f48b350f2f54fd1611, type: 2}
-  item1: {fileID: 11400000, guid: 88a2beba69265984bb4a343e5274e1f6, type: 2}
-  item2: {fileID: 11400000, guid: 3752abcc165e423478498f2be22cdd10, type: 2}
-  _block: {fileID: 1377162579803422974, guid: 9206897af9ae3d34385a7c56220ea662, type: 3}
-  _block2: {fileID: 1377162579803422974, guid: db0772b56a30e01499de2d9fcae80b92, type: 3}
-  _block3: {fileID: 1377162579803422974, guid: 48d9018608b603a4c892e9e48bd0f312, type: 3}
+  _blockSpawner: {fileID: 738314002}
+  ChunkSize: {x: 16, y: 64, z: 16}
+  NoiseScale: {x: 1, y: 1}
+  NoiseOffset: {x: 0, y: 0}
+  HeightOffset: 60
+  HeightIntensity: 5
+  grass: {fileID: 1994553454022704, guid: 34a031333f407ff46aa2be10d4990402, type: 3}
+  dirt: {fileID: 1377162579803422974, guid: 18c0e288456f8f44ea7912c805bfb446, type: 3}
+  stone: {fileID: 1377162579803422974, guid: 9206897af9ae3d34385a7c56220ea662, type: 3}
+  badRock: {fileID: 1136087126612918, guid: 3be9b280cce341f458217226fb86d800, type: 3}
+  wood: {fileID: 1377162579803422974, guid: 48d9018608b603a4c892e9e48bd0f312, type: 3}
+  leaf: {fileID: 1377162579803422974, guid: 9206897af9ae3d34385a7c56220ea662, type: 3}
+  coal: {fileID: 1338246871020372, guid: 3d0413c73c36dfb448f1651276709473, type: 3}
+  iron: {fileID: 1377162579803422974, guid: 18aadc5a461c13a4bb04aa7a8e503ee1, type: 3}
+  gold: {fileID: 1377162579803422974, guid: 65328608174bdae4282e64bae85746d1, type: 3}
+  diamond: {fileID: 1377162579803422974, guid: 2d9a8025edfabbc45923dfa5ca14c5cb, type: 3}
+  grassItem: {fileID: 0}
+  dirtItem: {fileID: 0}
+  stoneItem: {fileID: 0}
+  badRockItem: {fileID: 0}
+  woodItem: {fileID: 0}
+  leafItem: {fileID: 0}
+  coalItem: {fileID: 0}
+  ironItem: {fileID: 0}
+  goldItem: {fileID: 0}
+  diamondItem: {fileID: 0}
 --- !u!4 &738314002
 Transform:
   m_ObjectHideFlags: 0
@@ -7774,6 +7794,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 641220007}
     m_Modifications:
+    - target: {fileID: 2937951390651446735, guid: 1243ce05b37382c42991d5f8ad2257ba, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3541876871491456443, guid: 1243ce05b37382c42991d5f8ad2257ba, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
