@@ -5,7 +5,12 @@ using Unity.Mathematics;
 
 public class BlockSpawner : MonoBehaviour
 {
-
+    // public Item item;
+    // public Item item1;
+    // public Item item2;
+    // [SerializeField] private GameObject _block;
+    // [SerializeField] private GameObject _block2;
+    // [SerializeField] private GameObject _block3;
     void Awake()
     {
         GameManager.Instance.saveNLoad.BlockSpawner = this;
@@ -43,19 +48,6 @@ public class BlockSpawner : MonoBehaviour
     [SerializeField] GameObject iron;
     [SerializeField] GameObject gold;
     [SerializeField] GameObject diamond;
-
-    [SerializeField] Item grassItem;
-    [SerializeField] Item dirtItem;
-    [SerializeField] Item stoneItem;
-    [SerializeField] Item badRockItem;
-    [Space]
-    [SerializeField] Item woodItem;
-    [SerializeField] Item leafItem;
-    [Space]
-    [SerializeField] Item coalItem;
-    [SerializeField] Item ironItem;
-    [SerializeField] Item goldItem;
-    [SerializeField] Item diamondItem;
 
     GameObject spawnThis;
 
