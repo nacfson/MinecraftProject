@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BLOCK
   - ITEM
+  - CANHIT
   layers:
   - Default
   - TransparentFX

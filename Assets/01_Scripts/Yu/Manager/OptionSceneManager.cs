@@ -5,8 +5,17 @@ using UnityEngine;
 
 public class OptionSceneManager : SceneManagerParent
 {
+    public SaveNLoad SaveNLoad
+    {
+        get
+        {
+            _saveNLoad ??= GameObject.Find("GameManager").GetComponent<SaveNLoad>();
+            return _saveNLoad;
+        }
+    }
     [SerializeField]
     private GameObject _optionMainPanel;
+    private SaveNLoad _saveNLoad;
     private bool _onPanel;
 
     private void Awake()
@@ -47,6 +56,10 @@ public class OptionSceneManager : SceneManagerParent
         Time.timeScale = 1;
         _onPanel = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void OnSave()
+    {
+        GameManager.OnSave();
     }
 
     public void GoToMainMenu()

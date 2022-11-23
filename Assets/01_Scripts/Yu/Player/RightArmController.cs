@@ -29,10 +29,6 @@ public class RightArmController : MonoBehaviour
         }
     }
 
-    void CheckInteractDistance()
-    {
-
-    }
 
     public void LeftClickInteract()
     {

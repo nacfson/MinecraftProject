@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844ad10842615f4459a318a7566f3971, type: 3}
+  m_Name: Gold_Ore
+  m_EditorClassIdentifier: 
+  itemName: Gold_Ore
+  itemImage: {fileID: 21300000, guid: cd9db5e02e42bdb48b50a2e21647a152, type: 3}
+  spriteRenderer: {fileID: 0}
+  itemType: 1
+  mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
+  mat: {fileID: 2100000, guid: fbfffbd2d2688b942bc6752b85e03155, type: 2}
+  durability: 2147483647
+  itemLevel: 0
+  itemPrefab: {fileID: 1377162579803422974, guid: 65328608174bdae4282e64bae85746d1, type: 3}
+  tool: 0
+  maxHP: 450

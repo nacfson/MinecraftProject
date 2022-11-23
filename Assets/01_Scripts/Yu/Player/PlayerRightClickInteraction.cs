@@ -7,27 +7,83 @@ using UnityEngine.Events;
 public class PlayerRightClickInteraction : AgentInteraction
 {
     private PlayerController _controller;
-
+ 
     [SerializeField] private GameObject _block;
+
     public float blockSize = 1f;
     public InventoryUIManager inventoryUIManager;
-
+    public World world;
+    
 
     [SerializeField]
     private string _defineName;
 
     public Camera cam;
+
+    public Transform camTransform;
     RaycastHit hit;
     RaycastHit originHit;
+
+    public float checkIncrement = 0.1f;
+    public float reach = 7f;
+
+    public Transform highlightBlock;
+    public Transform placeBlock;
+    public byte selectedBlockIndex = 1;
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
         inventoryUIManager = FindObjectOfType<InventoryUIManager>();
+        //world = GameObject.Find("World").GetComponent<World>();
     }
     protected void Update()
     {
         CheckRay();
+        // if(highlightBlock.gameObject.activeSelf)
+        // {
+        //     if(Input.GetMouseButtonDown(0))
+        //     {
+        //         world.GetChunkFromVector3(highlightBlock.position).EditVoxel(highlightBlock.position,0);
+        //     }
+        //     if(Input.GetMouseButtonDown(1))
+        //     {
+        //         world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position,selectedBlockIndex);
+        //     }
+        // }
+        // placeCursorBlocks();
     }
+    private void placeCursorBlocks () {
+
+        float step = checkIncrement;
+        Vector3 lastPos = new Vector3();
+
+        while (step < reach) {
+
+            Vector3 pos = cam.transform.position + (cam.transform.forward * step);
+
+            if (world.CheckForVoxel(pos)) {
+
+                highlightBlock.position = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
+                placeBlock.position = lastPos;
+
+                highlightBlock.gameObject.SetActive(true);
+                placeBlock.gameObject.SetActive(true);
+
+                return;
+
+            }
+
+            lastPos = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
+
+            step += checkIncrement;
+
+        }
+
+        highlightBlock.gameObject.SetActive(false);
+        placeBlock.gameObject.SetActive(false);
+
+    }
+
     public override void Interact(GameObject obj)
     {
         if (CanInteract)
@@ -36,8 +92,6 @@ public class PlayerRightClickInteraction : AgentInteraction
             {
                 //SetBlock();
             }
-
-
         }
     }
     protected override void CheckCanInteract()
@@ -47,21 +101,34 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     void SetBlock(Vector3 vector, Vector3 vector2)
     {
-        //Vector3 temp = hit.transform.position;
-        //Vector3 pos = new Vector3(temp.x,temp.y + UnityEditor.EditorSnapSettings.move.y,temp.z);
-        Debug.Log($"directionVector3 : {vector}, vector2 : {vector2}");
+        //Debug.Log($"directionVector3 : {vector}, vector2 : {vector2}");
         Vector3 newPos = vector2 + vector;
-        Instantiate(_block, newPos, Quaternion.identity);
+        UseItem(newPos);
+    }
+    void UseItem(Vector3 newPos)
+    {
+        Slot itemData = inventoryUIManager.droppableList[inventoryUIManager.buttonCount -1].slot;
+        //Debug.Log(itemData.item);
+        if(itemData.item != null)
+        { 
+            //itemData.item.itemType == ItemType.Block && 
+            if (itemData.itemCount > 0)
+            {
+                Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity);
+                itemData.SetSlotCount(-1);
+            }
+        }
     }
 
     public void CheckGameObject(GameObject obj)
     {
         Interact(obj);
+        
     }
     public override void CheckRay()
     {
         int layerMask = (-1) - (1 << LayerMask.NameToLayer("Player"));
-        Vector3 pos = new Vector3(_controller.transform.position.x, _controller.transform.position.y + 1f, _controller.transform.position.z);
+        Vector3 pos = new Vector3(_controller.transform.position.x, _controller.transform.position.y + 1.5f, _controller.transform.position.z);
         Ray ray = new Ray(pos, _controller.Camera.transform.forward);
         Debug.DrawRay(pos, _controller.Camera.transform.forward * 7f, Color.green);
         if (Physics.Raycast(ray, out hit, 7f, layerMask))
@@ -69,38 +136,14 @@ public class PlayerRightClickInteraction : AgentInteraction
             Physics.Raycast(ray, out originHit, 7f, layerMask);
             Vector3 directionVector3 = (hit.transform.position - ray.GetPoint(hit.distance));
             Vector3 dir = originHit.collider.transform.position;
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && InventoryUIManager.inventoryActivated == false)
             {
                 //Debug.Log($"directionVector3 :{directionVector3}");
                 CheckBigger(directionVector3.x, directionVector3.y, directionVector3.z, dir);
 
             }
         }
-        //CanInteract = Physics.Raycast(pos,_controller.Camera.transform.forward ,out hit, 40f,layerMask);
 
-        // Debug.DrawRay(pos, _controller.Camera.transform.forward * 40f, Color.green);
-        // if(CanInteract)
-        // {
-        //     CheckGameObject(hit.collider.gameObject);
-        // }
-        // Ray ray = new Ray(pos, _controller.Camera.transform.forward);
-        // RaycastHit raycastHit;
-        // if (Physics.Raycast(ray, out raycastHit))
-        // {
-        //     Vector3 directionVector = raycastHit.transform.position - ray.GetPoint(raycastHit.distance);
-        //     directionVector *= -2; //���⺤�Ϳ��� Ư�� �� ���� �ٶ󺸰� �ִ� ���� ���� 0.5�� �����Ƿ� �������� int������ ���ֹ����� ����
-        //     Vector3 blockDirectionVector = new Vector3((int)directionVector.x, (int)directionVector.y, (int)directionVector.z);
-        //     //blockDirectionVector = blockDirectionVector.normalized;
-        //     blockDirectionVector *= blockSize;
-        //     Debug.Log(blockDirectionVector);
-        //     if(Input.GetMouseButtonDown(1))
-        //     {
-        //         SetBlock(blockDirectionVector);
-
-        //     }
-        //     //기존 블럭 위치 + 저거 방햑베터 * 블록사이즈
-        //     //0,0,0 ���� ���� �ִµ� �׷� ���� �ٸ� �ڷ� �����ؼ� ���ֺ��� �ٶ�
-        // }
     }
     void CheckBigger(float x, float y, float z, Vector3 originVector)
     {

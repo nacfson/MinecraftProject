@@ -13,7 +13,6 @@ public class ItemButton : MonoBehaviour, IButton
             _buttonImage ??= GetComponent<Image>();
             return _buttonImage;
         }
-
         set
         {
 
