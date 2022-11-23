@@ -7,7 +7,7 @@ using UnityEngine;
 public class CreateMap : MonoBehaviour
 {
     [Space]
-    public static readonly Vector3Int ChunkSize = new Vector3Int(16, 64, 16);
+    public Vector3Int ChunkSize = new Vector3Int(16, 64, 16);
     public Vector2 NoiseScale = Vector2.one;
     public Vector2 NoiseOffset = Vector2.zero;
     [Space]
