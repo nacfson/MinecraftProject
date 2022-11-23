@@ -32,11 +32,7 @@ public class CreateMap : MonoBehaviour
 
     private void Start()
     {
-        
-    }
-    void CreateMApDDD()
-    {
-                TempData = new int[ChunkSize.x, ChunkSize.y, ChunkSize.z];
+        TempData = new int[ChunkSize.x, ChunkSize.y, ChunkSize.z];
 
         for (int x = 0; x < ChunkSize.x; x++)
         {
@@ -151,6 +147,7 @@ public class CreateMap : MonoBehaviour
         }
         CreateChunk();
     }
+
 
     void CreateChunk()
     {
