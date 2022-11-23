@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _saveData:
-    playerPos: {x: 0, y: 0, z: 0}
+    playerPos: {x: 1.8017708, y: 62.404285, z: 5.419994}
     blockData: []
 --- !u!114 &944735324
 MonoBehaviour:

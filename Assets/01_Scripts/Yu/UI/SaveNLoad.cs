@@ -92,26 +92,26 @@ public class SaveNLoad : MonoBehaviour
         }
         if (_saveData.blockData.Count > BlockSpawner.gameObject.transform.childCount)
         {
-
             _saveData.blockData.RemoveRange(_saveData.blockData.Count - BlockSpawner.gameObject.transform.childCount, _saveData.blockData.Count - BlockSpawner.gameObject.transform.childCount);
         }
     }
 
     public void MapLoad()
     {
-        GameObject blockObj = null;
-        Block block = null;
-        Item item = null;
-        if(GameManager.Instance.saveNLoad._saveData.blockData[0].item != null)
-        {
-            for (int i = 0; i < _saveData.blockData.Count; i++)
-            {
-                item = _saveData.blockData[i].item;
-                blockObj = GameObject.Instantiate(item.itemPrefab, BlockSpawner.transform);
-                block = blockObj.GetComponent<Block>();
-                block.blockData = _saveData.blockData[i];
-                block.Init();
-            }
-        }
+        // GameObject blockObj = null;
+        // Block block = null;
+        // Item item = null;
+        // if(GameManager.Instance.saveNLoad._saveData.blockData[0].item != null)
+        // {
+        //     for (int i = 0; i < _saveData.blockData.Count; i++)
+        //     {
+        //         item = _saveData.blockData[i].item;
+        //         blockObj = GameObject.Instantiate(item.itemPrefab, BlockSpawner.transform);
+        //         block = blockObj.GetComponent<Block>();
+        //         Debug.Log(_saveData.blockData[i]);
+        //         block.blockData = _saveData.blockData[i];
+        //         block.Init();
+        //     }
+        // }
     }
 }   

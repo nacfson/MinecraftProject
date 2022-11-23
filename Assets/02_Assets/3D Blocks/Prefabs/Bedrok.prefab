@@ -112,4 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockData:
     blockPos: {x: 0, y: 0, z: 0}
-    item: {fileID: 11400000, guid: a94ccd98019218c4b9ee7b1f8da66598, type: 2}
+    item: {fileID: 11400000, guid: 5cc72832967e6ad4f98ad91d3d27f174, type: 2}

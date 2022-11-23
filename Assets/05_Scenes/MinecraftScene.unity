@@ -3444,16 +3444,16 @@ MonoBehaviour:
   iron: {fileID: 1377162579803422974, guid: 18aadc5a461c13a4bb04aa7a8e503ee1, type: 3}
   gold: {fileID: 1377162579803422974, guid: 65328608174bdae4282e64bae85746d1, type: 3}
   diamond: {fileID: 1377162579803422974, guid: 2d9a8025edfabbc45923dfa5ca14c5cb, type: 3}
-  grassItem: {fileID: 0}
-  dirtItem: {fileID: 0}
-  stoneItem: {fileID: 0}
-  badRockItem: {fileID: 0}
-  woodItem: {fileID: 0}
-  leafItem: {fileID: 0}
-  coalItem: {fileID: 0}
-  ironItem: {fileID: 0}
-  goldItem: {fileID: 0}
-  diamondItem: {fileID: 0}
+  grassItem: {fileID: 11400000, guid: 28f0dba1fc2239b4893c66d7889fac12, type: 2}
+  dirtItem: {fileID: 11400000, guid: ed6681ede92c6db4b99bc6b5aa180065, type: 2}
+  stoneItem: {fileID: 11400000, guid: 88a2beba69265984bb4a343e5274e1f6, type: 2}
+  badRockItem: {fileID: 11400000, guid: 5cc72832967e6ad4f98ad91d3d27f174, type: 2}
+  woodItem: {fileID: 11400000, guid: 3752abcc165e423478498f2be22cdd10, type: 2}
+  leafItem: {fileID: 11400000, guid: de9183bf5984c3f48b350f2f54fd1611, type: 2}
+  coalItem: {fileID: 11400000, guid: 2c2c3049564427646b9771ca34dafa9a, type: 2}
+  ironItem: {fileID: 11400000, guid: ae186130ab7dd344cb192dc8eab04c17, type: 2}
+  goldItem: {fileID: 11400000, guid: 975f823a32b007244b57a794dc148f60, type: 2}
+  diamondItem: {fileID: 11400000, guid: 58ec3917e06f8ed41ac845a36286e9ff, type: 2}
 --- !u!4 &738314002
 Transform:
   m_ObjectHideFlags: 0

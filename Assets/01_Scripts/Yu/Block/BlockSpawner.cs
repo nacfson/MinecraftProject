@@ -10,6 +10,8 @@ public class BlockSpawner : MonoBehaviour
     {
         GameManager.Instance.saveNLoad.BlockSpawner = this;
         GameManager.Instance.saveNLoad.OnLoad();
+            CreateMApDDD();
+
         if (GameManager.Instance.saveNLoad._saveData.blockData.Count == 0)
         {
             Debug.Log("AA");
@@ -59,6 +61,7 @@ public class BlockSpawner : MonoBehaviour
     [SerializeField] Item diamondItem;
 
     GameObject spawnThis;
+    Item applyItem;
 
     private void Start()
     {
@@ -200,16 +203,41 @@ public class BlockSpawner : MonoBehaviour
                                 spawnThis = grass;
                                 CreateWood(x, y, z);
                                 break;
-                            case 2: spawnThis = dirt; break;
-                            case 3: spawnThis = stone; break;
-                            case 4: spawnThis = badRock; break;
-                            case 5: spawnThis = coal; break;
-                            case 6: spawnThis = iron; break;
-                            case 7: spawnThis = gold; break;
-                            case 8: spawnThis = diamond; break;
+                            case 2:
+                            
+                                spawnThis = dirt; 
+                                applyItem = dirtItem;
+                                break;
+                                
+                                
+                            case 3: 
+                                spawnThis = stone;
+                                applyItem = stoneItem; 
+                                break;
+                            case 4: 
+                                spawnThis = badRock; 
+                                applyItem = badRockItem;
+                                break;
+                            case 5: 
+                                spawnThis = coal;
+                                applyItem = coalItem;
+                                break;
+                            case 6: 
+                                spawnThis = iron;
+                                applyItem = ironItem; 
+                                break;
+                            case 7: 
+                                spawnThis = gold;
+                                applyItem = goldItem; 
+                                break;
+                            case 8: 
+                                spawnThis = diamond; 
+                                applyItem = diamondItem;
+                                break;
                         }
                         GameObject obj = Instantiate(spawnThis, new Vector3(x, y, z), Quaternion.identity);
                         obj.transform.SetParent(_blockSpawner);
+                        obj.GetComponent<Block>().blockData.item = applyItem;
                         Debug.Log(obj.transform.parent);
                         obj.GetComponent<Block>().Init();
                     }
