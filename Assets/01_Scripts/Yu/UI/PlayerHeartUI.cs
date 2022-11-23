@@ -14,6 +14,7 @@ public class PlayerHeartUI : MonoBehaviour
     public Image[] imageList;
     void Start()
     {
+        _playerHP = GameObject.FindWithTag("Player").GetComponent<AgentHP>();
         imageList = GetComponentsInChildren<Image>();
         ShowHP();
     }

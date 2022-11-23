@@ -79,7 +79,7 @@ public class InventoryUIManager : MonoBehaviour
 
     public void ShowHandedItem()
     {
-       // handedItem.SetActive(true); 
+        // handedItem.SetActive(true); 
         if (droppableList[buttonCount-1].slot.item != null)
         {
             handedItem.GetComponent<MeshRenderer>().material = _inventorySO.inventoryList[buttonCount - 1].item.mat;
@@ -98,6 +98,7 @@ public class InventoryUIManager : MonoBehaviour
         buttonCount = 1;
         OffRecipeButton();
         ChangeAlpha(0f,_eInventoryPanel);
+        handedItem = GameObject.Find("HandedItem");
 
         
     }
