@@ -36,56 +36,10 @@ public class PlayerRightClickInteraction : AgentInteraction
     {
         _controller = GetComponent<PlayerController>();
         inventoryUIManager = FindObjectOfType<InventoryUIManager>();
-        //world = GameObject.Find("World").GetComponent<World>();
     }
     protected void Update()
     {
         CheckRay();
-        // if(highlightBlock.gameObject.activeSelf)
-        // {
-        //     if(Input.GetMouseButtonDown(0))
-        //     {
-        //         world.GetChunkFromVector3(highlightBlock.position).EditVoxel(highlightBlock.position,0);
-        //     }
-        //     if(Input.GetMouseButtonDown(1))
-        //     {
-        //         world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position,selectedBlockIndex);
-        //     }
-        // }
-        // placeCursorBlocks();
-    }
-    private void placeCursorBlocks () {
-
-        float step = checkIncrement;
-        Vector3 lastPos = new Vector3();
-
-        while (step < reach) {
-
-            Vector3 pos = cam.transform.position + (cam.transform.forward * step);
-
-            if (world.CheckForVoxel(pos)) {
-
-                highlightBlock.position = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
-                placeBlock.position = lastPos;
-
-                highlightBlock.gameObject.SetActive(true);
-                placeBlock.gameObject.SetActive(true);
-
-
-
-
-                return;
-
-            }
-
-            lastPos = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
-
-            step += checkIncrement;
-
-        }
-
-        highlightBlock.gameObject.SetActive(false);
-        placeBlock.gameObject.SetActive(false);
 
     }
 
@@ -112,12 +66,10 @@ public class PlayerRightClickInteraction : AgentInteraction
     void UseItem(Vector3 newPos)
     {
         Slot itemData = inventoryUIManager.droppableList[inventoryUIManager.buttonCount -1].slot;
-        //Debug.Log(itemData.item);
-        //&& itemData.item.itemType == ItemType.Block
         if(itemData.item != null)
         { 
-            //itemData.item.itemType == ItemType.Block && 
-            if (itemData.itemCount > 0 )
+            //&& 
+            if (itemData.itemCount > 0 && itemData.item.itemType == ItemType.Block)
             {
                 Block block = Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity).GetComponent<Block>();
                 block.blockData.item = itemData.item;
@@ -147,12 +99,9 @@ public class PlayerRightClickInteraction : AgentInteraction
             Vector3 dir = originHit.collider.transform.position;
             if (Input.GetMouseButtonDown(1) && InventoryUIManager.inventoryActivated == false)
             {
-                //Debug.Log($"directionVector3 :{directionVector3}");
                 CheckBigger(directionVector3.x, directionVector3.y, directionVector3.z, dir);
-
             }
         }
-
     }
     void CheckBigger(float x, float y, float z, Vector3 originVector)
     {
@@ -192,10 +141,7 @@ public class PlayerRightClickInteraction : AgentInteraction
             else
             {
                 SetBlock(new Vector3(0, 0, -1), originVector);
-
             }
-
         }
-
     }
 }

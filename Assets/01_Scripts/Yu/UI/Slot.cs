@@ -106,7 +106,7 @@ public class Slot : MonoBehaviour
         _countText.enabled = true;
         if(item != null)
         {
-            Debug.Log(item.itemImage);
+                Debug.Log(item.itemImage);
             Debug.Log(itemImage.sprite);
             itemImage.sprite = item.itemImage;
 

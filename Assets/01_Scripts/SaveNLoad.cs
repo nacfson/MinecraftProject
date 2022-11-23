@@ -24,6 +24,16 @@ public class SaveNLoad : MonoBehaviour
 {
     public SaveData _saveData;
     private BlockSpawner _blockSpawner = null;
+    private Transform _playerPos;
+    public Transform PlayerPos
+    {
+        get
+        {
+            _playerPos ??= GameObject.FindWithTag("Player").transform;
+            return _playerPos;
+        }
+        set => _playerPos = value;
+    }
 
     public BlockSpawner BlockSpawner
     {
@@ -39,6 +49,7 @@ public class SaveNLoad : MonoBehaviour
     public void OnSave()
     {
         MapSave();
+        PlayerPosSave();
         string jsonData = JsonUtility.ToJson(_saveData, true);
         string path = Path.Combine(Application.persistentDataPath, "saveData.json");
         File.WriteAllText(path, jsonData);
@@ -56,7 +67,16 @@ public class SaveNLoad : MonoBehaviour
             MapLoad();
         }
     }
-
+    public void PlayerPosSave()
+    {
+        Vector3 vector;
+        vector = PlayerPos.position;
+        _saveData.playerPos = vector;
+    }
+    public void PlayerPosLoad()
+    {
+        PlayerPos.position = _saveData.playerPos;
+    }
     public void MapSave()
     {
         for (int i = 0; i < BlockSpawner.gameObject.transform.childCount; i++)
