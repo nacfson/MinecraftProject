@@ -9,6 +9,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     private PlayerController _controller;
  
     [SerializeField] private GameObject _block;
+    private GameObject _player;
 
     public float blockSize = 1f;
     public InventoryUIManager inventoryUIManager;
@@ -34,8 +35,12 @@ public class PlayerRightClickInteraction : AgentInteraction
     public byte selectedBlockIndex = 1;
     private void Awake()
     {
+        _player ??= GameObject.FindGameObjectWithTag("Player");
+        cam = _player.GetComponentInChildren<Camera>();
+        camTransform = cam.transform;
         _controller = GetComponent<PlayerController>();
         inventoryUIManager = FindObjectOfType<InventoryUIManager>();
+        blockParent = FindObjectOfType<BlockSpawner>().gameObject;
     }
     protected void Update()
     {
@@ -63,6 +68,8 @@ public class PlayerRightClickInteraction : AgentInteraction
         Vector3 newPos = vector2 + vector;
         UseItem(newPos);
     }
+
+
     void UseItem(Vector3 newPos)
     {
         Slot itemData = inventoryUIManager.droppableList[inventoryUIManager.buttonCount -1].slot;
@@ -86,6 +93,11 @@ public class PlayerRightClickInteraction : AgentInteraction
         Interact(obj);
         
     }
+    // bool CheckIsItPlayer(float ff,Vector3 originVector)
+    // {
+
+        
+    // }
     public override void CheckRay()
     {
         int layerMask = (-1) - (1 << LayerMask.NameToLayer("Player"));

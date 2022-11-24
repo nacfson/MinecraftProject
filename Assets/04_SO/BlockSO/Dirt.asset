@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dirt
   m_EditorClassIdentifier: 
   itemName: Dirt
-  itemImage: {fileID: 21300000, guid: c0a46f6056b960742abefdaf71fbf404, type: 3}
+  itemImage: {fileID: -1993844021, guid: 5418bd05ef203f24e9b78479d31f2080, type: 3}
   spriteRenderer: {fileID: 0}
   itemType: 1
   mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
@@ -24,4 +24,3 @@ MonoBehaviour:
   tool: 3
   maxHP: 100
   dropItem: {fileID: 2774671180861367142, guid: 79f2b00fa10aec64c90394bd1a2846e6, type: 3}
-  pos: {x: 0, y: 0, z: 0}

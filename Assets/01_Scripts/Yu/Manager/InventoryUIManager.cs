@@ -98,7 +98,6 @@ public class InventoryUIManager : MonoBehaviour
         buttonCount = 1;
         OffRecipeButton();
         ChangeAlpha(0f,_eInventoryPanel);
-        handedItem = GameObject.Find("HandedItem");
 
         
     }

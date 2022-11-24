@@ -10,6 +10,11 @@ public class PlayerItem : MonoBehaviour
     private LayerMask _layerMask;
     [SerializeField]
     private InventoryUIManager _inventoryUIManager;
+
+    void Awake()
+    {
+        _inventoryUIManager ??= GameObject.Find("InventoryUIManager").GetComponent<InventoryUIManager>();
+    }
     private void Update()
     {
         GetItems();

@@ -20,6 +20,7 @@ public class PlayerLeftClickInteraction : AgentInteraction
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
+        inventoryUIManager = FindObjectOfType<InventoryUIManager>();
         canHit = true;
     }
     protected void Update()
@@ -69,6 +70,10 @@ public class PlayerLeftClickInteraction : AgentInteraction
     {
         if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item == null)
         {
+            // if()
+            // {
+
+            // }
             return 1f;
         }
         else if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.tool == obj.GetComponent<Block>().blockData.item.tool)

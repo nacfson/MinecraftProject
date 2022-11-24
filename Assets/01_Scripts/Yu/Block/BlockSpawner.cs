@@ -9,20 +9,15 @@ public class BlockSpawner : MonoBehaviour
     void Awake()
     {
         GameManager.Instance.saveNLoad.BlockSpawner = this;
-        GameManager.Instance.saveNLoad.OnLoad();
-            CreateMApDDD();
-
-        if (GameManager.Instance.saveNLoad._saveData.blockData.Count == 0)
-        {
-            Debug.Log("AA");
-            CreateMApDDD();
-
-        }
-        else if(GameManager.Instance.saveNLoad._saveData.blockData[0].item == null)
-        {
-            CreateMApDDD();
-            LoadMethod();
-        }
+        CreateMApDDD();
+        // if(!SaveNLoad.saved)
+        // {
+        //     CreateMApDDD();
+        // }
+        // else
+        // {
+        //     GameManager.Instance.saveNLoad.OnLoad();
+        // }
     }
     [Space]
     public Vector3Int ChunkSize = new Vector3Int(16, 64, 16);
@@ -63,13 +58,7 @@ public class BlockSpawner : MonoBehaviour
     GameObject spawnThis;
     Item applyItem;
 
-    private void Start()
-    {
-        //_blockSpawner = this.gameObject.transform;
-        // obj.transform.SetParent(this.transform);
-        // obj.GetComponent<Block>().blockData.item = item;
-        // obj.GetComponent<Block>().Init();
-    }
+
     void CreateMApDDD()
     {
                 TempData = new int[ChunkSize.x, ChunkSize.y, ChunkSize.z];
@@ -238,7 +227,6 @@ public class BlockSpawner : MonoBehaviour
                         GameObject obj = Instantiate(spawnThis, new Vector3(x, y, z), Quaternion.identity);
                         obj.transform.SetParent(_blockSpawner);
                         obj.GetComponent<Block>().blockData.item = applyItem;
-                        Debug.Log(obj.transform.parent);
                         obj.GetComponent<Block>().Init();
                     }
                 }
@@ -252,7 +240,9 @@ public class BlockSpawner : MonoBehaviour
         {
             for (int way = 1; way <= 5; way++)
             {
-                Instantiate(wood, new Vector3(x, y + way, z), Quaternion.identity);
+                GameObject obj1 = Instantiate(wood, new Vector3(x, y + way, z), Quaternion.identity);
+                                        obj1.transform.SetParent(_blockSpawner);
+                        obj1.GetComponent<Block>().Init();
                 for (int exe = 1; exe <= 5; exe++)
                 {
                     for (int zee = 1; zee <= 5; zee++)
