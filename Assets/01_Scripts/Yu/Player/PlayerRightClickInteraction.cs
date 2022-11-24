@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class PlayerRightClickInteraction : AgentInteraction
 {
     private PlayerController _controller;
+    [SerializeField]
+    private Transform _layStartTrm = null;
  
     [SerializeField] private GameObject _block;
     private GameObject _player;
@@ -66,11 +68,11 @@ public class PlayerRightClickInteraction : AgentInteraction
     void SetBlock(Vector3 vector, Vector3 vector2)
     {
         Vector3 newPos = vector2 + vector;
-        UseItem(newPos);
+        UseItem(newPos,vector);
     }
 
 
-    void UseItem(Vector3 newPos)
+    void UseItem(Vector3 newPos,Vector3 direction)
     {
         Slot itemData = inventoryUIManager.droppableList[inventoryUIManager.buttonCount -1].slot;
         if(itemData.item != null)
@@ -78,6 +80,18 @@ public class PlayerRightClickInteraction : AgentInteraction
             //&& 
             if (itemData.itemCount > 0 && itemData.item.itemType == ItemType.Block)
             {
+
+                if(Physics.Raycast(newPos, (_layStartTrm.position - newPos).normalized, 0.5f, 1 << 3))
+                {
+                    Debug.LogError("부딫");
+                    return;
+                }   
+                /*if(Physics.BoxCast(newPos, Vector3.one * 0.5f, direction.normalized, Quaternion.identity, 1f, 1 << 3))
+                {
+                    Debug.LogError("부딫");
+                    return;
+                }*/
+
                 Block block = Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity).GetComponent<Block>();
                 block.blockData.item = itemData.item;
                 block.blockData.blockPos = newPos; 
