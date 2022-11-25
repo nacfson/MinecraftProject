@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StoneAxe
   m_EditorClassIdentifier: 
   itemName: StoneAxe
-  itemImage: {fileID: 21300000, guid: 4e1d36140e27cd648b856d4b32004e56, type: 3}
+  itemImage: {fileID: 334059799, guid: 7928ba2fc8593834d84dda0db13b9e42, type: 3}
   spriteRenderer: {fileID: 0}
   itemType: 2
   mesh: {fileID: -3444995148795218251, guid: bda3df0b090a6d64f9ef4850a025dc3a, type: 3}
@@ -23,3 +23,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 0}
   tool: 1
   maxHP: 0
+  dropItem: {fileID: 0}

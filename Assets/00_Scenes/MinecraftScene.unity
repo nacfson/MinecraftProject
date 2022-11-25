@@ -6297,13 +6297,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soList:
-  - {fileID: 11400000, guid: dae57d74a9b13bb43b0e5ef8bbcd5724, type: 2}
   - {fileID: 11400000, guid: 6be4f50ba97f5a94f923c39fdaf3b3c9, type: 2}
+  - {fileID: 11400000, guid: d5ddb7483fdca22479f29eb0d29233d2, type: 2}
+  - {fileID: 11400000, guid: 941f72aef65b10f4e8169d02942c8dcf, type: 2}
   - {fileID: 11400000, guid: dfb2f133ca0f87240b50921f63799189, type: 2}
-  - {fileID: 11400000, guid: 1b899b23be8f73a4c914455330844403, type: 2}
   - {fileID: 11400000, guid: 1ff3846a8717a564594b89184653ea15, type: 2}
   - {fileID: 11400000, guid: 4050a795ed8205e4c8a74dbbdca5a5fe, type: 2}
+  - {fileID: 11400000, guid: 7852f78ea189c9a4fb050f61a4fd9df4, type: 2}
   - {fileID: 11400000, guid: cbf75d924f1410848944c0118ef6ac88, type: 2}
+  - {fileID: 11400000, guid: dae57d74a9b13bb43b0e5ef8bbcd5724, type: 2}
+  - {fileID: 11400000, guid: 1b899b23be8f73a4c914455330844403, type: 2}
   panelPrefab: {fileID: 2340110442000480721, guid: feb543b2b172325499b9ce42c9d24641, type: 3}
   recipeParent: {fileID: 1834255011}
 --- !u!1001 &1855923979
@@ -9317,7 +9320,6 @@ GameObject:
   - component: {fileID: 167250908017919608}
   - component: {fileID: 3121978202170385095}
   - component: {fileID: 6796881899530696497}
-  - component: {fileID: 3793448625368879026}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
@@ -9325,19 +9327,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &3793448625368879026
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3769865501076084937}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: -0.0000009536743, y: 0, z: 0}
 --- !u!114 &6238775268896856070
 MonoBehaviour:
   m_ObjectHideFlags: 0
