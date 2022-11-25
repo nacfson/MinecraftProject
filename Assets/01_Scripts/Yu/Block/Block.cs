@@ -68,6 +68,10 @@ public class Block : MonoBehaviour
     }
     private void DropItem()
     {
-        Instantiate(blockData.item.dropItem,transform.position,Quaternion.identity);
+        if (blockData.item.dropItem != null)
+        {
+            Instantiate(blockData.item.dropItem,transform.position,Quaternion.identity);
+        }
+
     }
 }

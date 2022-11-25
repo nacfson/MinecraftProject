@@ -16,6 +16,12 @@ public class RecipePanel : MonoBehaviour
             return _inventoryUIManager;
         }
     }
+    public RecipePanelSO RecipePanelSO
+    {
+        get => _recipePanelSO;
+        set => _recipePanelSO = value;
+    }
+
 
     [SerializeField]
     private RecipePanelSO _recipePanelSO;

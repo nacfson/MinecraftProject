@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool _isRun = false;
     public float walkSpeed = 3f;
     public float jumpForce = 300;
-    public float timeBeforeNextJump = 1.2f;
+    public float timeBeforeNextJump = 0.25f;
     private float   canJump = 0f;
     
     public bool _isGronded = true;
