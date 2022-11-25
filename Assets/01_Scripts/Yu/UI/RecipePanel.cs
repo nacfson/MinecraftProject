@@ -57,19 +57,7 @@ public class RecipePanel : MonoBehaviour
         }
 
     }
-    // public void CanMakedItem()
-    // {
-    //     for(int i = 0 ; i < _recipePanelSO.itemList.Count; i++)
-    //     {
-    //         for(int j = 0; j < InventoryUIManager.inventoryList.Count; i++)
-    //         {
-    //             if(_recipePanelSO.itemList[i] == InventoryUIManager.inventoryList[j].item && _recipePanelSO.itemCount[i] == InventoryUIManager.inventoryList[j].itemCount)
-    //             {
 
-    //             }
-    //         }
-    //     }
-    // }
     [ContextMenu("CheckCanMakeItem")]
     public void CheckCanMakeItem()
     {
