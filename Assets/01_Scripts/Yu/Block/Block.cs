@@ -25,7 +25,6 @@ public class Block : MonoBehaviour,EInit
     private AudioSource _audioSource;
 
 
-    [SerializeField]
     BreakingBlock _breakingBlock;
 
 
@@ -35,13 +34,14 @@ public class Block : MonoBehaviour,EInit
     {
         _collider = GetComponent<BoxCollider>();
         _audioSource = GetComponent<AudioSource>(); 
+        _breakingBlock = GetComponent<BreakingBlock>();
 
     }
 
     public void Init()
     {
         _maxHP = blockData.item.maxHP;
-        HPReset();
+        //HPReset();
         transform.position = blockData.blockPos;
         blockData.blockPos = transform.position;
         _hp = _maxHP;
@@ -57,10 +57,6 @@ public class Block : MonoBehaviour,EInit
             }
         }
         _hp -= speed;
-
-
-        Debug.Log(_hp);
-
 
         _breakingBlock.BreakingBlockTexturing(_hp / _maxHP, transform.position);
 
@@ -90,6 +86,7 @@ public class Block : MonoBehaviour,EInit
     public void HPReset()
     {
         _hp = _maxHP;
+        GetComponent<MeshRenderer>().material = blockData.item.mat;
     }
 
     public void OnEnable()

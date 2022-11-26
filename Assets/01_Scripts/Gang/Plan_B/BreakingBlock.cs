@@ -5,12 +5,6 @@ using UnityEngine;
 public class BreakingBlock : MonoBehaviour
 {
     [SerializeField] Material[] breakingTexture;
-    float i = 0;
-    private void Update()
-    {
-        i += Time.deltaTime / 10;
-        BreakingBlockTexturing(i, new Vector3(0, 0, 0));
-    }
 
     public void BreakingBlockTexturing(float breakingRate, Vector3 pos)
     {
