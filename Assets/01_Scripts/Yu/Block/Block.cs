@@ -19,12 +19,16 @@ public class Block : MonoBehaviour
     [NonSerialized] 
     private BoxCollider _collider;
 
+    [SerializeField]
+    BreakingBlock _breakingBlock;
+
 
     public BlockData blockData;
     private void Awake()
     {
         _collider = GetComponent<BoxCollider>();        
     }
+
     public void Init()
     {
         _maxHP = blockData.item.maxHP;
@@ -38,6 +42,7 @@ public class Block : MonoBehaviour
         _hp -= speed;
         Debug.Log(_hp);
         //Debug.Log(_hp);
+        _breakingBlock.BreakingBlockTexturing(_hp / _maxHP, transform.position);
         if(_hp <= 0 )
         {
             Destruction();
