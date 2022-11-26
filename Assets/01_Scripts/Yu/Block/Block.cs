@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 using System;
+using UnityEditor.SceneManagement;
+
 [System.Serializable]
-public class Block : MonoBehaviour
+public class Block : MonoBehaviour,EInit
 {
     [SerializeField,NonSerialized] 
     private float _hp;
@@ -18,12 +21,14 @@ public class Block : MonoBehaviour
     private TextMeshPro _tmp;
     [NonSerialized] 
     private BoxCollider _collider;
-
+    private AudioSource _audioSource;
 
     public BlockData blockData;
     private void Awake()
     {
-        _collider = GetComponent<BoxCollider>();        
+        _collider = GetComponent<BoxCollider>();
+        _audioSource = GetComponent<AudioSource>(); 
+
     }
     public void Init()
     {
@@ -36,8 +41,8 @@ public class Block : MonoBehaviour
     public void Mining(float speed,InventoryUIManager inventoryUIManager)
     {
         _hp -= speed;
+        //blockData.item.miningAudioClip.Play();
         Debug.Log(_hp);
-        //Debug.Log(_hp);
         if(_hp <= 0 )
         {
             Destruction();
@@ -55,6 +60,7 @@ public class Block : MonoBehaviour
     {
         _collider.enabled = false;
         DropItem();
+        SoundManager.instance.SFXPlay("SoundObject", "classic_hurt");
         Destroy(gameObject);
     }
     public void HPReset()
@@ -74,4 +80,5 @@ public class Block : MonoBehaviour
         }
 
     }
+
 }

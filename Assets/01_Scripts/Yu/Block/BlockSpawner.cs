@@ -61,7 +61,7 @@ public class BlockSpawner : MonoBehaviour
 
     void CreateMApDDD()
     {
-                TempData = new int[ChunkSize.x, ChunkSize.y, ChunkSize.z];
+        TempData = new int[ChunkSize.x, ChunkSize.y, ChunkSize.z];
 
         for (int x = 0; x < ChunkSize.x; x++)
         {

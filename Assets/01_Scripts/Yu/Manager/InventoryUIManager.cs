@@ -193,11 +193,8 @@ public class InventoryUIManager : MonoBehaviour
         _inventoryShowPanelMin.SetActive(true);
         for(int i= 0; i< _eInventoryPanel.transform.childCount; i++)
         {
-
-                ChangeAlpha(1f,_eInventoryPanel.transform.GetChild(i).gameObject);
-                _eInventoryPanel.transform.GetChild(i).gameObject.GetComponent<DroppableUI>().GetComponentInChildren<Slot>().ShowSlot();
-
-            
+            ChangeAlpha(1f,_eInventoryPanel.transform.GetChild(i).gameObject);
+            _eInventoryPanel.transform.GetChild(i).gameObject.GetComponent<DroppableUI>().GetComponentInChildren<Slot>().ShowSlot();
         }
 
     }

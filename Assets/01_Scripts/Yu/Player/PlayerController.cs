@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float _lookSensitivity;
-        public bool IsCrouch
+    public bool IsCrouch
     {
         get
         {
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerController playerController;
 
-        //앉았응 때 얼마나 앉았을지 결정하는 변수
+        //앉았을 때 얼마나 앉았을지 결정하는 변수
     [SerializeField]
     private float crouchPosY;
     private float originPosY;

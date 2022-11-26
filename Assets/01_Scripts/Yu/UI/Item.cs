@@ -16,6 +16,8 @@ public class Item : ScriptableObject
     public GameObject itemPrefab;
     public ETool tool;
     public float maxHP;
+    public AudioClip destructionAudioClip;
+    public AudioClip miningAudioClip;
 
 
     public GameObject dropItem;
