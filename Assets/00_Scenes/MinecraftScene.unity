@@ -6297,6 +6297,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soList:
+  - {fileID: 11400000, guid: 77e8e5c369d06884399989f683de6df2, type: 2}
+  - {fileID: 11400000, guid: b06b8e77f5a16ec4b9b645f040e53dfb, type: 2}
+  - {fileID: 11400000, guid: e13b93f1fc018414b8c6a82de1ec92f3, type: 2}
+  - {fileID: 11400000, guid: 3825e58cdf2bbc04cbd608261fb9d542, type: 2}
   - {fileID: 11400000, guid: 6be4f50ba97f5a94f923c39fdaf3b3c9, type: 2}
   - {fileID: 11400000, guid: d5ddb7483fdca22479f29eb0d29233d2, type: 2}
   - {fileID: 11400000, guid: 941f72aef65b10f4e8169d02942c8dcf, type: 2}

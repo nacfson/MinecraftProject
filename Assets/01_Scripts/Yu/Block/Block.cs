@@ -58,7 +58,7 @@ public class Block : MonoBehaviour,EInit
         }
         _hp -= speed;
 
-        _breakingBlock.BreakingBlockTexturing(_hp / _maxHP, transform.position);
+        //_breakingBlock.BreakingBlockTexturing(_hp / _maxHP, transform.position);
 
         if(_hp <= 0 )
         {
@@ -86,7 +86,7 @@ public class Block : MonoBehaviour,EInit
     public void HPReset()
     {
         _hp = _maxHP;
-        GetComponent<MeshRenderer>().material = blockData.item.mat;
+        //GetComponent<MeshRenderer>().material = blockData.item.mat;
     }
 
     public void OnEnable()
