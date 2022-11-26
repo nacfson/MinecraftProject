@@ -116,7 +116,6 @@ public class InventoryUIManager : MonoBehaviour
         SetNullImage();
         //SetHighLightInventory();
         ShowHandedItem();
-        ShowDurability();
     }
 
 
@@ -199,28 +198,7 @@ public class InventoryUIManager : MonoBehaviour
         }
 
     }
-    void ShowDurability()
-    {
-        for(int i = 0; i<droppableList.Count; i++)
-        {
-            if(droppableList[i].slot.item != null)
-            {
-                if(droppableList[i].slot.item.itemType == ItemType.Tool)
-                {
-                    droppableList[i].slot.transform.Find("Slider").GetComponent<Slider>().value = droppableList[i].slot.item.durability / droppableList[i].slot.item.durability;
-                }
-                else
-                {
-                    droppableList[i].slot.transform.Find("Slider").gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                droppableList[i].slot.transform.Find("Slider").gameObject.SetActive(false);
-            }
 
-        }
-    }
     void UnUseInventory()
     {
 
