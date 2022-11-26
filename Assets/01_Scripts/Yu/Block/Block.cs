@@ -21,14 +21,14 @@ public class Block : MonoBehaviour,EInit
     private TextMeshPro _tmp;
     [NonSerialized] 
     private BoxCollider _collider;
-<<<<<<< HEAD
+
     private AudioSource _audioSource;
-=======
+
 
     [SerializeField]
     BreakingBlock _breakingBlock;
 
->>>>>>> Gang
+
 
     public BlockData blockData;
     private void Awake()
@@ -57,14 +57,13 @@ public class Block : MonoBehaviour,EInit
             }
         }
         _hp -= speed;
-        //blockData.item.miningAudioClip.Play();
+
 
         Debug.Log(_hp);
-<<<<<<< HEAD
-=======
-        //Debug.Log(_hp);
+
+
         _breakingBlock.BreakingBlockTexturing(_hp / _maxHP, transform.position);
->>>>>>> Gang
+
         if(_hp <= 0 )
         {
             Destruction();
