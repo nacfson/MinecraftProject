@@ -91,6 +91,8 @@ public class PlayerRightClickInteraction : AgentInteraction
                 Block block = Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity).GetComponent<Block>();
                 block.blockData.item = itemData.item;
                 block.blockData.blockPos = newPos; 
+
+                
                 if(block.blockData.item.miningClipName != "")
                 {
                     SoundManager.instance.SFXPlay("MakingSound",block.blockData.item.miningClipName);
