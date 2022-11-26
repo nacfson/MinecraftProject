@@ -7,6 +7,8 @@ TagManager:
   - BLOCK
   - ITEM
   - CANHIT
+  - WeakAnimal
+  - StrongAnimal
   layers:
   - Default
   - TransparentFX

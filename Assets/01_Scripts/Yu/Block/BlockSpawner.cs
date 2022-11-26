@@ -39,6 +39,7 @@ public class BlockSpawner : MonoBehaviour
                 GameObject obj2 = Instantiate(_block3, pos2, Quaternion.identity);
 
 
+
                 obj.transform.SetParent(this.transform);
                 obj.GetComponent<Block>().blockData.item = item;
                 obj.GetComponent<Block>().Init();

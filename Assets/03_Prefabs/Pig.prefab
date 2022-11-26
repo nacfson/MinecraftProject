@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 5507853582521643309}
   m_Layer: 0
   m_Name: Pig
-  m_TagString: Untagged
+  m_TagString: WeakAnimal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -493,21 +493,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalName: Pig
-  hp: 2
+  hp: 5
   walkSpeed: 2
-  runSpeed: 0
+  runSpeed: 4
+  turningSpeed: 0.1
   walkTime: 5
   waitTime: 4
-  runTime: 0
+  runTime: 5
   anim: {fileID: 9167614725294156473}
   rigid: {fileID: 8356570759456201880}
   boxCol: {fileID: 8356570759456201881}
-  sound_pig_Normal:
+  sound_Normal:
   - {fileID: 8300000, guid: 5aa3d69f0a29f2642bd8a2353bc50594, type: 3}
   - {fileID: 8300000, guid: 928976c019db267409240b25d47ee23c, type: 3}
   - {fileID: 8300000, guid: eac0a33a4d61938478114cd90994f88a, type: 3}
-  sound_pig_Hurt: {fileID: 8300000, guid: dd32d5beb6494e449954dc93173b60f8, type: 3}
-  sound_pig_Dead: {fileID: 8300000, guid: 6af840fc575ec484bb575ca63a048ce7, type: 3}
+  sound_Hurt: {fileID: 8300000, guid: dd32d5beb6494e449954dc93173b60f8, type: 3}
+  sound_Dead: {fileID: 8300000, guid: 6af840fc575ec484bb575ca63a048ce7, type: 3}
 --- !u!82 &5833220097525336802
 AudioSource:
   m_ObjectHideFlags: 0
@@ -625,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d833f544cf42bc4bba1ad1caed96585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAngle: 130
+  viewAngle: 100
   viewDistance: 10
   targetMask:
     serializedVersion: 2
@@ -656,11 +657,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentManager: {fileID: 0}
+  playerController: {fileID: 0}
   hp: 0
   maxHP: 10
   Hit:
     m_PersistentCalls:
       m_Calls: []
+  playerHeartUI: {fileID: 0}
   _knockBackValue: 0
 --- !u!114 &5507853582521643309
 MonoBehaviour:

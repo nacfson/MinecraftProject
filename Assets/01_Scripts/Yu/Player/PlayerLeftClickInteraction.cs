@@ -56,6 +56,17 @@ public class PlayerLeftClickInteraction : AgentInteraction
                     }
                 }
             }
+            else if (obj.tag == nameof(WeakAnimal) && InventoryUIManager.inventoryActivated == false)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if(canHit)
+                    {
+                        obj.GetComponent<WeakAnimal>().Damage((int)CheckUsingSword(obj), transform.position);
+                        StartCoroutine(HitCor());
+                    }
+                }
+            }
         }
     }
     IEnumerator HitCor()
