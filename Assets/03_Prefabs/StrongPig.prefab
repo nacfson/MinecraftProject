@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 5507853582521643309}
   - component: {fileID: -2708375697110697825}
   m_Layer: 0
-  m_Name: Pig
+  m_Name: StrongPig
   m_TagString: WeakAnimal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
