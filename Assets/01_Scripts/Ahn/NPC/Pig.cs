@@ -137,7 +137,8 @@ public class Pig : MonoBehaviour//인프런 5분40초
     {
         if(!isDead){
             hp -= _damage;
-            if(hp <= 0)
+            SoundManager.instance.SFXPlay("SoundObject", "classic_hurt");
+            if (hp <= 0)
             {
                 Dead();
                 return;

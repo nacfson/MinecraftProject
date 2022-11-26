@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SO/Item")]
+[CreateAssetMenu(menuName = "SO/stat")]
 public class Item : ScriptableObject
 {
     public string itemName;
@@ -16,6 +16,8 @@ public class Item : ScriptableObject
     public GameObject itemPrefab;
     public ETool tool;
     public float maxHP;
+    public AudioClip destructionAudioClip;
+    public AudioClip miningAudioClip;
 
 
     public GameObject dropItem;

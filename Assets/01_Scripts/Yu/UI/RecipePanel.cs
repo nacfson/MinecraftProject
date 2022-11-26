@@ -137,7 +137,6 @@ public class RecipePanel : MonoBehaviour
                 if (InventoryUIManager.droppableList[i].slot.item == _recipePanelSO.makedItem)
                 {
                     InventoryUIManager.droppableList[i].slot.SetSlotCount(_recipePanelSO.makedCount);
-                    Debug.Log("NotNull");
                     canCheck = false;
                     break;
                 }
