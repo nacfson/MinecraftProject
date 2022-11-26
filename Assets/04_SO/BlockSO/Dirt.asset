@@ -23,6 +23,6 @@ MonoBehaviour:
   itemPrefab: {fileID: 1377162579803422974, guid: 18c0e288456f8f44ea7912c805bfb446, type: 3}
   tool: 3
   maxHP: 100
-  destructionAudioClip: {fileID: 8300000, guid: fc1f126d55e94874cb9370e1d6c6a614, type: 3}
-  miningAudioClip: {fileID: 0}
+  clipName: 
+  miningClipName: digging
   dropItem: {fileID: 2774671180861367142, guid: 79f2b00fa10aec64c90394bd1a2846e6, type: 3}

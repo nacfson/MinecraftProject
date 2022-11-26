@@ -86,15 +86,16 @@ public class PlayerRightClickInteraction : AgentInteraction
                     Debug.LogError("부딫");
                     return;
                 }   
-                /*if(Physics.BoxCast(newPos, Vector3.one * 0.5f, direction.normalized, Quaternion.identity, 1f, 1 << 3))
-                {
-                    Debug.LogError("부딫");
-                    return;
-                }*/
+
 
                 Block block = Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity).GetComponent<Block>();
                 block.blockData.item = itemData.item;
                 block.blockData.blockPos = newPos; 
+                if(block.blockData.item.miningClipName != "")
+                {
+                    SoundManager.instance.SFXPlay("MakingSound",block.blockData.item.miningClipName);
+                }
+        
                 block.Init();
                 block.transform.SetParent(blockParent.transform);
                 itemData.SetSlotCount(-1);

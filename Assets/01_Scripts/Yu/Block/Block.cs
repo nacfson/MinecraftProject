@@ -40,8 +40,17 @@ public class Block : MonoBehaviour,EInit
     }
     public void Mining(float speed,InventoryUIManager inventoryUIManager)
     {
+        if(blockData.item.miningClipName != "")
+        {
+            if(_hp >= _maxHP - 1)
+            {
+            SoundManager.instance.SFXPlay("MiningSound",blockData.item.miningClipName);
+
+            }
+        }
         _hp -= speed;
         //blockData.item.miningAudioClip.Play();
+
         Debug.Log(_hp);
         if(_hp <= 0 )
         {
@@ -60,7 +69,10 @@ public class Block : MonoBehaviour,EInit
     {
         _collider.enabled = false;
         DropItem();
-        SoundManager.instance.SFXPlay("SoundObject", "classic_hurt");
+        if(blockData.item.clipName != "")
+        {
+            SoundManager.instance.SFXPlay("SoundObject", blockData.item.clipName);
+        }
         Destroy(gameObject);
     }
     public void HPReset()
