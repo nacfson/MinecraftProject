@@ -16,6 +16,12 @@ public class RecipePanel : MonoBehaviour
             return _inventoryUIManager;
         }
     }
+    public RecipePanelSO RecipePanelSO
+    {
+        get => _recipePanelSO;
+        set => _recipePanelSO = value;
+    }
+
 
     [SerializeField]
     private RecipePanelSO _recipePanelSO;
@@ -51,19 +57,7 @@ public class RecipePanel : MonoBehaviour
         }
 
     }
-    // public void CanMakedItem()
-    // {
-    //     for(int i = 0 ; i < _recipePanelSO.itemList.Count; i++)
-    //     {
-    //         for(int j = 0; j < InventoryUIManager.inventoryList.Count; i++)
-    //         {
-    //             if(_recipePanelSO.itemList[i] == InventoryUIManager.inventoryList[j].item && _recipePanelSO.itemCount[i] == InventoryUIManager.inventoryList[j].itemCount)
-    //             {
 
-    //             }
-    //         }
-    //     }
-    // }
     [ContextMenu("CheckCanMakeItem")]
     public void CheckCanMakeItem()
     {
@@ -143,7 +137,6 @@ public class RecipePanel : MonoBehaviour
                 if (InventoryUIManager.droppableList[i].slot.item == _recipePanelSO.makedItem)
                 {
                     InventoryUIManager.droppableList[i].slot.SetSlotCount(_recipePanelSO.makedCount);
-                    Debug.Log("NotNull");
                     canCheck = false;
                     break;
                 }

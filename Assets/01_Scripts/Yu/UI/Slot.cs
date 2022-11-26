@@ -46,6 +46,11 @@ public class Slot : MonoBehaviour
         ShowSlot();
 
     }
+    	public void HideSlot()
+	{
+		_countText.enabled = false;
+        itemImage.enabled = false;
+	}
 
 
     public void AddItem(Item _item, int _count = 1)
@@ -57,6 +62,8 @@ public class Slot : MonoBehaviour
         if (_item.itemImage != null)
         {
             itemImage.sprite = _item.itemImage;
+        itemImage.enabled = true;
+
         }
         if(item.itemType != ItemType.Equipment)
         {
@@ -101,21 +108,21 @@ public class Slot : MonoBehaviour
 
 
     }
+
     public void ShowSlot()
     {
         _countText.enabled = true;
         if(item != null)
         {
-            Debug.Log(item.itemImage);
+                Debug.Log(item.itemImage);
             Debug.Log(itemImage.sprite);
             itemImage.sprite = item.itemImage;
-
+            itemImage.enabled = true;
             ChangeAlpha(1f);
         }
         if(itemCount >0)
         {
             _countText.text = $"{itemCount}";
-            
         }
         else
         {

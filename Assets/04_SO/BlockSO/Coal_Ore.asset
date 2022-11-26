@@ -19,8 +19,10 @@ MonoBehaviour:
   mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
   mat: {fileID: 2100000, guid: 1974a3bbe1ca1ec4daaf7393764c1218, type: 2}
   durability: 2147483647
-  itemLevel: 0
+  itemLevel: 2
   itemPrefab: {fileID: 1338246871020372, guid: 3d0413c73c36dfb448f1651276709473, type: 3}
   tool: 0
   maxHP: 450
-  dropItem: {fileID: 2774671180861367142, guid: 3097c93b14647d845877ea06cbba2bc3, type: 3}
+  destructionAudioClip: {fileID: 8300000, guid: fc1f126d55e94874cb9370e1d6c6a614, type: 3}
+  miningAudioClip: {fileID: 0}
+  dropItem: {fileID: 2774671180861367142, guid: 49cf6cffa6378a34e8ca5bb85eb4b32a, type: 3}

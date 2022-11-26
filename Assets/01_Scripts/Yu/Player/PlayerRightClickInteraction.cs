@@ -7,12 +7,15 @@ using UnityEngine.Events;
 public class PlayerRightClickInteraction : AgentInteraction
 {
     private PlayerController _controller;
+    [SerializeField]
+    private Transform _layStartTrm = null;
  
     [SerializeField] private GameObject _block;
+    private GameObject _player;
 
     public float blockSize = 1f;
     public InventoryUIManager inventoryUIManager;
-    public World world;
+    //public World world;
     public GameObject blockParent;
     
 
@@ -34,58 +37,16 @@ public class PlayerRightClickInteraction : AgentInteraction
     public byte selectedBlockIndex = 1;
     private void Awake()
     {
+        _player ??= GameObject.FindGameObjectWithTag("Player");
+        cam = _player.GetComponentInChildren<Camera>();
+        camTransform = cam.transform;
         _controller = GetComponent<PlayerController>();
         inventoryUIManager = FindObjectOfType<InventoryUIManager>();
-        //world = GameObject.Find("World").GetComponent<World>();
+        blockParent = FindObjectOfType<BlockSpawner>().gameObject;
     }
     protected void Update()
     {
         CheckRay();
-        // if(highlightBlock.gameObject.activeSelf)
-        // {
-        //     if(Input.GetMouseButtonDown(0))
-        //     {
-        //         world.GetChunkFromVector3(highlightBlock.position).EditVoxel(highlightBlock.position,0);
-        //     }
-        //     if(Input.GetMouseButtonDown(1))
-        //     {
-        //         world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position,selectedBlockIndex);
-        //     }
-        // }
-        // placeCursorBlocks();
-    }
-    private void placeCursorBlocks () {
-
-        float step = checkIncrement;
-        Vector3 lastPos = new Vector3();
-
-        while (step < reach) {
-
-            Vector3 pos = cam.transform.position + (cam.transform.forward * step);
-
-            if (world.CheckForVoxel(pos)) {
-
-                highlightBlock.position = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
-                placeBlock.position = lastPos;
-
-                highlightBlock.gameObject.SetActive(true);
-                placeBlock.gameObject.SetActive(true);
-
-
-
-
-                return;
-
-            }
-
-            lastPos = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
-
-            step += checkIncrement;
-
-        }
-
-        highlightBlock.gameObject.SetActive(false);
-        placeBlock.gameObject.SetActive(false);
 
     }
 
@@ -107,18 +68,30 @@ public class PlayerRightClickInteraction : AgentInteraction
     void SetBlock(Vector3 vector, Vector3 vector2)
     {
         Vector3 newPos = vector2 + vector;
-        UseItem(newPos);
+        UseItem(newPos,vector);
     }
-    void UseItem(Vector3 newPos)
+
+
+    void UseItem(Vector3 newPos,Vector3 direction)
     {
         Slot itemData = inventoryUIManager.droppableList[inventoryUIManager.buttonCount -1].slot;
-        //Debug.Log(itemData.item);
-        //&& itemData.item.itemType == ItemType.Block
         if(itemData.item != null)
         { 
-            //itemData.item.itemType == ItemType.Block && 
-            if (itemData.itemCount > 0 )
+            //&& 
+            if (itemData.itemCount > 0 && itemData.item.itemType == ItemType.Block)
             {
+
+                if(Physics.Raycast(newPos, (_layStartTrm.position - newPos).normalized, 0.5f, 1 << 3))
+                {
+                    Debug.LogError("부딫");
+                    return;
+                }   
+                /*if(Physics.BoxCast(newPos, Vector3.one * 0.5f, direction.normalized, Quaternion.identity, 1f, 1 << 3))
+                {
+                    Debug.LogError("부딫");
+                    return;
+                }*/
+
                 Block block = Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity).GetComponent<Block>();
                 block.blockData.item = itemData.item;
                 block.blockData.blockPos = newPos; 
@@ -134,6 +107,11 @@ public class PlayerRightClickInteraction : AgentInteraction
         Interact(obj);
         
     }
+    // bool CheckIsItPlayer(float ff,Vector3 originVector)
+    // {
+
+        
+    // }
     public override void CheckRay()
     {
         int layerMask = (-1) - (1 << LayerMask.NameToLayer("Player"));
@@ -147,12 +125,9 @@ public class PlayerRightClickInteraction : AgentInteraction
             Vector3 dir = originHit.collider.transform.position;
             if (Input.GetMouseButtonDown(1) && InventoryUIManager.inventoryActivated == false)
             {
-                //Debug.Log($"directionVector3 :{directionVector3}");
                 CheckBigger(directionVector3.x, directionVector3.y, directionVector3.z, dir);
-
             }
         }
-
     }
     void CheckBigger(float x, float y, float z, Vector3 originVector)
     {
@@ -192,10 +167,7 @@ public class PlayerRightClickInteraction : AgentInteraction
             else
             {
                 SetBlock(new Vector3(0, 0, -1), originVector);
-
             }
-
         }
-
     }
 }

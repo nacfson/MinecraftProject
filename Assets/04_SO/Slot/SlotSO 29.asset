@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ee18646388a584882cd009fd328ed2, type: 3}
   m_Name: SlotSO 29
   m_EditorClassIdentifier: 
-  index: 0
   item: {fileID: 0}
+  itemCount: 0

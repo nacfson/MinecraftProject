@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class InventoryUIManager : MonoBehaviour
 {
     public InventorySO InventorySO
@@ -79,7 +79,7 @@ public class InventoryUIManager : MonoBehaviour
 
     public void ShowHandedItem()
     {
-       // handedItem.SetActive(true); 
+        // handedItem.SetActive(true); 
         if (droppableList[buttonCount-1].slot.item != null)
         {
             handedItem.GetComponent<MeshRenderer>().material = _inventorySO.inventoryList[buttonCount - 1].item.mat;
@@ -114,8 +114,9 @@ public class InventoryUIManager : MonoBehaviour
     {
         GetInputs();
         SetNullImage();
-        SetHighLightInventory();
+        //SetHighLightInventory();
         ShowHandedItem();
+        ShowDurability();
     }
 
 
@@ -194,8 +195,31 @@ public class InventoryUIManager : MonoBehaviour
         for(int i= 0; i< _eInventoryPanel.transform.childCount; i++)
         {
             ChangeAlpha(1f,_eInventoryPanel.transform.GetChild(i).gameObject);
+            _eInventoryPanel.transform.GetChild(i).gameObject.GetComponent<DroppableUI>().GetComponentInChildren<Slot>().ShowSlot();
         }
 
+    }
+    void ShowDurability()
+    {
+        for(int i = 0; i<droppableList.Count; i++)
+        {
+            if(droppableList[i].slot.item != null)
+            {
+                if(droppableList[i].slot.item.itemType == ItemType.Tool)
+                {
+                    droppableList[i].slot.transform.Find("Slider").GetComponent<Slider>().value = droppableList[i].slot.item.durability / droppableList[i].slot.item.durability;
+                }
+                else
+                {
+                    droppableList[i].slot.transform.Find("Slider").gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                droppableList[i].slot.transform.Find("Slider").gameObject.SetActive(false);
+            }
+
+        }
     }
     void UnUseInventory()
     {
@@ -209,7 +233,12 @@ public class InventoryUIManager : MonoBehaviour
 
         for(int i= 0; i< _eInventoryPanel.transform.childCount; i++)
         {
-            ChangeAlpha(0f,_eInventoryPanel.transform.GetChild(i).gameObject);
+
+                ChangeAlpha(0f,_eInventoryPanel.transform.GetChild(i).gameObject);
+
+                _eInventoryPanel.transform.GetChild(i).gameObject.GetComponent<DroppableUI>().GetComponentInChildren<Slot>().HideSlot();
+            
+            
         }
         _inventoryShowPanelMin.SetActive(false);
 
@@ -237,7 +266,9 @@ public class InventoryUIManager : MonoBehaviour
                 UseInventory();
                 inventoryActivated = true;
                 Cursor.lockState = CursorLockMode.None;
+
             }
+
         }
     }
     void CheckCount()
@@ -260,6 +291,7 @@ public class InventoryUIManager : MonoBehaviour
             buttonCount = 8;
         if(Input.GetKeyDown(KeyCode.Alpha9))
             buttonCount = 9;
+        SetHighLightInventory();
     }
 
     public void AcquireItem(Item _item,  int _count)

@@ -21,3 +21,8 @@ MonoBehaviour:
   durability: 0
   itemLevel: 0
   itemPrefab: {fileID: 0}
+  tool: 0
+  maxHP: 1e+9
+  destructionAudioClip: {fileID: 8300000, guid: fc1f126d55e94874cb9370e1d6c6a614, type: 3}
+  miningAudioClip: {fileID: 0}
+  dropItem: {fileID: 0}

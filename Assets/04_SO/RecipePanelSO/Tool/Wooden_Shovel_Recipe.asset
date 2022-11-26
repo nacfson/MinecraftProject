@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d2f526a2a8b6f45b47635ef3d2ad24, type: 3}
+  m_Name: Wooden_Shovel_Recipe
+  m_EditorClassIdentifier: 
+  itemList:
+  - {fileID: 11400000, guid: fb3114e142ce9aa48acb237822de8bef, type: 2}
+  - {fileID: 11400000, guid: ad2448de64f2e794495c0827f69f051b, type: 2}
+  itemCount: 0100000002000000
+  definedInt: 2
+  makedItem: {fileID: 11400000, guid: 2ba350dc5ae7f6a4f9ae697b8458c004, type: 2}
+  makedCount: 1
