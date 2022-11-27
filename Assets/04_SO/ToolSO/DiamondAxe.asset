@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844ad10842615f4459a318a7566f3971, type: 3}
   m_Name: DiamondAxe
   m_EditorClassIdentifier: 
-  itemName: IronAxe
-  itemImage: {fileID: 1599288883, guid: 7928ba2fc8593834d84dda0db13b9e42, type: 3}
+  itemName: DiamondAxe
+  itemImage: {fileID: -1071589565, guid: 7928ba2fc8593834d84dda0db13b9e42, type: 3}
   spriteRenderer: {fileID: 0}
   itemType: 2
   mesh: {fileID: -3444995148795218251, guid: bda3df0b090a6d64f9ef4850a025dc3a, type: 3}
   mat: {fileID: 2100000, guid: f7ebf90318e22d14ba2b9db3099952a4, type: 2}
-  durability: 240
-  itemLevel: 4
+  durability: 720
+  itemLevel: 5
   itemPrefab: {fileID: 0}
   tool: 1
   maxHP: 0
-  destructionAudioClip: {fileID: 0}
-  miningAudioClip: {fileID: 0}
+  clipName: 
+  miningClipName: 
+  dropPercent: 100
   dropItem: {fileID: 0}

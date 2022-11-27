@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DiamondPickaxe
   m_EditorClassIdentifier: 
   itemName: DiamondPickaxe
-  itemImage: {fileID: 814425985, guid: 7928ba2fc8593834d84dda0db13b9e42, type: 3}
+  itemImage: {fileID: -781976713, guid: 7928ba2fc8593834d84dda0db13b9e42, type: 3}
   spriteRenderer: {fileID: 0}
   itemType: 0
   mesh: {fileID: 4987632398419711469, guid: 0a0700fed163c8d4296683bf57d90dc8, type: 3}
