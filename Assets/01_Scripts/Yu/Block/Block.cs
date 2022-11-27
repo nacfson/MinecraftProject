@@ -26,7 +26,7 @@ public class Block : MonoBehaviour,EInit
 
 
     BreakingBlock _breakingBlock;
-
+    Material originMaterial;
 
 
     public BlockData blockData;
@@ -35,6 +35,7 @@ public class Block : MonoBehaviour,EInit
         _collider = GetComponent<BoxCollider>();
         _audioSource = GetComponent<AudioSource>(); 
         _breakingBlock = GetComponent<BreakingBlock>();
+        originMaterial = GetComponent<MeshRenderer>().materials[0]; 
 
     }
 
@@ -48,6 +49,7 @@ public class Block : MonoBehaviour,EInit
     }
     public void Mining(float speed,InventoryUIManager inventoryUIManager)
     {
+        _breakingBlock.BreakingBlockTexturing(_hp / _maxHP);
         if(blockData.item.miningClipName != "")
         {
             if(_hp >= _maxHP - 1)
@@ -75,6 +77,7 @@ public class Block : MonoBehaviour,EInit
     }
     private void Destruction()
     {
+        GetComponent<MeshRenderer>().materials[0] = null;
         _collider.enabled = false;
         DropItem();
         if(blockData.item.clipName != "")
@@ -86,6 +89,7 @@ public class Block : MonoBehaviour,EInit
     public void HPReset()
     {
         _hp = _maxHP;
+        GetComponent<MeshRenderer>().materials = new Material[1] {originMaterial};
         //GetComponent<MeshRenderer>().material = blockData.item.mat;
     }
 
@@ -102,4 +106,51 @@ public class Block : MonoBehaviour,EInit
 
     }
 
+    [SerializeField] Material[] breakingTexture;
+
+    public void BreakingBlockTexturing(float breakingRate)
+    {
+        Material originMaterial = GetComponent<MeshRenderer>().materials[0];
+
+        if (breakingRate >= 0 && breakingRate <= 0.1)
+        {
+            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[9], originMaterial };
+        }
+        else if (breakingRate >= 0.1 && breakingRate <= 0.2)
+        {
+            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[8], originMaterial };
+        }
+        else if (breakingRate >= 0.2 && breakingRate <= 0.3)
+        {
+            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[7], originMaterial };
+        }
+        else if (breakingRate >= 0.3 && breakingRate <= 0.4)
+        {
+            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[6], originMaterial };
+        }
+        else if (breakingRate >= 0.4 && breakingRate <= 0.5)
+        {
+            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[5], originMaterial };
+        }
+        else if (breakingRate >= 0.5 && breakingRate <= 0.6)
+        {
+            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[4], originMaterial };
+        }
+        else if (breakingRate >= 0.6 && breakingRate <= 0.7)
+        {
+            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[3], originMaterial };
+        }
+        else if (breakingRate >= 0.7 && breakingRate <= 0.8)
+        {
+            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[2], originMaterial };
+        }
+        else if (breakingRate >= 0.8 && breakingRate <= 0.9)
+        {
+            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[1], originMaterial };
+        }
+        else if (breakingRate >= 0.9 && breakingRate <= 1)
+        {
+            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[0], originMaterial };
+        }
+    }
 }
