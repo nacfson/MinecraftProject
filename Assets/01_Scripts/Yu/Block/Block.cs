@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Audio;
 using System;
-using UnityEditor.SceneManagement;
 
 [System.Serializable]
 public class Block : MonoBehaviour,EInit
@@ -97,7 +95,12 @@ public class Block : MonoBehaviour,EInit
     {
         if (blockData.item.dropItem != null)
         {
-            Instantiate(blockData.item.dropItem,transform.position,Quaternion.identity);
+            int x = UnityEngine.Random.Range(0, 101);
+            if(blockData.item.dropPercent > x)
+            {
+                Instantiate(blockData.item.dropItem,transform.position,Quaternion.identity);
+
+            }
         }
 
     }
