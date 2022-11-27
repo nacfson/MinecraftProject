@@ -10,14 +10,14 @@ public class BlockSpawner : MonoBehaviour
     {
         GameManager.Instance.saveNLoad.BlockSpawner = this;
         CreateMApDDD();
-        // if(!SaveNLoad.saved)
-        // {
-        //     CreateMApDDD();
-        // }
-        // else
-        // {
-        //     GameManager.Instance.saveNLoad.OnLoad();
-        // }
+        if(!SaveNLoad.saved)
+        {
+            CreateMApDDD();
+        }
+        else
+        {
+            GameManager.Instance.saveNLoad.OnLoad();
+        }
     }
     [Space]
     public Vector3Int ChunkSize = new Vector3Int(16, 64, 16);

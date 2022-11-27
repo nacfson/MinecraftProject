@@ -56,7 +56,10 @@ public class PlayerRightClickInteraction : AgentInteraction
         {
             if (Input.GetMouseButtonDown(1))
             {
-                //SetBlock();
+                if(obj.GetComponent<Block>().blockData.item.itemType == ItemType.Door)
+                {
+                    obj.GetComponent<Door>().CheckDoor();
+                }
             }
         }
     }
@@ -70,6 +73,8 @@ public class PlayerRightClickInteraction : AgentInteraction
         Vector3 newPos = vector2 + vector;
         UseItem(newPos,vector);
     }
+
+    
 
 
     void UseItem(Vector3 newPos,Vector3 direction)
