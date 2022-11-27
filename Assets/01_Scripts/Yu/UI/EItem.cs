@@ -10,4 +10,6 @@ using UnityEngine;
 
         Tool = 2,
 
+        Door = 3,
+
     }

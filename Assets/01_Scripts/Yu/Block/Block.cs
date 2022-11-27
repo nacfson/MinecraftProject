@@ -21,28 +21,53 @@ public class Block : MonoBehaviour,EInit
     private TextMeshPro _tmp;
     [NonSerialized] 
     private BoxCollider _collider;
+<<<<<<< HEAD
     private AudioSource _audioSource;
+=======
+
+    private AudioSource _audioSource;
+
+
+    BreakingBlock _breakingBlock;
+
+
+>>>>>>> KING
 
     public BlockData blockData;
     private void Awake()
     {
         _collider = GetComponent<BoxCollider>();
         _audioSource = GetComponent<AudioSource>(); 
+        _breakingBlock = GetComponent<BreakingBlock>();
 
     }
     public void Init()
     {
         _maxHP = blockData.item.maxHP;
-        HPReset();
+        //HPReset();
         transform.position = blockData.blockPos;
         blockData.blockPos = transform.position;
         _hp = _maxHP;
     }
     public void Mining(float speed,InventoryUIManager inventoryUIManager)
     {
+        if(blockData.item.miningClipName != "")
+        {
+            if(_hp >= _maxHP - 1)
+            {
+            SoundManager.instance.SFXPlay("MiningSound",blockData.item.miningClipName);
+
+            }
+        }
         _hp -= speed;
+<<<<<<< HEAD
         //blockData.item.miningAudioClip.Play();
         Debug.Log(_hp);
+=======
+
+        //_breakingBlock.BreakingBlockTexturing(_hp / _maxHP, transform.position);
+
+>>>>>>> KING
         if(_hp <= 0 )
         {
             Destruction();
@@ -60,12 +85,16 @@ public class Block : MonoBehaviour,EInit
     {
         _collider.enabled = false;
         DropItem();
-        SoundManager.instance.SFXPlay("SoundObject", "classic_hurt");
+        if(blockData.item.clipName != "")
+        {
+            SoundManager.instance.SFXPlay("SoundObject", blockData.item.clipName);
+        }
         Destroy(gameObject);
     }
     public void HPReset()
     {
         _hp = _maxHP;
+        //GetComponent<MeshRenderer>().material = blockData.item.mat;
     }
 
     public void OnEnable()

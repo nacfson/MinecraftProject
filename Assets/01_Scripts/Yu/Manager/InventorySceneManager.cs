@@ -37,6 +37,7 @@ public class InventorySceneManager : MonoBehaviour
 
     public void OnMainPanel()
     {
+        SoundManager.instance.SFXPlay("SoundObject","minecraft_click");
         _mainPanel.SetActive(true);
         _mainPanelOn = true;
         //RecipeManager.CheckPanelList();
@@ -44,6 +45,7 @@ public class InventorySceneManager : MonoBehaviour
     }
     public void OffMainPanel()
     {
+        SoundManager.instance.SFXPlay("SoundObject","minecraft_click");
         _mainPanel.SetActive(false);
     }
 }
