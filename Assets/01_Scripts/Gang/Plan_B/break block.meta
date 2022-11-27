@@ -1,6 +1,10 @@
 fileFormatVersion: 2
-guid: 8784f4804cbd908499a10c2d5adefe71
+<<<<<<<< HEAD:Assets/01_Scripts/Gang/Plan_B/break block.meta
+guid: 284eede2bfa35764fa89d0287cb233e4
 folderAsset: yes
+========
+guid: 523407ecf398bb94083dddf144765ecc
+>>>>>>>> main:Assets/02_Assets/block_weapons/obj/arrow.mtl.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
