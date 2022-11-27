@@ -61,7 +61,7 @@ public class BlockSpawner : MonoBehaviour
 
     void CreateMApDDD()
     {
-                TempData = new int[ChunkSize.x, ChunkSize.y, ChunkSize.z];
+        TempData = new int[ChunkSize.x, ChunkSize.y, ChunkSize.z];
 
         for (int x = 0; x < ChunkSize.x; x++)
         {
@@ -124,12 +124,12 @@ public class BlockSpawner : MonoBehaviour
                                     r = UnityEngine.Random.Range(0f, 100f);
                                     if (r <= 50f)
                                     {
-                                        if (x + 1 < ChunkSize.x) { TempData[x + 1, y, z] = blockIndex; Debug.Log("x+"); createOre(x + 1, y, z, random++, blockIndex); }
+                                        if (x + 1 < ChunkSize.x) { TempData[x + 1, y, z] = blockIndex;  createOre(x + 1, y, z, random++, blockIndex); }
                                         else return;
                                     }
                                     else
                                     {
-                                        if (x - 1 >= 0) { TempData[x - 1, y, z] = blockIndex; Debug.Log("x-"); createOre(x - 1, y, z, random++, blockIndex); }
+                                        if (x - 1 >= 0) { TempData[x - 1, y, z] = blockIndex;  createOre(x - 1, y, z, random++, blockIndex); }
                                         else return;
                                     }
                                 }
@@ -139,12 +139,12 @@ public class BlockSpawner : MonoBehaviour
                                     r = UnityEngine.Random.Range(0f, 100f);
                                     if (r <= 50f)
                                     {
-                                        if (y + 1 < ChunkSize.x) { TempData[x, y + 1, z] = blockIndex; Debug.Log("y+"); createOre(x, y + 1, z, random++, blockIndex); }
+                                        if (y + 1 < ChunkSize.x) { TempData[x, y + 1, z] = blockIndex;  createOre(x, y + 1, z, random++, blockIndex); }
                                         else return;
                                     }
                                     else
                                     {
-                                        if (y - 1 >= 0) { TempData[x, y - 1, z] = blockIndex; Debug.Log("y-"); createOre(x, y - 1, z, random++, blockIndex); }
+                                        if (y - 1 >= 0) { TempData[x, y - 1, z] = blockIndex;  createOre(x, y - 1, z, random++, blockIndex); }
                                         else return;
                                     }
                                 }
@@ -154,12 +154,12 @@ public class BlockSpawner : MonoBehaviour
                                     r = UnityEngine.Random.Range(0f, 100f);
                                     if (r <= 50f)
                                     {
-                                        if (z + 1 < ChunkSize.x) { TempData[x, y, z + 1] = blockIndex; Debug.Log("z+"); createOre(x, y, z + 1, random++, blockIndex); }
+                                        if (z + 1 < ChunkSize.x) { TempData[x, y, z + 1] = blockIndex;  createOre(x, y, z + 1, random++, blockIndex); }
                                         else return;
                                     }
                                     else
                                     {
-                                        if (z - 1 >= 0) { TempData[x, y, z - 1] = blockIndex; Debug.Log("z-"); createOre(x, y, z - 1, random++, blockIndex); }
+                                        if (z - 1 >= 0) { TempData[x, y, z - 1] = blockIndex;  createOre(x, y, z - 1, random++, blockIndex); }
                                         else return;
                                     }
                                 }
@@ -197,8 +197,6 @@ public class BlockSpawner : MonoBehaviour
                                 spawnThis = dirt; 
                                 applyItem = dirtItem;
                                 break;
-                                
-                                
                             case 3: 
                                 spawnThis = stone;
                                 applyItem = stoneItem; 

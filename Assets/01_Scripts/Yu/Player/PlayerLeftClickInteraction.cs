@@ -46,14 +46,14 @@ public class PlayerLeftClickInteraction : AgentInteraction
                     obj.GetComponent<Block>().HPReset();
                 }
             }
-            else if (obj.tag == "CANHIT" && InventoryUIManager.inventoryActivated == false)
+            else if (obj.tag == nameof(WeakAnimal) && InventoryUIManager.inventoryActivated == false)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
                     if(canHit)
                     {
-                        obj.GetComponent<AgentHP>().Damaged(CheckUsingSword(obj),obj);
-                        StartCoroutine(HitCor());
+                        obj.GetComponent<WeakAnimal>().Damage((int)CheckUsingSword(obj), transform.position);
+                        StartCoroutine(HitCor());   
                     }
                 }
             }
@@ -70,16 +70,20 @@ public class PlayerLeftClickInteraction : AgentInteraction
     {
         if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item == null)
         {
-            // if()
-            // {
-
-            // }
+            if(obj.GetComponent<Block>().blockData.item.itemLevel > 1f)
+            {
+                return 0f;
+            }
             return 1f;
         }
         else if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.tool == obj.GetComponent<Block>().blockData.item.tool)
         {
             if (inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel == 0) return 1f;
-            return inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel;
+            else if (obj.GetComponent<Block>().blockData.item.itemLevel <= inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel)
+            {
+                return inventoryUIManager.droppableList[inventoryUIManager.buttonCount - 1].slot.item.itemLevel;
+            }
+            else return 1f;
         }
         else
         {
@@ -103,20 +107,14 @@ public class PlayerLeftClickInteraction : AgentInteraction
         Vector3 pos = new Vector3(_controller.transform.position.x, _controller.transform.position.y + 1.5f, _controller.transform.position.z);
         Ray ray = new Ray(pos, _controller.Camera.transform.forward);
         CanInteract = Physics.Raycast(pos, _controller.Camera.transform.forward, out hit, 7f,_layerMask);
-        //if(hit.collider.gameObject != null)
-        //{
-        //    Debug.Log(hit.collider.gameObject);
 
-        //}
         if (CanInteract)
         {
             CheckGameObject(hit.collider.gameObject);
             
             _interactedObject = hit.collider.gameObject;
 
-            //StartCoroutine(HitCor(_interactedObject));
         }
-        //Debug.DrawRay(pos, _controller.Camera.transform.forward* 40f, Color.green);
     }
 
     public float CheckUsingSword(GameObject obj)
@@ -136,19 +134,4 @@ public class PlayerLeftClickInteraction : AgentInteraction
             return 1f;
         }
     }
-
-    //IEnumerator HitCor(GameObject obj)
-    //{
-    //    while(CanInteract)
-    //    { 
-    //        if(obj.tag =="CANHIT" && InventoryUIManager.inventoryActivated == false)
-    //        {
-    //            if(Input.GetMouseButtonDown(0))
-    //            {
-    //                obj.GetComponent<AgentHP>().Damaged(CheckUsingSword(obj));
-    //            }
-    //        }
-    //        yield return null;
-    //    }
-    //}
 }

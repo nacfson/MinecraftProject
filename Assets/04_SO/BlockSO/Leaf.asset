@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844ad10842615f4459a318a7566f3971, type: 3}
+  m_Name: Leaf
+  m_EditorClassIdentifier: 
+  itemName: Leaf
+  itemImage: {fileID: 21300000, guid: a9b10fe1a8eeeb442b2bee7132db1169, type: 3}
+  spriteRenderer: {fileID: 0}
+  itemType: 1
+  mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
+  mat: {fileID: 1367383701777426158, guid: 5b7bd13e5716f894aa84786247a0ad0b, type: 3}
+  durability: 2147483647
+  itemLevel: 0
+  itemPrefab: {fileID: 1433337670213310, guid: 206fcb8b5a5971d44878d5c45ba51143, type: 3}
+  tool: 1
+  maxHP: 30
+  destructionAudioClip: {fileID: 8300000, guid: fc1f126d55e94874cb9370e1d6c6a614, type: 3}
+  miningAudioClip: {fileID: 0}
+  dropItem: {fileID: 0}
