@@ -54,13 +54,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     {
         if (CanInteract)
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                if(obj.GetComponent<Block>().blockData.item.itemType == ItemType.Door)
-                {
-                    obj.GetComponent<Door>().CheckDoor();
-                }
-            }
+
         }
     }
     protected override void CheckCanInteract()
@@ -86,11 +80,11 @@ public class PlayerRightClickInteraction : AgentInteraction
             if (itemData.itemCount > 0 && itemData.item.itemType == ItemType.Block)
             {
 
-                if(Physics.Raycast(newPos, (_layStartTrm.position - newPos).normalized, 0.5f, 1 << 3))
-                {
-                    Debug.LogError("부딫");
-                    return;
-                }   
+                //if(Physics.Raycast(newPos, (_layStartTrm.position - newPos).normalized, 0.5f, 1 << 3))
+                //{
+                //    Debug.LogError("부딫");
+                //    return;
+                //}   
 
 
                 Block block = Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity).GetComponent<Block>();

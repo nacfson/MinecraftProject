@@ -10,14 +10,14 @@ public class BlockSpawner : MonoBehaviour
     {
         GameManager.Instance.saveNLoad.BlockSpawner = this;
         CreateMApDDD();
-        if(!SaveNLoad.saved)
-        {
-            CreateMApDDD();
-        }
-        else
-        {
-            GameManager.Instance.saveNLoad.OnLoad();
-        }
+        //if(!SaveNLoad.saved)
+        //{
+        //    CreateMApDDD();
+        //}
+        //else
+        //{
+        //    GameManager.Instance.saveNLoad.OnLoad();
+        //}
     }
     [Space]
     public Vector3Int ChunkSize = new Vector3Int(16, 64, 16);
@@ -232,7 +232,7 @@ public class BlockSpawner : MonoBehaviour
         }
     }
 
-    void CreateWood(int x, int y, int z)
+    public void CreateWood(int x, int y, int z)
     {
         if (9.9f < UnityEngine.Random.Range(0f, 10f))
         {
@@ -253,6 +253,28 @@ public class BlockSpawner : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void CreateTree(int x, int y, int z)
+    {
+
+            for (int way = 1; way <= 5; way++)
+            {
+                GameObject obj1 = Instantiate(wood, new Vector3(x, y + way, z), Quaternion.identity);
+                obj1.transform.SetParent(_blockSpawner);
+                obj1.GetComponent<Block>().Init();
+                for (int exe = 1; exe <= 5; exe++)
+                {
+                    for (int zee = 1; zee <= 5; zee++)
+                    {
+                        GameObject obj = Instantiate(leaf, new Vector3(x + (exe - 3), y + (way + 2), z + (zee - 3)), Quaternion.identity);
+                        obj.transform.SetParent(_blockSpawner);
+                        obj.GetComponent<Block>().Init();
+
+                    }
+                }
+            }
+        
     }
 
     void CreateOre(int x, int y, int z)

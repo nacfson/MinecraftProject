@@ -49,7 +49,9 @@ public class SaveNLoad : MonoBehaviour
     [ContextMenu("Save")]
     public void OnSave()
     {
-        saved = true;
+        if(!saved)
+            saved = true;
+
         PlayerPosSave();
         string jsonData = JsonUtility.ToJson(_saveData, true);
         string path = Path.Combine(Application.persistentDataPath, "saveData.json");

@@ -18,6 +18,7 @@ public class Item : ScriptableObject
     public float maxHP;
     public string clipName;
     public string miningClipName;
+    public int dropPercent = 100;
 
 
     public GameObject dropItem;
