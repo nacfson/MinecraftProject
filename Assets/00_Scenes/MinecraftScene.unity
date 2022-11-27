@@ -6546,6 +6546,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cbf75d924f1410848944c0118ef6ac88, type: 2}
   - {fileID: 11400000, guid: dae57d74a9b13bb43b0e5ef8bbcd5724, type: 2}
   - {fileID: 11400000, guid: 1b899b23be8f73a4c914455330844403, type: 2}
+  - {fileID: 11400000, guid: 92c288a362a105e4a83ccd36a8cf24b4, type: 2}
+  - {fileID: 11400000, guid: 9d07325a6fb3f634daa9baa42bbf4af1, type: 2}
+  - {fileID: 11400000, guid: 5d3ef6bdbf825a849a2843bee5ba6c61, type: 2}
+  - {fileID: 11400000, guid: da557a7243f9f6e4592c1f26cbcfde4e, type: 2}
   panelPrefab: {fileID: 2340110442000480721, guid: feb543b2b172325499b9ce42c9d24641, type: 3}
   recipeParent: {fileID: 1834255011}
 --- !u!1001 &1855923979
