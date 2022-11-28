@@ -10661,6 +10661,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8628766130500582203, guid: 10211f121152ac845b30470a645ef180, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 33140061536007357}
+    - target: {fileID: 8628766130500582203, guid: 10211f121152ac845b30470a645ef180, type: 3}
+      propertyPath: StrongPig
+      value: 
+      objectReference: {fileID: 1855776262}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10211f121152ac845b30470a645ef180, type: 3}
 --- !u!4 &1712634361 stripped
@@ -11183,6 +11191,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1b899b23be8f73a4c914455330844403, type: 2}
   panelPrefab: {fileID: 2340110442000480721, guid: feb543b2b172325499b9ce42c9d24641, type: 3}
   recipeParent: {fileID: 1834255011}
+--- !u!1 &1855776262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8356570759456201886, guid: 10211f121152ac845b30470a645ef180, type: 3}
+  m_PrefabInstance: {fileID: 1712634360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1855923979
 PrefabInstance:
   m_ObjectHideFlags: 0

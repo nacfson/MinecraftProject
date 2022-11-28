@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Pig : WeakAnimal
 {
-    protected override void Update()
+    public void Update()
     {
-        base.Update();
+        //base.Update();
+        Debug.Log("보인다");
         if(theViewAngle.View() && !isDead){
-            Debug.Log("보인다");
             Run(theViewAngle.GetTargetPos());
         }
     }
