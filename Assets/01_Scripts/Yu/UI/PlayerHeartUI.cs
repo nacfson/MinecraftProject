@@ -14,18 +14,18 @@ public class PlayerHeartUI : MonoBehaviour
     public Image[] imageList;
     void Start()
     {
-        _playerHP = GameObject.FindWithTag("Player").GetComponent<AgentHP>();
+        _playerHP = GameObject.Find("PLAYER").GetComponent<AgentHP>();
         imageList = GetComponentsInChildren<Image>();
         ShowHP();
     }
     [ContextMenu("PlayerHeartUI")]
     public void ShowHP()
     {
-        for(int i= 0 ; i< imageList.Length; i++)
+        for (int i = 0; i < imageList.Length; i++)
         {
             imageList[i].sprite = _emptyHeart;
         }
-        for(int i = 0; i < (int)(_playerHP.hp / 2); i++)
+        for (int i = 0; i < (int)(_playerHP.hp / 2); i++)
         {
             try
             {

@@ -6,7 +6,7 @@ public class MyeoMok : MonoBehaviour
 {
     private void Start()
     {
-        Invoke("SpawnTree", 10f);
+        Invoke("SpawnTree", 40f);
     }
     public void SpawnTree()
     {
