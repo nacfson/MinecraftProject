@@ -3070,6 +3070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4da2831e4b22c14e93189773e0f3bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 33782259275829969}
   _blockSpawner: {fileID: 738314002}
   ChunkSize: {x: 16, y: 64, z: 16}
   NoiseScale: {x: 1, y: 1}
