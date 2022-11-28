@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDragHandler,IPointerClickHandler
+public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDragHandler
 {
     private Transform _canvas;
     private Transform _previousParent;
@@ -41,12 +41,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
     }
     public void OnDrag(PointerEventData ped)
     {
-        //_rect.position = ped.position;
-        // if(Input.GetMouseButtonDown(1))
-        // {
-        //     Debug.Log("CheckedRightClicked");
-        //     OnEndDrag(ped);
-        // }
+        _rect.position = ped.position;
 
     }
 
@@ -57,17 +52,10 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
             transform.SetParent(_previousParent);
             _rect.position = _previousParent.GetComponent<RectTransform>().position;
         }
+        
         _canvasGroup.alpha = 1.0f;
         _canvasGroup.blocksRaycasts = true;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        reClicked = !reClicked;
-        if(reClicked)
-        {
-            _rect.position = eventData.position;
-        }
-        OnEndDrag(eventData);
-    }
+
 }

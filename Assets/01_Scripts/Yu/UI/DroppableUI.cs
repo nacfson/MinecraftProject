@@ -25,14 +25,14 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 	{
 		image	= GetComponent<Image>();
 		rect	= GetComponent<RectTransform>();
-		slot = GetComponentInChildren<Slot>();
+		GetComponentSlot();
 	}
 
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		// 아이템 슬롯 색상 변경
-		image.color = Color.white;
+		image.color = Color.yellow;
 	}
 
 
@@ -40,6 +40,14 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 	{
 		// 아이템 슬롯 색상 변경 빠져나갔을 때
 		image.color = Color.white;
+	}
+	public void GetComponentSlot()
+    {
+		for(int i =0;i<InventoryUIManager.droppableList.Count;i++)
+        {
+			InventoryUIManager.droppableList[i].slot = GetComponentInChildren<Slot>();
+        }
+
 	}
 
 
@@ -51,34 +59,22 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
 		{
 			eventData.pointerDrag.transform.SetParent(transform);
 			eventData.pointerDrag.GetComponent<RectTransform>().position = rect.position;
-			// for(int j= 0 ; j< InventoryUIManager.slotList.Count ;j++ )
-			// {
-			// 	if(InventoryUIManager.slotList[j].transform.childCount == 2)
-			// 	{
-			// 		if(InventoryUIManager.slotList[j].transform.GetChild(0).GetComponent<Slot>().item!= null &&
-			// 		InventoryUIManager.slotList[j].transform.GetChild(1).GetComponent<Slot>().item!= null)
-			// 		{
-			// 			if(InventoryUIManager.slotList[j].transform.GetChild(0).GetComponent<Slot>().item == InventoryUIManager.slotList[j].transform.GetChild(1).GetComponent<Slot>().item)
-			// 			{
-			// 				InventoryUIManager.slotList[j].transform.GetChild(0).GetComponent<Slot>().AddItem(InventoryUIManager.slotList[j].transform.GetChild(0).GetComponent<Slot>().item,InventoryUIManager.slotList[j].transform.GetChild(1).GetComponent<Slot>().itemCount);
-			// 				InventoryUIManager.slotList[j].transform.GetChild(1).GetComponent<Slot>().SetSlotCount(InventoryUIManager.slotList[j].transform.GetChild(1).GetComponent<Slot>().itemCount);
-			// 			}
-			// 		}
-			// 		return;
-			// 	}
-			// }
+
 			for(int i= 0 ; i< InventoryUIManager.droppableList.Count ;i++ )
 			{
 				if(InventoryUIManager.droppableList[i].transform.childCount == 0)
 				{
 					Transform tr = eventData.pointerDrag.transform.parent.GetChild(0).transform; 
 					tr.SetParent(InventoryUIManager.droppableList[i].gameObject.transform);
-					tr.GetComponent<RectTransform>().anchoredPosition = Vector3.zero; //transform.GetComponentInParent<DroppableUI>().rect.position;
+					tr.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+					//GetComponentSlot();
+
 					return;
 				}
 			}
+			//GetComponentSlot();
 
-			
+
 		}
 	}
 

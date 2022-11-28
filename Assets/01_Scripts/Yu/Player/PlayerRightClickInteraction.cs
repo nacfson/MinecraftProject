@@ -38,8 +38,7 @@ public class PlayerRightClickInteraction : AgentInteraction
     private void Awake()
     {
         _player ??= GameObject.FindGameObjectWithTag("Player");
-        //cam = _player.GetComponentInChildren<Camera>();
-        //camTransform = cam.transform;
+
         _controller = GetComponent<PlayerController>();
         inventoryUIManager = FindObjectOfType<InventoryUIManager>();
         blockParent = FindObjectOfType<BlockSpawner>().gameObject;
