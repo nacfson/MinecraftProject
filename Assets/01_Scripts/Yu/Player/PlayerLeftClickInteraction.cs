@@ -46,14 +46,14 @@ public class PlayerLeftClickInteraction : AgentInteraction
                     obj.GetComponent<Block>().HPReset();
                 }
             }
-            else if (obj.tag == "CANHIT" && InventoryUIManager.inventoryActivated == false)
+            else if (obj.tag == nameof(WeakAnimal) && InventoryUIManager.inventoryActivated == false)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
                     if(canHit)
                     {
-                        obj.GetComponent<AgentHP>().Damaged(CheckUsingSword(obj),obj);
-                        StartCoroutine(HitCor());
+                        obj.GetComponent<WeakAnimal>().Damage((int)CheckUsingSword(obj), transform.position);
+                        StartCoroutine(HitCor());   
                     }
                 }
             }
