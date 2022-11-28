@@ -8,9 +8,8 @@ public class FieldOfViewAngle : MonoBehaviour
     [SerializeField] private float viewDistance;
     [SerializeField] private LayerMask targetMask;
 
-    private PlayerController thePlayer;
+    public GameObject thePlayer;
     void Start(){
-        thePlayer = FindObjectOfType<PlayerController>();
     }
     public Vector3 GetTargetPos(){
         return thePlayer.transform.position;

@@ -7,8 +7,9 @@ public class WildPig : StrongAnimal
     protected override void Update()
     {
         base.Update();
+        Debug.Log("보인다");
         if(theViewAngle.View() && !isDead){
-            Chase(theViewAngle.GetTargetPos());
+            Chase(GetComponent<Distance>().Player.transform.position);
         }
     }
 }

@@ -6,6 +6,7 @@ public class StrongAnimal : Animal
 {
     public void Chase(Vector3 _targetPos)
     {
+        Debug.Log("따라간다");
         isChasing = true;
         direction = _targetPos;
 

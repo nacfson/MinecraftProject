@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class Pig : WeakAnimal
 {
-    public void Update()
-    {
-        //base.Update();
-        Debug.Log("보인다");
-        if(theViewAngle.View() && !isDead){
-            Run(theViewAngle.GetTargetPos());
-        }
-    }
+    
     private void Wait()
     {
         currentTime = waitTime;
