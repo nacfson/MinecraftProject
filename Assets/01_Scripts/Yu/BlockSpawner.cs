@@ -24,7 +24,7 @@ public class BlockSpawner : MonoBehaviour
         //}
     }
     [Space]
-    public Vector3Int ChunkSize = new Vector3Int(16, 64, 16);
+    public Vector3Int ChunkSize = new Vector3Int(32, 64, 32);
     public Vector2 NoiseScale = Vector2.one;
     public Vector2 NoiseOffset = Vector2.zero;
     [Space]
@@ -62,32 +62,44 @@ public class BlockSpawner : MonoBehaviour
     GameObject spawnThis;
     Item applyItem;
 
+    bool isMove;
+
     private void Start()
     {
-        beforePos = (int)transform.position.y;
+        //beforePos = (int)transform.position.y;
     }
 
-    private void Update() { 
-/*        if(Mathf.Abs(player.position.y) - Mathf.Abs(beforePos) >= 1)
+
+    private static void DownSide()
+    {
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("BLOCK").Length; i++)
         {
-            for (int i = 0; i < GameObject.FindGameObjectsWithTag("BLOCK").Length; i++)
+            if (GameObject.FindGameObjectsWithTag("BLOCK")[i].transform.position.y >= -34)
             {
-                if (Vector3.Distance( GameObject.FindGameObjectsWithTag("BLOCK")[i].transform.position, player.transform.position) <= 5)
-                {
-                    GameObject.FindGameObjectsWithTag("BLOCK")[i].SetActive(true);
-                    Debug.Log("q");
-                }
-                else
-                {
-                    GameObject.FindGameObjectsWithTag("BLOCK")[i].SetActive(false);
-                    Debug.        Log("»ý");
-                }
+                GameObject.FindGameObjectsWithTag("BLOCK")[i].SetActive(false);
+            }
+            else
+            {
+                GameObject.FindGameObjectsWithTag("BLOCK")[i].SetActive(true);
             }
         }
+    }
 
-            beforePos = (int)transform.position.y;*/
+    private static void UpSide()
+    {
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("BLOCK").Length; i++)
+        {
+            if (GameObject.FindGameObjectsWithTag("BLOCK")[i].transform.position.y <= -30)
+            {
+                GameObject.FindGameObjectsWithTag("BLOCK")[i].SetActive(false);
+            }
+            else
+            {
+                GameObject.FindGameObjectsWithTag("BLOCK")[i].SetActive(true);
+            }
+
         }
-    
+    }
 
     void CreateMApDDD()
     {
@@ -118,7 +130,7 @@ public class BlockSpawner : MonoBehaviour
                             if (98f < UnityEngine.Random.Range(0f, 100f))
                             {
                                 BlockTypeToAssign = 5;
-                                createOre(x, y, z, 99, 5);
+                                createOre(x, y, z, 98, 5);
                             }
                             else if (98f < UnityEngine.Random.Range(0f, 100f))
                             {
@@ -128,12 +140,12 @@ public class BlockSpawner : MonoBehaviour
                             else if (99f < UnityEngine.Random.Range(0f, 100f))
                             {
                                 BlockTypeToAssign = 7;
-                                createOre(x, y, z, 99, 7);
+                                createOre(x, y, z, 99.5f, 7);
                             }
                             else if (99.9f < UnityEngine.Random.Range(0f, 100f))
                             {
                                 BlockTypeToAssign = 8;
-                                createOre(x, y, z, 99, 8);
+                                createOre(x, y, z, 99.95f, 8);
                             }
                         }
 
