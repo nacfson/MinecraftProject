@@ -32,7 +32,7 @@ public class Slot : MonoBehaviour
     private void Awake()
     {
         _originPos = transform.position;
-        _countText.enabled =false;
+        _countText.enabled = false;
         rect = GetComponent<RectTransform>();
 
         ChangeAlpha(0f);
@@ -44,13 +44,22 @@ public class Slot : MonoBehaviour
         item = slotSO.item;
         itemCount = slotSO.itemCount;
         ShowSlot();
-
     }
-    	public void HideSlot()
-	{
-		_countText.enabled = false;
+    public void SetSlotSOA(SSSS slotSO)
+    {
+        this.slotSO.item = slotSO.item;
+        item = slotSO.item;
+        this.slotSO.itemCount = slotSO.itemCount;
+        itemCount = slotSO.itemCount;
+        ShowSlot();
+    }
+
+
+    public void HideSlot()
+    {
+        _countText.enabled = false;
         itemImage.enabled = false;
-	}
+    }
 
 
     public void AddItem(Item _item, int _count = 1)
@@ -59,20 +68,21 @@ public class Slot : MonoBehaviour
         item = _item;
         itemCount += _count;
         durability = item.durability;
+
         if (_item.itemImage != null)
         {
             itemImage.sprite = _item.itemImage;
-        itemImage.enabled = true;
+            itemImage.enabled = true;
 
         }
-        if(item.itemType != ItemType.Equipment)
+        if (item.itemType != ItemType.Equipment)
         {
             _countText.enabled = true;
             _countText.text = $"{itemCount}";
         }
         else
         {
-            _countText.enabled = false;     
+            _countText.enabled = false;
             _countText.text = "";
         }
         slotSO.item = item;
@@ -80,7 +90,7 @@ public class Slot : MonoBehaviour
         ShowSlot();
 
     }
-    
+
     public void ChangeAlpha(float value)
     {
         Color color = transform.Find("Image").GetComponent<Image>().color;
@@ -91,15 +101,15 @@ public class Slot : MonoBehaviour
     public void SetSlotCount(int _count)
     {
         itemCount += _count;
-        if(itemCount <=0)
+        if (itemCount <= 0)
         {
             _countText.text = "";
         }
         else
-        _countText.text = $"{itemCount}";
+            _countText.text = $"{itemCount}";
         ShowSlot();
 
-        if(itemCount <=0)
+        if (itemCount <= 0)
         {
             ClearSlot();
         }
@@ -112,15 +122,18 @@ public class Slot : MonoBehaviour
     public void ShowSlot()
     {
         _countText.enabled = true;
-        if(item != null)
+        if (item != null)
         {
-            Debug.Log(item.itemImage);
-            Debug.Log(itemImage.sprite);
-            itemImage.sprite = item.itemImage;
             itemImage.enabled = true;
+            itemImage.sprite = item.itemImage;
             ChangeAlpha(1f);
         }
-        if(itemCount >0)
+        else
+        {
+            itemImage.sprite = null;
+            ChangeAlpha(0f);
+        }
+        if (itemCount > 0)
         {
             _countText.text = $"{itemCount}";
         }
@@ -148,11 +161,11 @@ public class Slot : MonoBehaviour
         Item _tempItem = item;
         int _tempItemCount = itemCount;
 
-        AddItem(DragSlot.instance.dragSlot.item,DragSlot.instance.dragSlot.itemCount);
+        AddItem(DragSlot.instance.dragSlot.item, DragSlot.instance.dragSlot.itemCount);
 
-        if(_tempItem != null)
+        if (_tempItem != null)
         {
-            DragSlot.instance.dragSlot.AddItem(_tempItem,_tempItemCount);
+            DragSlot.instance.dragSlot.AddItem(_tempItem, _tempItemCount);
         }
         else
         {

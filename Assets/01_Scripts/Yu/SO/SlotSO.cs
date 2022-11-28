@@ -11,3 +11,10 @@ public class SlotSO : ScriptableObject
     public Item item;
     public int itemCount;
 }
+
+[System.Serializable]
+public class SSSS
+{
+    public Item item;
+    public int itemCount;
+}
