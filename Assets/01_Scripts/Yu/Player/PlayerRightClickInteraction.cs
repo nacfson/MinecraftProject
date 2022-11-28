@@ -24,7 +24,7 @@ public class PlayerRightClickInteraction : AgentInteraction
 
     public Camera cam;
 
-    public Transform camTransform;
+    //public Transform camTransform;
     RaycastHit hit;
     RaycastHit originHit;
 
@@ -38,8 +38,8 @@ public class PlayerRightClickInteraction : AgentInteraction
     private void Awake()
     {
         _player ??= GameObject.FindGameObjectWithTag("Player");
-        cam = _player.GetComponentInChildren<Camera>();
-        camTransform = cam.transform;
+        //cam = _player.GetComponentInChildren<Camera>();
+        //camTransform = cam.transform;
         _controller = GetComponent<PlayerController>();
         inventoryUIManager = FindObjectOfType<InventoryUIManager>();
         blockParent = FindObjectOfType<BlockSpawner>().gameObject;
@@ -75,18 +75,11 @@ public class PlayerRightClickInteraction : AgentInteraction
     {
         Slot itemData = inventoryUIManager.droppableList[inventoryUIManager.buttonCount -1].slot;
         if(itemData.item != null)
-        { 
+        {
             //&& 
-            if (itemData.itemCount > 0 && itemData.item.itemType == ItemType.Block)
+            //&& itemData.item.itemType == ItemType.Block
+            if (itemData.itemCount > 0 )
             {
-
-                //if(Physics.Raycast(newPos, (_layStartTrm.position - newPos).normalized, 0.5f, 1 << 3))
-                //{
-                //    Debug.LogError("부딫");
-                //    return;
-                //}   
-
-
                 Block block = Instantiate(itemData.item.itemPrefab,newPos,Quaternion.identity).GetComponent<Block>();
                 block.blockData.item = itemData.item;
                 block.blockData.blockPos = newPos; 

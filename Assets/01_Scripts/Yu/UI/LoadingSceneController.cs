@@ -34,7 +34,7 @@ public class LoadingSceneController : MonoBehaviour
             }
             else{
                 timer += Time.unscaledDeltaTime;
-                loadingBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
+                loadingBar.fillAmount = Mathf.Lerp(0.1f, 1f, timer / 10);
                 if(loadingBar.fillAmount >=1f){
                     op.allowSceneActivation = true;
                     yield break;

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d2f526a2a8b6f45b47635ef3d2ad24, type: 3}
+  m_Name: Glass_Recipe
+  m_EditorClassIdentifier: 
+  itemList:
+  - {fileID: 11400000, guid: 88a2beba69265984bb4a343e5274e1f6, type: 2}
+  - {fileID: 11400000, guid: 2c2c3049564427646b9771ca34dafa9a, type: 2}
+  itemCount: 0100000001000000
+  definedInt: 2
+  makedItem: {fileID: 11400000, guid: 1fa9b6c37c14830439b6beb9bdc5f5df, type: 2}
+  makedCount: 16

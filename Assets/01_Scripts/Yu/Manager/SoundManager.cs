@@ -27,9 +27,9 @@ public class SoundManager : MonoBehaviour
         AudioSource audiosource = go.AddComponent<AudioSource>();
         audiosource.clip = clip;
         audiosource.Play();
-        Debug.Log(clip.name + "Audio_Source");
+        //Debug.Log(clip.name + "Audio_Source");
 
-        Debug.Log(audiosource.clip.name + "Audio_Source");
+        //Debug.Log(audiosource.clip.name + "Audio_Source");
 
         Destroy(go, clip.length);
     }
