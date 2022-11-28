@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/00_Scenes/ZombieTestScene.unity.meta
 guid: 45de49f95c8677145b50b2c1423e8c62
+========
+guid: 523407ecf398bb94083dddf144765ecc
+>>>>>>>> main:Assets/02_Assets/block_weapons/obj/arrow.mtl.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

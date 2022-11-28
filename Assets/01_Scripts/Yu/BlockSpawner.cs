@@ -5,6 +5,10 @@ using Unity.Mathematics;
 
 public class BlockSpawner : MonoBehaviour
 {
+    [SerializeField] Transform player;
+    int beforePos;
+
+
     [SerializeField] private Transform _blockSpawner;
     void Awake()
     {
@@ -41,7 +45,7 @@ public class BlockSpawner : MonoBehaviour
     [SerializeField] GameObject gold;
     [SerializeField] GameObject diamond;
 
-        [Space]
+    [Space]
     [SerializeField] Item grassItem;
     [SerializeField] Item dirtItem;
     [SerializeField] Item stoneItem;
@@ -58,6 +62,32 @@ public class BlockSpawner : MonoBehaviour
     GameObject spawnThis;
     Item applyItem;
 
+    private void Start()
+    {
+        beforePos = (int)transform.position.y;
+    }
+
+    private void Update() { 
+/*        if(Mathf.Abs(player.position.y) - Mathf.Abs(beforePos) >= 1)
+        {
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("BLOCK").Length; i++)
+            {
+                if (Vector3.Distance( GameObject.FindGameObjectsWithTag("BLOCK")[i].transform.position, player.transform.position) <= 5)
+                {
+                    GameObject.FindGameObjectsWithTag("BLOCK")[i].SetActive(true);
+                    Debug.Log("q");
+                }
+                else
+                {
+                    GameObject.FindGameObjectsWithTag("BLOCK")[i].SetActive(false);
+                    Debug.        Log("»ý");
+                }
+            }
+        }
+
+            beforePos = (int)transform.position.y;*/
+        }
+    
 
     void CreateMApDDD()
     {
@@ -124,12 +154,12 @@ public class BlockSpawner : MonoBehaviour
                                     r = UnityEngine.Random.Range(0f, 100f);
                                     if (r <= 50f)
                                     {
-                                        if (x + 1 < ChunkSize.x) { TempData[x + 1, y, z] = blockIndex;  createOre(x + 1, y, z, random++, blockIndex); }
+                                        if (x + 1 < ChunkSize.x) { TempData[x + 1, y, z] = blockIndex; createOre(x + 1, y, z, random++, blockIndex); }
                                         else return;
                                     }
                                     else
                                     {
-                                        if (x - 1 >= 0) { TempData[x - 1, y, z] = blockIndex;  createOre(x - 1, y, z, random++, blockIndex); }
+                                        if (x - 1 >= 0) { TempData[x - 1, y, z] = blockIndex; createOre(x - 1, y, z, random++, blockIndex); }
                                         else return;
                                     }
                                 }
@@ -139,12 +169,12 @@ public class BlockSpawner : MonoBehaviour
                                     r = UnityEngine.Random.Range(0f, 100f);
                                     if (r <= 50f)
                                     {
-                                        if (y + 1 < ChunkSize.x) { TempData[x, y + 1, z] = blockIndex;  createOre(x, y + 1, z, random++, blockIndex); }
+                                        if (y + 1 < ChunkSize.x) { TempData[x, y + 1, z] = blockIndex; createOre(x, y + 1, z, random++, blockIndex); }
                                         else return;
                                     }
                                     else
                                     {
-                                        if (y - 1 >= 0) { TempData[x, y - 1, z] = blockIndex;  createOre(x, y - 1, z, random++, blockIndex); }
+                                        if (y - 1 >= 0) { TempData[x, y - 1, z] = blockIndex; createOre(x, y - 1, z, random++, blockIndex); }
                                         else return;
                                     }
                                 }
@@ -154,12 +184,12 @@ public class BlockSpawner : MonoBehaviour
                                     r = UnityEngine.Random.Range(0f, 100f);
                                     if (r <= 50f)
                                     {
-                                        if (z + 1 < ChunkSize.x) { TempData[x, y, z + 1] = blockIndex;  createOre(x, y, z + 1, random++, blockIndex); }
+                                        if (z + 1 < ChunkSize.x) { TempData[x, y, z + 1] = blockIndex; createOre(x, y, z + 1, random++, blockIndex); }
                                         else return;
                                     }
                                     else
                                     {
-                                        if (z - 1 >= 0) { TempData[x, y, z - 1] = blockIndex;  createOre(x, y, z - 1, random++, blockIndex); }
+                                        if (z - 1 >= 0) { TempData[x, y, z - 1] = blockIndex; createOre(x, y, z - 1, random++, blockIndex); }
                                         else return;
                                     }
                                 }
@@ -193,32 +223,32 @@ public class BlockSpawner : MonoBehaviour
                                 CreateWood(x, y, z);
                                 break;
                             case 2:
-                            
-                                spawnThis = dirt; 
+
+                                spawnThis = dirt;
                                 applyItem = dirtItem;
                                 break;
-                            case 3: 
+                            case 3:
                                 spawnThis = stone;
-                                applyItem = stoneItem; 
+                                applyItem = stoneItem;
                                 break;
-                            case 4: 
-                                spawnThis = badRock; 
+                            case 4:
+                                spawnThis = badRock;
                                 applyItem = badRockItem;
                                 break;
-                            case 5: 
+                            case 5:
                                 spawnThis = coal;
                                 applyItem = coalItem;
                                 break;
-                            case 6: 
+                            case 6:
                                 spawnThis = iron;
-                                applyItem = ironItem; 
+                                applyItem = ironItem;
                                 break;
-                            case 7: 
+                            case 7:
                                 spawnThis = gold;
-                                applyItem = goldItem; 
+                                applyItem = goldItem;
                                 break;
-                            case 8: 
-                                spawnThis = diamond; 
+                            case 8:
+                                spawnThis = diamond;
                                 applyItem = diamondItem;
                                 break;
                         }
@@ -239,8 +269,8 @@ public class BlockSpawner : MonoBehaviour
             for (int way = 1; way <= 5; way++)
             {
                 GameObject obj1 = Instantiate(wood, new Vector3(x, y + way, z), Quaternion.identity);
-                                        obj1.transform.SetParent(_blockSpawner);
-                        obj1.GetComponent<Block>().Init();
+                obj1.transform.SetParent(_blockSpawner);
+                obj1.GetComponent<Block>().Init();
                 for (int exe = 1; exe <= 5; exe++)
                 {
                     for (int zee = 1; zee <= 5; zee++)
@@ -258,23 +288,23 @@ public class BlockSpawner : MonoBehaviour
     public void CreateTree(int x, int y, int z)
     {
 
-            for (int way = 1; way <= 5; way++)
+        for (int way = 1; way <= 5; way++)
+        {
+            GameObject obj1 = Instantiate(wood, new Vector3(x, y + way, z), Quaternion.identity);
+            obj1.transform.SetParent(_blockSpawner);
+            obj1.GetComponent<Block>().Init();
+            for (int exe = 1; exe <= 5; exe++)
             {
-                GameObject obj1 = Instantiate(wood, new Vector3(x, y + way, z), Quaternion.identity);
-                obj1.transform.SetParent(_blockSpawner);
-                obj1.GetComponent<Block>().Init();
-                for (int exe = 1; exe <= 5; exe++)
+                for (int zee = 1; zee <= 5; zee++)
                 {
-                    for (int zee = 1; zee <= 5; zee++)
-                    {
-                        GameObject obj = Instantiate(leaf, new Vector3(x + (exe - 3), y + (way + 2), z + (zee - 3)), Quaternion.identity);
-                        obj.transform.SetParent(_blockSpawner);
-                        obj.GetComponent<Block>().Init();
+                    GameObject obj = Instantiate(leaf, new Vector3(x + (exe - 3), y + (way + 2), z + (zee - 3)), Quaternion.identity);
+                    obj.transform.SetParent(_blockSpawner);
+                    obj.GetComponent<Block>().Init();
 
-                    }
                 }
             }
-        
+        }
+
     }
 
     void CreateOre(int x, int y, int z)
@@ -283,8 +313,8 @@ public class BlockSpawner : MonoBehaviour
         if (9.9f > UnityEngine.Random.Range(0f, 10f))
         {
             GameObject obj = Instantiate(coal, new Vector3(x, y, z), quaternion.identity);
-                        obj.transform.SetParent(_blockSpawner);
-                        obj.GetComponent<Block>().Init();
+            obj.transform.SetParent(_blockSpawner);
+            obj.GetComponent<Block>().Init();
 
         }
     }
