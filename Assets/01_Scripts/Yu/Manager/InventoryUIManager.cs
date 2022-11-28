@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class InventoryUIManager : MonoBehaviour
 {
     public InventorySO InventorySO
@@ -34,6 +35,8 @@ public class InventoryUIManager : MonoBehaviour
     private GameObject _playerInfoPanel;
     [SerializeField]
     private InventorySO _inventorySO;
+    [SerializeField]
+    private TextMeshProUGUI _toolTipText;
 
 
     public int buttonCount;
@@ -45,7 +48,25 @@ public class InventoryUIManager : MonoBehaviour
     public static bool inventoryActivated;
     public InventoryCreateManager inventoryCreateManager;
     public GameObject handedItem;
-
+    void ShowToolTip()
+    {
+        if(!inventoryActivated)
+        {
+            _toolTipText.enabled = true;
+            if(droppableList[buttonCount - 1].slot.item != null)
+            {
+                _toolTipText.text = droppableList[buttonCount - 1].slot.item.itemName;
+            }
+            else
+            {
+                _toolTipText.text = "";
+            }
+        }
+        else
+        {
+            _toolTipText.enabled = false;
+        }
+    }
 
     public void RecipeButton()
     {
@@ -80,10 +101,10 @@ public class InventoryUIManager : MonoBehaviour
     public void ShowHandedItem()
     {
         // handedItem.SetActive(true); 
-        if (droppableList[buttonCount-1].slot.item != null)
+        if (droppableList[buttonCount-1].slot?.item != null)
         {
-            handedItem.GetComponent<MeshRenderer>().material = _inventorySO.inventoryList[buttonCount - 1].item.mat;
-            handedItem.GetComponent<MeshFilter>().mesh = _inventorySO.inventoryList[buttonCount - 1].item.mesh;
+            handedItem.GetComponent<MeshRenderer>().material = droppableList[buttonCount - 1].slot.item.mat;
+            handedItem.GetComponent<MeshFilter>().mesh = droppableList[buttonCount - 1].slot.item.mesh;
             handedItem.SetActive(true);
         }
         else
@@ -113,9 +134,11 @@ public class InventoryUIManager : MonoBehaviour
     private void Update()
     {
         GetInputs();
-        SetNullImage();
-        //SetHighLightInventory();
+        //SetNullImage();
+        SetHighLightInventory();
         ShowHandedItem();
+        ShowToolTip();
+
     }
 
 
@@ -145,21 +168,21 @@ public class InventoryUIManager : MonoBehaviour
         }
         else
         {
-            for(int i = 0; i< 9; i++)
+            for (int i = 0; i < 9; i++)
             {
                 var item = droppableList[i];
-                if(item.slot.item == null)
+                if (item.slot.item == null)
                 {
                     GameObject obj = item.gameObject.transform.GetChild(0).gameObject;
                     Color color = item.GetComponent<Image>().color;
-                    color.a =0f;
+                    color.a = 0f;
                     obj.GetComponentInChildren<Image>().color = color;
                 }
                 else
                 {
-                    GameObject obj= item.gameObject.transform.GetChild(0).gameObject;
+                    GameObject obj = item.gameObject.transform.GetChild(0).gameObject;
                     Color color = item.gameObject.GetComponentInChildren<Image>().color;
-                    color.a =255f;
+                    color.a = 255f;
                     obj.GetComponentInChildren<Image>().color = color;
                 }
             }
