@@ -23,7 +23,6 @@ public class Block : MonoBehaviour,EInit
     private AudioSource _audioSource;
 
 
-    BreakingBlock _breakingBlock;
     Material originMaterial;
 
 
@@ -32,7 +31,6 @@ public class Block : MonoBehaviour,EInit
     {
         _collider = GetComponent<BoxCollider>();
         _audioSource = GetComponent<AudioSource>(); 
-        _breakingBlock = GetComponent<BreakingBlock>();
         originMaterial = GetComponent<MeshRenderer>().materials[0]; 
 
     }
@@ -47,7 +45,8 @@ public class Block : MonoBehaviour,EInit
     }
     public void Mining(float speed,InventoryUIManager inventoryUIManager)
     {
-        _breakingBlock.BreakingBlockTexturing(_hp / _maxHP);
+        GameObject.Find("BreakingTexture").GetComponent<BreakingBlock>().BreakingBlockTexturing(_hp / _maxHP, transform.position);
+        GameObject.Find("BreakingTexture").transform.position = gameObject.transform.position;
         if(blockData.item.miningClipName != "")
         {
             if(_hp >= _maxHP - 1)
@@ -75,7 +74,8 @@ public class Block : MonoBehaviour,EInit
     }
     private void Destruction()
     {
-        GetComponent<MeshRenderer>().materials[0] = null;
+        GameObject
+            .Find("BreakingTexture").GetComponent<BreakingBlock>().StopBreaking();
         _collider.enabled = false;
         DropItem();
         if(blockData.item.clipName != "")
@@ -86,6 +86,7 @@ public class Block : MonoBehaviour,EInit
     }
     public void HPReset()
     {
+        GameObject.Find("BreakingTexture").GetComponent<BreakingBlock>().StopBreaking();
         _hp = _maxHP;
         GetComponent<MeshRenderer>().materials = new Material[1] {originMaterial};
         //GetComponent<MeshRenderer>().material = blockData.item.mat;

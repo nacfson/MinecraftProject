@@ -6,50 +6,54 @@ public class BreakingBlock : MonoBehaviour
 {
     [SerializeField] Material[] breakingTexture;
 
-    public void BreakingBlockTexturing(float breakingRate)
+    public void BreakingBlockTexturing(float breakingRate, Vector3 pos)
     {
-        Material originMaterial = GetComponent<MeshRenderer>().materials[0];
 
-        if(breakingRate >= 0 && breakingRate <= 0.1)
+        if (breakingRate >= 0 && breakingRate <= 0.1)
         {
-            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[9] , originMaterial};
+            gameObject.GetComponent<MeshRenderer>().material = breakingTexture[9];
         }
         else if (breakingRate >= 0.1 && breakingRate <= 0.2)
         {
-            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[8], originMaterial };
+            gameObject.GetComponent<MeshRenderer>().material = breakingTexture[8];
         }
         else if (breakingRate >= 0.2 && breakingRate <= 0.3)
         {
-            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[7], originMaterial };
+            gameObject.GetComponent<MeshRenderer>().material = breakingTexture[7];
         }
         else if (breakingRate >= 0.3 && breakingRate <= 0.4)
         {
-            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[6], originMaterial };
+            gameObject.GetComponent<MeshRenderer>().material = breakingTexture[6];
         }
         else if (breakingRate >= 0.4 && breakingRate <= 0.5)
         {
-            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[5], originMaterial };
+            gameObject.GetComponent<MeshRenderer>().material = breakingTexture[5];
         }
         else if (breakingRate >= 0.5 && breakingRate <= 0.6)
         {
-            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[4], originMaterial };
+                gameObject.GetComponent<MeshRenderer>().material = breakingTexture[4];
         }
         else if (breakingRate >= 0.6 && breakingRate <= 0.7)
         {
-            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[3], originMaterial };
+            gameObject.GetComponent<MeshRenderer>().material = breakingTexture[3];
         }
         else if (breakingRate >= 0.7 && breakingRate <= 0.8)
         {
-            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[2], originMaterial };
+            gameObject.GetComponent<MeshRenderer>().material = breakingTexture[2];
         }
         else if (breakingRate >= 0.8 && breakingRate <= 0.9)
         {
-            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[1], originMaterial };
+            gameObject.GetComponent<MeshRenderer>().material = breakingTexture[1];
         }
         else if (breakingRate >= 0.9 && breakingRate <= 1)
         {
-            GetComponent<MeshRenderer>().materials = new Material[2] { breakingTexture[0], originMaterial };
+            gameObject.GetComponent<MeshRenderer>().material = breakingTexture[0];
         }
+    }
+
+    public void StopBreaking()
+    {
+        transform.position = new Vector3(99, 99, 99);
     }
 }
 

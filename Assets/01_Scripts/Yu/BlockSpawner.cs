@@ -68,9 +68,11 @@ public class BlockSpawner : MonoBehaviour
     }
 
     private void Update() { 
+/*        if(Mathf.Abs(player.position.y) - Mathf.Abs(beforePos) >= 1)
+        {
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("BLOCK").Length; i++)
             {
-                if (Vector3.Distance( GameObject.FindGameObjectsWithTag("BLOCK")[i].transform.position, transform.position) <= 5)
+                if (Vector3.Distance( GameObject.FindGameObjectsWithTag("BLOCK")[i].transform.position, player.transform.position) <= 5)
                 {
                     GameObject.FindGameObjectsWithTag("BLOCK")[i].SetActive(true);
                     Debug.Log("q");
@@ -80,10 +82,10 @@ public class BlockSpawner : MonoBehaviour
                     GameObject.FindGameObjectsWithTag("BLOCK")[i].SetActive(false);
                     Debug.        Log("»ý");
                 }
-
             }
+        }
 
-            beforePos = (int)transform.position.y;
+            beforePos = (int)transform.position.y;*/
         }
     
 
