@@ -45,6 +45,8 @@ public class OptionSceneManager : SceneManagerParent
 
     public void OnOptionMainPanel()
     {
+        SoundManager.instance.SFXPlay("SoundObject","minecraft_click");
+
         _optionMainPanel.SetActive(true);
         Time.timeScale = 0;
         _onPanel = true;
@@ -52,6 +54,8 @@ public class OptionSceneManager : SceneManagerParent
     }
     public void OffOptionMainPanel()
     {
+        SoundManager.instance.SFXPlay("SoundObject","minecraft_click");
+
         _optionMainPanel.SetActive(false);
         Time.timeScale = 1;
         _onPanel = false;
@@ -64,6 +68,8 @@ public class OptionSceneManager : SceneManagerParent
 
     public void GoToMainMenu()
     {
+        SoundManager.instance.SFXPlay("SoundObject","minecraft_click");
+
         LoadScene("MainMenuUIScene");
     }
 

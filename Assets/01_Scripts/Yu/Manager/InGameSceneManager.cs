@@ -9,8 +9,14 @@ public class InGameSceneManager : SceneManagerParent
     private void Awake()
     {
         LoadAdditiveScene("OptionScene");
-        // GameManager.Instance.saveNLoad.PlayerPosLoad();
-        // _player.transform.position = GameManager.Instance.saveNLoad.PlayerPos.position;
+        //GameManager.Instance.saveNLoad.OnLoad();
+        //GameManager.Instance.saveNLoad.PlayerPosLoad();
+        //_player.transform.position = GameManager.Instance.saveNLoad.PlayerPos.position;
+        //GameManager.Instance.saveNLoad.MapLoad();
+        
+
+
+
 
     }
 }

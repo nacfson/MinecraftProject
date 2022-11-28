@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844ad10842615f4459a318a7566f3971, type: 3}
+  m_Name: MyeoMok
+  m_EditorClassIdentifier: 
+  itemName: MyeoMok
+  itemImage: {fileID: 21300000, guid: 8876df4500fd61443b90de0ab24c7f73, type: 3}
+  spriteRenderer: {fileID: 0}
+  itemType: 1
+  mesh: {fileID: 4493585093827132993, guid: aa11b5305f963cc4599c11033562e8d5, type: 3}
+  mat: {fileID: 2100000, guid: 5bc42351477c0344ebf4b99b0f59a39c, type: 2}
+  durability: 2147483647
+  itemLevel: 0
+  itemPrefab: {fileID: 1377162579803422974, guid: 9d3a79e35ec08fc41973d3abf2436bed, type: 3}
+  tool: 1
+  maxHP: 30
+  clipName: 
+  miningClipName: 
+  dropPercent: 100
+  dropItem: {fileID: 2774671180861367142, guid: e9cf38836c2624d44877b8991027fe47, type: 3}

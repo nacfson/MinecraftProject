@@ -30,7 +30,7 @@ public class SaveNLoad : MonoBehaviour
     {
         get
         {
-            _playerPos ??= GameObject.FindWithTag("Player").transform;
+            _playerPos ??= GameObject.FindWithTag("PLAYER").transform;
             return _playerPos;
         }
         set => _playerPos = value;
@@ -49,7 +49,9 @@ public class SaveNLoad : MonoBehaviour
     [ContextMenu("Save")]
     public void OnSave()
     {
-        //MapSave();
+        if(!saved)
+            saved = true;
+
         PlayerPosSave();
         string jsonData = JsonUtility.ToJson(_saveData, true);
         string path = Path.Combine(Application.persistentDataPath, "saveData.json");
@@ -67,9 +69,6 @@ public class SaveNLoad : MonoBehaviour
             saved = true;
             string jsonData = File.ReadAllText(path);
             _saveData = JsonUtility.FromJson<SaveData>(jsonData);
-            Debug.Log("Map Loaded");
-            //MapLoad();
-
         }
 
     }
@@ -107,7 +106,7 @@ public class SaveNLoad : MonoBehaviour
         GameObject blockObj = null;
         Block block = null;
         Item item = null;
-        if(GameManager.Instance.saveNLoad._saveData.blockData[0].item != null)
+        if(GameManager.Instance.saveNLoad._saveData.blockData.Count > 0)
         {
             for (int i = 0; i < _saveData.blockData.Count; i++)
             {
