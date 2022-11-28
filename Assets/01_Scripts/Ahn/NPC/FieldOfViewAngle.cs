@@ -7,9 +7,13 @@ public class FieldOfViewAngle : MonoBehaviour
     [SerializeField] private float viewAngle;
     [SerializeField] private float viewDistance;
     [SerializeField] private LayerMask targetMask;
-    void Update()
-    {
-        View();
+
+    private PlayerController thePlayer;
+    void Start(){
+        thePlayer = FindObjectOfType<PlayerController>();
+    }
+    public Vector3 GetTargetPos(){
+        return thePlayer.transform.position;
     }
 
     private Vector3 BoundaryAngle(float _angle){
@@ -17,7 +21,7 @@ public class FieldOfViewAngle : MonoBehaviour
         return new Vector3(Mathf.Sin(_angle * Mathf.Deg2Rad), 0f, Mathf.Cos(_angle * Mathf.Deg2Rad));
     }
 
-    private void View(){
+    public bool View(){
         Vector3 _leftBoundary = BoundaryAngle(-viewAngle * 0.5f);
         Vector3 _rightBoundary = BoundaryAngle(viewAngle * 0.5f);
         Debug.DrawRay(transform.position + transform.up, _leftBoundary, Color.red);
@@ -34,12 +38,14 @@ public class FieldOfViewAngle : MonoBehaviour
                     RaycastHit _hit;
                     if(Physics.Raycast(transform.position + transform.up, _direction, out _hit, viewDistance)){
                         if(_hit.transform.name == "Player"){
-                            Debug.Log("플레이어가ㅏ 돼지 시야 내에 있습니다");
+                            Debug.Log("플레이어가 돼지 시야 내에 있습니다");
                             Debug.DrawRay(transform.position + transform.up, _direction, Color.blue);
+                            return true;
                         }
                     }
                 }
             }
         }
+        return false;
     }
 }

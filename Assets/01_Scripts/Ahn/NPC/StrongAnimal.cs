@@ -6,6 +6,7 @@ public class StrongAnimal : Animal
 {
     public void Chase(Vector3 _targetPos)
     {
+        isChasing = true;
         direction = _targetPos;
 
         currentTime = runTime;

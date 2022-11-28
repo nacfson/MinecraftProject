@@ -18,6 +18,7 @@ public class Animal : MonoBehaviour
     protected bool isAction;
     protected bool isWalking;
     protected bool isRunning;
+    protected bool isChasing; // 추격중
     protected bool isDead;
 
     [SerializeField] protected float walkTime;
@@ -30,18 +31,20 @@ public class Animal : MonoBehaviour
     [SerializeField] protected Rigidbody rigid;
     [SerializeField] protected BoxCollider boxCol;
     protected AudioSource theAudio;
+    protected FieldOfViewAngle theViewAngle;
 
     [SerializeField] protected AudioClip[] sound_Normal;
     [SerializeField] protected AudioClip sound_Hurt;
     [SerializeField] protected AudioClip sound_Dead;
     void Start()
     {
+        theViewAngle = GetComponent<FieldOfViewAngle>();
         theAudio = GetComponent<AudioSource>();
         currentTime = waitTime;
         isAction = true;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if(!isDead){
             Move();
@@ -68,7 +71,7 @@ public class Animal : MonoBehaviour
         if(isAction)
         {
             currentTime -= Time.deltaTime;
-            if(currentTime <=0)
+            if(currentTime <=0 && !isChasing)
             {
                 Reset();
             }
