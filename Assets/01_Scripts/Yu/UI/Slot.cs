@@ -36,6 +36,7 @@ public class Slot : MonoBehaviour
         rect = GetComponent<RectTransform>();
 
         ChangeAlpha(0f);
+        
     }
 
     public void SetSlotSO(SlotSO slotSO)
@@ -143,10 +144,20 @@ public class Slot : MonoBehaviour
         }
     }
 
-    private void ClearSlot()
+    public void ClearSlot()
     {
-        item = null;
-        itemCount = 0;
+        if(slotSO.item != null)
+        {
+            slotSO.item = null;
+            slotSO.itemCount = 0;
+        }
+        if(item != null)
+        {
+            item = null;
+            itemCount = 0;
+        }
+
+
         itemImage.sprite = null;
         ChangeAlpha(0f);
         //_spriteRenderer.sprite = null;

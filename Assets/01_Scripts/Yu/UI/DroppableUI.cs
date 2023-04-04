@@ -26,6 +26,7 @@ public class DroppableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IP
         image = GetComponent<Image>();
         rect = GetComponent<RectTransform>();
         slot = GetComponentInChildren<Slot>();
+        slot.ClearSlot();
         //GetComponentSlot();
     }
 

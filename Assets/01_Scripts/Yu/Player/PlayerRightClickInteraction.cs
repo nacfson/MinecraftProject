@@ -84,9 +84,9 @@ public class PlayerRightClickInteraction : AgentInteraction
                 block.blockData.blockPos = newPos; 
 
                 
-                if(block.blockData.item.miningClipName != "")
+                if(block.blockData.item.clipName != "")
                 {
-                    SoundManager.instance.SFXPlay("MakingSound",block.blockData.item.miningClipName);
+                    SoundManager.instance.SFXPlay("MakingSound", block.blockData.item.clipName);
                 }
         
                 block.Init();
@@ -119,7 +119,7 @@ public class PlayerRightClickInteraction : AgentInteraction
             Vector3 dir = originHit.collider.transform.position;
             if (Input.GetMouseButtonDown(1) && InventoryUIManager.inventoryActivated == false)
             {
-                CheckBigger(directionVector3.x, directionVector3.y, directionVector3.z, dir);
+                CheckBigger(directionVector3.x, directionVector3.y, directionVector3.z, dir);   
             }
         }
     }

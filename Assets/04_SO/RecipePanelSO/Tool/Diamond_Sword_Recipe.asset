@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2c2c3049564427646b9771ca34dafa9a, type: 2}
   itemCount: 020000000100000001000000
   definedInt: 3
-  makedItem: {fileID: 11400000, guid: b8bf11790287e1d44bd09b81a3a45276, type: 2}
+  makedItem: {fileID: 11400000, guid: c80e26c5da3eafd45b433ca88ad7e983, type: 2}
   makedCount: 1

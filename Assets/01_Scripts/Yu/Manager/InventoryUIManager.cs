@@ -119,9 +119,11 @@ public class InventoryUIManager : MonoBehaviour
         buttonCount = 1;
         OffRecipeButton();
         ChangeAlpha(0f,_eInventoryPanel);
-
         
+
+
     }
+    
     void SetSlotSOO()
     {
         for(int i= 0 ; i < droppableList.Count; i++)
@@ -134,13 +136,11 @@ public class InventoryUIManager : MonoBehaviour
     private void Update()
     {
         GetInputs();
-        //SetNullImage();
         SetHighLightInventory();
         ShowHandedItem();
         ShowToolTip();
-
+        SetNullImage();
     }
-
 
 
     void SetNullImage()
@@ -168,7 +168,7 @@ public class InventoryUIManager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 9; i < droppableList.Count; i++)
             {
                 var item = droppableList[i];
                 if (item.slot.item == null)
@@ -186,6 +186,16 @@ public class InventoryUIManager : MonoBehaviour
                     obj.GetComponentInChildren<Image>().color = color;
                 }
             }
+        }
+    }
+
+    void ClearInventory()
+    {
+        for(int i = 0; i< droppableList.Count; i++)
+        {
+            Debug.Log(droppableList[i].slot);
+            droppableList[i].slot.ClearSlot();
+            //droppableList[i].slot.ShowSlot();
         }
     }
     void SetHighLightInventory()
@@ -224,8 +234,6 @@ public class InventoryUIManager : MonoBehaviour
 
     void UnUseInventory()
     {
-
-
         _recipeButton.SetActive(false);
         crossHair.SetActive(true);
         _playerInfoPanel.SetActive(true);
@@ -234,12 +242,8 @@ public class InventoryUIManager : MonoBehaviour
 
         for(int i= 0; i< _eInventoryPanel.transform.childCount; i++)
         {
-
-                ChangeAlpha(0f,_eInventoryPanel.transform.GetChild(i).gameObject);
-
-                _eInventoryPanel.transform.GetChild(i).gameObject.GetComponent<DroppableUI>().GetComponentInChildren<Slot>().HideSlot();
-            
-            
+            ChangeAlpha(0f,_eInventoryPanel.transform.GetChild(i).gameObject);
+            _eInventoryPanel.transform.GetChild(i).gameObject.GetComponent<DroppableUI>().GetComponentInChildren<Slot>().HideSlot();
         }
         _inventoryShowPanelMin.SetActive(false);
 
@@ -250,6 +254,7 @@ public class InventoryUIManager : MonoBehaviour
         color.a = value;
         obj.GetComponent<Image>().color = color;
     }
+
     void GetInputs()
     {
         CheckCount();
@@ -267,9 +272,7 @@ public class InventoryUIManager : MonoBehaviour
                 UseInventory();
                 inventoryActivated = true;
                 Cursor.lockState = CursorLockMode.None;
-
             }
-
         }
     }
     void CheckCount()

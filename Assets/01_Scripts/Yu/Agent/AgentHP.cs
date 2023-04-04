@@ -21,7 +21,11 @@ public class AgentHP : MonoBehaviour
     {
         hp = maxHP;
         playerHeartUI ??= GameObject.Find("HeartPanel").GetComponent<PlayerHeartUI>();
+
+
         Hit.AddListener(() => playerHeartUI.ShowHP());
+
+
         agentManager = GetComponent<AgentManager>();
         playerController = GetComponent<PlayerController>();
         //StartCoroutine(FallCoroutine());
@@ -40,6 +44,7 @@ public class AgentHP : MonoBehaviour
     {
         if(hp <=0)
         {
+            SoundManager.instance.SFXPlay("SoundObject","classic_hurt");
             agentManager.agentDrop.DropItem();
             Destroy(gameObject);
         }
